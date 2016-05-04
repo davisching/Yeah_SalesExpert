@@ -20,47 +20,60 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     @IBOutlet weak var lb_password: UITextField!
     @IBOutlet weak var bt_signUp: UIButton!
     @IBOutlet weak var bt_login: UIButton!
+    @IBOutlet weak var wallPaper: JSAnimatedImagesView!
     
+    
+    //Happened after user clicked the "GO" button in the password's keyboard
     @IBAction func tf_password_action(sender: AnyObject) {
         login()
          tf_password.resignFirstResponder()
     }
+    
+    
+    //Happened after user clicked the sign up button
     @IBAction func bt_signUp(sender: AnyObject) {
         signUp()
     }
     
+    
+    //Happened after user clicked the login button
     @IBAction func bt_login(sender: AnyObject) {
         login()
     }
     
+    
+    //Function for loginning process.
     func login() {
         let userName = tf_userName.text
         let password = tf_password.text
         print("userName : \(userName), password : \(password)")
     }
     
+    
+    //Function for signing up process.
     func signUp() {
         print("sign up")
     }
     
+    
+    //Clear the keyBroads when user do not needs them
     @IBAction func bt_tap(sender: AnyObject) {
         tf_userName.resignFirstResponder()
         tf_password.resignFirstResponder()
     }
     
-    @IBOutlet weak var wallPaper: JSAnimatedImagesView!
     
+   // Do any additional setup after loading the view.
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         wallPaper.dataSource = self
         
         transAll()
-        
     }
     
+    
+    //Turn all UI into suitable size for each kinds of iphone
     private func transAll(){
         trans(lb_bacColor)
         trans(image_bac)
@@ -73,6 +86,8 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         trans(bt_login)
     }
     
+    
+    //Turn one view and all its subviews into suitable size
     private func trans(temp : UIView){
         temp.frame = remakeFrame(temp.frame.origin.x, y: temp.frame.origin.y, width: temp.frame.size.width, height: temp.frame.size.height)
         
@@ -85,6 +100,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     
     
     /*
+     Conference iphone sizes
      iphone 5 : 320 : 568
      iphone 6 : 375 : 667
      iphone 6 plus : 414 : 736
@@ -93,6 +109,8 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     let transX = UIScreen.mainScreen().bounds.size.width / 375
     let transY = UIScreen.mainScreen().bounds.size.height / 667
     
+    
+    //Turn one view into suitable size
     private func remakeFrame(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) -> CGRect{
         var rect = CGRect.init()
         if(rect.origin.x < 0){
@@ -107,19 +125,22 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         return rect
     }
     
+    
+    //Set the counts of the images for the wall paper
     func animatedImagesNumberOfImages(animatedImagesView: JSAnimatedImagesView!) -> UInt {
         return 6
     }
     
+    
+    //Set the images' names for the wall paper.
     func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
         return UIImage.init(named: "indexBac\(index)")
     }
     
     
-
+    // Dispose of any resources that can be recreated.
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

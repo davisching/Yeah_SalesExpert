@@ -16,12 +16,52 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="indexBac" translatesAutoresizingMaskIntoConstraints="NO" id="Mgv-Bs-qGP">
+                                <rect key="frame" x="0.0" y="0.0" width="551" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="477" id="a7p-4F-apI"/>
+                                    <constraint firstAttribute="width" constant="272" id="nDN-jM-5dt"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="a7p-4F-apI"/>
+                                        <exclude reference="nDN-jM-5dt"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="a7p-4F-apI"/>
+                                        <include reference="nDN-jM-5dt"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98131009615384612" green="0.98131009615384612" blue="0.98131009615384612" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mgv-Bs-qGP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="61h-Ox-Qu5"/>
+                            <constraint firstItem="Mgv-Bs-qGP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="70" id="suf-8b-haY"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="61h-Ox-Qu5"/>
+                                <exclude reference="suf-8b-haY"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="61h-Ox-Qu5"/>
+                                <include reference="suf-8b-haY"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="indexBac" width="750" height="1334"/>
+    </resources>
 </document>
