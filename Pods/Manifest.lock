@@ -4,6 +4,7 @@ PODS:
     - AVOSCloud
   - AVOSCloudIM (3.2.8):
     - AVOSCloud
+  - ESTabBarController (0.1.2)
   - JSAnimatedImagesView (1.0.0):
     - MSWeakTimer (~> 1.0)
   - MSWeakTimer (1.1.0)
@@ -12,12 +13,14 @@ DEPENDENCIES:
   - AVOSCloud
   - AVOSCloudCrashReporting
   - AVOSCloudIM
+  - ESTabBarController
   - JSAnimatedImagesView
 
 SPEC CHECKSUMS:
   AVOSCloud: b789619942a4275e615f8f0782e7475675951b95
   AVOSCloudCrashReporting: 2dddc7dfc8ef423492a01c0076b3e97716854701
   AVOSCloudIM: d2f6a13d64f9676a43e4d68b822bd1be3f96fb76
+  ESTabBarController: ef57e22d9835c7142d3681d38ac158006c40465f
   JSAnimatedImagesView: d5c5f561280171ce13f1f08ba9834c47a1f27bfc
   MSWeakTimer: 9426150f933b80ed3acf3f6d228e4b61f0e303c8
 

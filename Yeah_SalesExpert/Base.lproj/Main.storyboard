@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="aZD-fb-9EX">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.13660210880281223" green="0.17206214268690229" blue="0.17217548076923073" alpha="0.43717672413793102" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indexBac" id="J7n-8T-VQR">
@@ -51,6 +51,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="oaU-to-Rvc"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ded-FX-Byn">
                                 <rect key="frame" x="70" y="371" width="233" height="30"/>
@@ -60,30 +63,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" id="PN0-JQ-Ocf">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PN0-JQ-Ocf">
                                 <rect key="frame" x="155" y="371" width="148" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="tf_password_action:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ZTK-oo-9jg"/>
+                                    <action selector="tf_password_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="ymk-j6-fA4"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kBX-a3-JL8">
-                                <rect key="frame" x="70" y="457" width="74" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3DL-tW-vL4">
+                                <rect key="frame" x="70" y="489" width="233" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.98778385320387574" blue="0.97807776492647269" alpha="0.71842672409999997" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bt_signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZJ-wJ-rYk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3DL-tW-vL4">
-                                <rect key="frame" x="152" y="457" width="151" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80294361527213942" green="1" blue="0.9812448526945432" alpha="0.71842672413793107" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.80294361527213942" green="1" blue="0.9812448526945432" alpha="0.2376885775862069" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.30105064655172414" colorSpace="calibratedRGB"/>
                                 </state>
@@ -91,10 +84,23 @@
                                     <action selector="bt_login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Uf-aW-R4D"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kBX-a3-JL8">
+                                <rect key="frame" x="118" y="604" width="139" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.98778385320387574" blue="0.97807776492647269" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="SIGN UP NOW!">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZJ-wJ-rYk"/>
+                                    <segue destination="C7d-WB-2BZ" kind="push" id="r73-s6-VmL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                     </view>
+                    <navigationItem key="navigationItem" id="xV9-ef-4bE"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="allView" destination="8bC-Xf-vdC" id="zjV-AR-3pb"/>
@@ -108,11 +114,56 @@
                         <outlet property="tf_password" destination="PN0-JQ-Ocf" id="mr7-g1-YR2"/>
                         <outlet property="tf_userName" destination="9Em-rF-DXN" id="ZLQ-AM-Upr"/>
                         <outlet property="wallPaper" destination="Eq4-T9-P8l" id="7yn-Hd-RbT"/>
+                        <segue destination="euS-uw-WU5" kind="push" id="EK5-cu-hiY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151.5" y="305.5"/>
+            <point key="canvasLocation" x="683.5" y="305.5"/>
+        </scene>
+        <!--SIGN UP-->
+        <scene sceneID="TCM-pI-Y50">
+            <objects>
+                <viewController id="C7d-WB-2BZ" customClass="SignUpViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="knD-Ex-dhq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="y9A-fu-sqx"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fp-Zi-56Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1239.5" y="9.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dOz-kf-tBZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aZD-fb-9EX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yBh-vu-lB8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wk0-X9-exD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvR-zE-YJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="151" y="305"/>
+        </scene>
+        <!--Index-->
+        <scene sceneID="2hQ-zx-7MV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Index" id="euS-uw-WU5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="veG-mn-39w"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ar6-yg-9Nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1085" y="594"/>
         </scene>
     </scenes>
     <resources>

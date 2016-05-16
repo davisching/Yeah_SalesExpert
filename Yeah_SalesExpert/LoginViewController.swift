@@ -26,7 +26,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     //Happened after user clicked the "GO" button in the password's keyboard
     @IBAction func tf_password_action(sender: AnyObject) {
         login()
-         tf_password.resignFirstResponder()
+        tf_password.resignFirstResponder()
     }
     
     
@@ -47,12 +47,30 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         let userName = tf_userName.text
         let password = tf_password.text
         print("userName : \(userName), password : \(password)")
+        
+        if loginCanProcess(userName!, password: password!) {
+            
+             DataReader.initDataProcess()
+            
+            let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let indexViewController = indexStoryBoard.instantiateViewControllerWithIdentifier("IndexTabBarController")
+            self.navigationController?.pushViewController(indexViewController, animated: true)
+            
+        } else {
+        
+        }
+    }
+    
+    //Determine is the login info currect or not
+    func loginCanProcess(userName : String, password : String) -> Bool {
+        return true
     }
     
     
     //Function for signing up process.
     func signUp() {
-        print("sign up")
+        //THIS FUNCTION IS NOT USED CURRENTLY
+        //RESERVE FOR OCCASION SITUATION.
     }
     
     
@@ -60,6 +78,15 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     @IBAction func bt_tap(sender: AnyObject) {
         tf_userName.resignFirstResponder()
         tf_password.resignFirstResponder()
+        
+        lb_username.backgroundColor = UIColor.whiteColor()
+        lb_password.backgroundColor = UIColor.whiteColor()
+        
+        lb_username.textColor = UIColor.blackColor()
+        lb_password.textColor = UIColor.blackColor()
+        
+        tf_userName.textColor = UIColor.blackColor()
+        tf_password.textColor = UIColor.blackColor()
     }
     
     
@@ -70,8 +97,17 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         wallPaper.dataSource = self
         
         transAll()
+        
+        self.navigationController?.navigationBarHidden = true
+        
+        lb_username.textColor = UIColor.blackColor()
+        lb_password.textColor = UIColor.blackColor()
     }
     
+    // Do while view will appear
+    override func viewWillAppear(animated: Bool) {
+         self.navigationController?.navigationBarHidden = true
+    }
     
     //Turn all UI into suitable size for each kinds of iphone
     private func transAll(){
@@ -135,6 +171,27 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     //Set the images' names for the wall paper.
     func animatedImagesView(animatedImagesView: JSAnimatedImagesView!, imageAtIndex index: UInt) -> UIImage! {
         return UIImage.init(named: "indexBac\(index)")
+    }
+    
+    
+    //Do while textView(Username) is editing
+    @IBAction func tf_userName_editingBegin(sender: AnyObject) {
+        lb_username.backgroundColor = UIColor.grayColor()
+        lb_username.textColor = UIColor.whiteColor()
+        lb_password.backgroundColor = UIColor.whiteColor()
+        lb_password.textColor = UIColor.blackColor()
+        tf_userName.textColor = UIColor.whiteColor()
+        tf_password.textColor = UIColor.blackColor()
+    }
+    
+    
+    @IBAction func tf_password_editingBegin(sender: AnyObject) {
+        lb_password.backgroundColor = UIColor.grayColor()
+        lb_password.textColor = UIColor.whiteColor()
+        lb_username.backgroundColor = UIColor.whiteColor()
+        lb_username.textColor = UIColor.blackColor()
+        tf_userName.textColor = UIColor.blackColor()
+        tf_password.textColor = UIColor.whiteColor()
     }
     
     
