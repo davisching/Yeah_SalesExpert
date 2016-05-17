@@ -1,38 +1,53 @@
 //
-//  ClientInfo.swift
+//  ContactInfo.swift
 //  Yeah_SalesExpert
 //
-//  Created by DavisChing on 16/5/16.
+//  Created by DavisChing on 16/5/17.
 //  Copyright © 2016年 DavisChing. All rights reserved.
 //
 
 import Foundation
 
-class ClientInfo {
+class ContactInfo {
     
     private var name : String = ""
-    private var company = ""
-    private var job = ""
     private var mobile = ""
     private var phone = ""
     private var email = ""
-    
     private var id = 0
+    private var clientId = -1
     
     init(){
-        //do nothing
+    
     }
     
-    init(_name : String){
+    init(_clientInfo : ClientInfo) {
+        name = _clientInfo.getName()
+        mobile = _clientInfo.getMobile()
+        phone = _clientInfo.getPhone()
+        email = _clientInfo.getEmail()
+        clientId = _clientInfo.getId()
+        id = DataReader.getNewContactId()
+    }
+    
+    init(_name : String) {
         name = _name
-        id = DataReader.getNewClientId()
+        id = DataReader.getNewContactId()
     }
     
     func getId() -> Int{
         return id
     }
     
-    func setId(newId : Int){
+    func getClientId() -> Int{
+        return clientId
+    }
+    
+    func setClientId(newId : Int) {
+        clientId = newId
+    }
+    
+    func setId(newId : Int) {
         id = newId
     }
     
@@ -42,22 +57,6 @@ class ClientInfo {
     
     func getName() -> String {
         return name
-    }
-    
-    func setCompany(_company : String){
-        company = _company
-    }
-    
-    func getCompany() -> String{
-        return company
-    }
-    
-    func setJob(_job : String){
-        job = _job
-    }
-    
-    func getJob() -> String{
-        return job
     }
     
     func setMobile(_mobile : String){
