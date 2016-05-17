@@ -20,7 +20,7 @@ class ClientInfo {
     private var id = 0
     
     init(){
-        id = DataReader.getNewClientId()
+        //do nothing
     }
     
     init(_name : String){

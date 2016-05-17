@@ -80,7 +80,7 @@ class DataReader {
     }
     
     //The id of next client
-    private static var nextClientId = -1
+    private static var nextClientId = 0
     
     //to give the new client a id 
     static func getNewClientId() -> Int{
@@ -90,8 +90,20 @@ class DataReader {
 
     //To init the list of all the products
     static func initProductList(){
-        let a = ProductInfo.init(_name: "哇哈哈儿童乳酸菌")
+        let a = ProductInfo.init(_name: "恒洁卫浴118马桶")
         let b = ProductInfo.init(_name: "农夫山泉")
+        a.appendImgNames("01_01")
+        a.appendImgNames("01_02")
+        a.appendImgNames("01_03")
+        a.appendImgNames("01_04")
+        a.appendImgNames("01_05")
+        a.appendImgNames("01_06")
+        a.appendImgNames("01_07")
+        a.appendImgNames("01_08")
+        a.appendImgNames("01_09")
+        a.appendImgNames("01_10")
+        a.appendImgNames("01_11")
+        a.appendImgNames("01_12")
         productList.append(a)
         productList.append(b)
     }
@@ -115,7 +127,7 @@ class DataReader {
     private static var currentProduct = ProductInfo.init()
     
     //The row count in the product table of this product
-    private static var currentProductIndex = -1
+    private static var currentProductIndex = 0
     
     //To get the row count of this product in the product table
     static func getCurrentProductIndex() -> Int{

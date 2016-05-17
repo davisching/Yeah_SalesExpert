@@ -13,12 +13,15 @@ class ProductInfo {
     private var name : String = ""
     private var imgNames = [String]()
     
+    private var id = 0
+    
     init(){
         //do nothing
     }
     
     init(_name : String) {
         name = _name
+        id = DataReader.getNewProductId()
     }
     
     func setName(_name : String) {

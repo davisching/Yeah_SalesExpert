@@ -118,6 +118,31 @@
             </objects>
             <point key="canvasLocation" x="2061.5" y="-570.5"/>
         </scene>
+        <!--Product Info View Controller-->
+        <scene sceneID="c98-Xb-RkG">
+            <objects>
+                <viewController storyboardIdentifier="ProductInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ZYV-bd-L7X" customClass="ProductInfoViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ENY-St-jsr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="n5t-pd-gMP">
+                                <rect key="frame" x="0.0" y="59" width="375" height="608"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iDi-51-wHY"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="n5t-pd-gMP" id="kCG-YS-Rfd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2en-he-oS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2982.5" y="-570.5"/>
+        </scene>
         <!--PRODUCTS-->
         <scene sceneID="kAd-T9-8Rs">
             <objects>
@@ -644,6 +669,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFJ-Nn-Y8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2070" y="880"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="I01-mv-kGR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0SC-r8-Ey8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="i6Z-lX-Xeu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZYV-bd-L7X" kind="relationship" relationship="rootViewController" id="Fkp-du-o3f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TYG-fk-tg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2450" y="-571"/>
         </scene>
     </scenes>
     <resources>

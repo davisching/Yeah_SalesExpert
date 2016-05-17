@@ -98,8 +98,13 @@ class ProductTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if(indexPath.row == 1) {
-            print("aa")
+        if indexPath.row < productCount {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
+            
+            let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
+            self.navigationController?.pushViewController(productInfoView, animated: true)
         }
     }
     
