@@ -11,14 +11,14 @@ import UIKit
 class ProductTableViewController: UITableViewController {
     
     var dataTable : UITableView!
-    let itemString = ["Unico Water","Wahaha Milk", "Coca Cola with Lemon", "Garvalor wine", "ADD A NEW PRODUCT"]
     let screenObject = UIScreen.mainScreen().bounds
+    
+    private var productCount : Int = DataReader.getProductCount()
+    private var productList = DataReader.getProductList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         initCells()
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,7 +29,7 @@ class ProductTableViewController: UITableViewController {
     
     private func initCells() {
         let dataTabelW : CGFloat = screenObject.width
-        let dataTabelH : CGFloat = screenObject.height
+        let dataTabelH : CGFloat = 75 * (CGFloat(productCount) + 10)
         let dataTabelX : CGFloat = 0
         let dataTabelY : CGFloat = 0
         dataTable = UITableView.init(frame: CGRect.init(x: dataTabelX, y: dataTabelY, width: dataTabelW, height: dataTabelH))
@@ -37,8 +37,7 @@ class ProductTableViewController: UITableViewController {
         dataTable.dataSource = self
         self.view.addSubview(self.dataTable)
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,36 +53,43 @@ class ProductTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        return 5
+        return productCount + 10
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 75
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
-    }
-    
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let id = "id";
         var cell = tableView.dequeueReusableCellWithIdentifier(id)
         
-        if cell == nil {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
-        }
+        let index = indexPath.row
         
-        cell?.textLabel?.text = itemString[indexPath.row]
-        cell?.textLabel?.textAlignment = NSTextAlignment.Center
-        
-        if indexPath.row != 4{
+        if index < productCount {
+            if cell == nil {
+                cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
+            }
+            
+            //cell.contentView.subviews lastObject] removeFromSuperview
+            
+            while cell?.contentView.subviews.last != nil {
+                cell?.contentView.subviews.last?.removeFromSuperview()
+            }
+            cell?.textLabel?.text = productList[index].getName()
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        } else {
+            if cell == nil {
+                cell = UITableViewCell.init()
+            }
         }
+        
+        cell?.textLabel?.textColor = UIColor.whiteColor()
+        
+        tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.4, green: 0.3, blue: 0.3, alpha: 1)
+        
+        //tableView.scrollEnabled = true
         
         // Configure the cell...
         
@@ -95,6 +101,16 @@ class ProductTableViewController: UITableViewController {
         if(indexPath.row == 1) {
             print("aa")
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = false
+        //initCells()
+        self.title = "PRODUCTS(\(productCount))"
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.title = "PRODUCTS"
     }
     
     

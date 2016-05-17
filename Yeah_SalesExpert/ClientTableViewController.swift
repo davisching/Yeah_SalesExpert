@@ -90,7 +90,7 @@ class ClientTableViewController: UITableViewController {
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
-            cell?.textLabel?.text = clientList[index].getName()
+            cell?.textLabel?.text = clientList[index].getName() + "   " + clientList[index].getCompany()
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
             if cell == nil {
@@ -98,11 +98,10 @@ class ClientTableViewController: UITableViewController {
             }
         }
         
-       
         cell?.textLabel?.textColor = UIColor.whiteColor()
         
-        tableView.backgroundColor = UIColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
-        cell?.backgroundColor = UIColor.init(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.35, alpha: 1)
         
         //tableView.scrollEnabled = true
         
@@ -128,13 +127,8 @@ class ClientTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
-//        if DataReader.getClientHasChangedFlag() == true {
-//            self.tableView.removeFromSuperview()
-//        }
         updateClientData()
         initCells()
-        DataReader.clearClientHasChangedFlag()
-        //}
         self.title = "CLIENTS(\(clientCount))"
     }
     

@@ -10,26 +10,16 @@ import Foundation
 
 class DataReader {
     
+    //The list of clients
     private static var clientList = [ClientInfo]()
     
-    private static var clientHasChangedFlag = false
+    //The list of products
+    private static var productList = [ProductInfo]()
     
     //To init data after login
     static func initDataProcess(){
         DataReader.initClientList()
-    }
-    
-    
-    static func getClientHasChangedFlag() -> Bool{
-        return clientHasChangedFlag
-    }
-    
-    static func clearClientHasChangedFlag(){
-        clientHasChangedFlag = false
-    }
-    
-    static func setClientHasChangedFlag(){
-        clientHasChangedFlag = true
+        DataReader.initProductList()
     }
     
     //To return the count of the clients
@@ -60,27 +50,98 @@ class DataReader {
     //Append Client List
     static func appendClientList(newClient : ClientInfo){
         clientList.append(newClient)
-        clientHasChangedFlag = true
     }
     
+    //The current client
     private static var currentClient = ClientInfo.init()
+    
+    //The row count in the client table of this client
     private static var currentClientIndex = 0
     
+    //To get the row count of this client in the client table
     static func getCurrentClientIndex() -> Int{
         return currentClientIndex
     }
     
+    //To set the current client to this Data reader
     static func setCurrentClient(_currentClient : ClientInfo, _currentClientIndex: Int){
         currentClient = _currentClient
         currentClientIndex = _currentClientIndex
     }
     
+    //To return the current client to app
     static func getCurrentClient() -> ClientInfo{
         return currentClient
     }
     
+    //To modify the information of a client
     static func modifyClientInIndex(_newClient : ClientInfo, _clientIndex : Int){
         clientList[_clientIndex] = _newClient
-        clientHasChangedFlag = true
     }
+    
+    //The id of next client
+    private static var nextClientId = -1
+    
+    //to give the new client a id 
+    static func getNewClientId() -> Int{
+        nextClientId += 1
+        return nextClientId
+    }
+
+    //To init the list of all the products
+    static func initProductList(){
+        let a = ProductInfo.init(_name: "哇哈哈儿童乳酸菌")
+        let b = ProductInfo.init(_name: "农夫山泉")
+        productList.append(a)
+        productList.append(b)
+    }
+    
+    //To return the count of the products
+    static func getProductCount() -> Int {
+        return productList.count
+    }
+    
+    //To return the list of the products
+    static func getProductList() -> [ProductInfo]{
+        return productList
+    }
+    
+    //Append Product List
+    static func appendProductList(newProduct : ProductInfo){
+        productList.append(newProduct)
+    }
+    
+    //The current product
+    private static var currentProduct = ProductInfo.init()
+    
+    //The row count in the product table of this product
+    private static var currentProductIndex = -1
+    
+    //To get the row count of this product in the product table
+    static func getCurrentProductIndex() -> Int{
+        return currentProductIndex
+    }
+    
+    //To set the current product to this Data reader
+    static func setCurrentProduct(_currentProduct : ProductInfo, _currentProductIndex: Int){
+        currentProduct = _currentProduct
+        currentProductIndex = _currentProductIndex
+    }
+    
+    //To return the current product to app
+    static func getCurrentProduct() -> ProductInfo{
+        return currentProduct
+    }
+    
+    //The id of next product
+    private static var nextProductId = 0
+    
+    //to give the new product a id
+    static func getNewProductId() -> Int{
+        nextProductId += 1
+        return nextProductId
+    }
+
+
+    
 }

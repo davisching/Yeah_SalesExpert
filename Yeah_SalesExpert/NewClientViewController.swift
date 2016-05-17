@@ -62,6 +62,7 @@ class NewClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        transAll()
         // Do any additional setup after loading the view.
     }
 

@@ -17,12 +17,19 @@ class ClientInfo {
     private var phone = ""
     private var email = ""
     
+    private var id = 0
+    
     init(){
-        //doing nothing
+        id = DataReader.getNewClientId()
     }
     
     init(_name : String){
         name = _name
+        id = DataReader.getNewClientId()
+    }
+    
+    func getId() -> Int{
+        return id
     }
     
     func setName(_name : String){

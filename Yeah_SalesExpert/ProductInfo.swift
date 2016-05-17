@@ -1,0 +1,39 @@
+//
+//  ProductInfo.swift
+//  Yeah_SalesExpert
+//
+//  Created by DavisChing on 16/5/17.
+//  Copyright © 2016年 DavisChing. All rights reserved.
+//
+
+import Foundation
+
+class ProductInfo {
+    
+    private var name : String = ""
+    private var imgNames = [String]()
+    
+    init(){
+        //do nothing
+    }
+    
+    init(_name : String) {
+        name = _name
+    }
+    
+    func setName(_name : String) {
+        name = _name
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func appendImgNames(_newName : String){
+        imgNames.append(_newName)
+    }
+    
+    func getImgNames() -> [String] {
+        return imgNames
+    }
+}

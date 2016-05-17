@@ -110,9 +110,7 @@
                             <outlet property="delegate" destination="hOj-ge-pw7" id="rST-XK-d2c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="PRODUCTS (4)" id="4O9-p8-ffU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="BeD-Hp-zGr"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="PRODUCTS (4)" id="4O9-p8-ffU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
@@ -127,7 +125,7 @@
                     <tabBarItem key="tabBarItem" title="PRODUCTS" id="PcG-L2-DPL"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J4g-Sb-RuD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="J4g-Sb-RuD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -154,7 +152,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CLIENTS (4)" id="WBk-yy-260">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="9lT-Da-SCF"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bEn-HE-0mV">
                             <connections>
                                 <segue destination="8oQ-q7-Mya" kind="push" id="5RR-h3-K2H"/>
@@ -483,22 +480,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indexBac0" id="gQE-hl-hDn">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indexBac0" id="gQE-hl-hDn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="So4-AJ-Jip">
-                                <rect key="frame" x="194" y="138" width="173" height="109"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TgU-1S-Fuk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97524038459999995" green="0.95611802410000002" blue="0.95611802410000002" alpha="0.079067887929999997" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.12281650641025643" green="0.10656637262054194" blue="0.12243763292016872" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="So4-AJ-Jip">
+                                <rect key="frame" x="193" y="389" width="173" height="109"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="NEW CONTACT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NXz-ZV-UHq">
-                                <rect key="frame" x="8" y="138" width="170" height="108"/>
+                                <rect key="frame" x="9" y="390" width="170" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97524038459999995" green="0.95611802410000002" blue="0.95611802410000002" alpha="0.079067887929999997" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="NEW CLIENT">
                                     <color key="titleColor" red="0.99031410310000001" green="1" blue="0.97432070140000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -507,25 +512,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7ja-4C-D84">
-                                <rect key="frame" x="8" y="398" width="357" height="100"/>
+                                <rect key="frame" x="9" y="115" width="357" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97524038459999995" green="0.95611802410000002" blue="0.95611802410000002" alpha="0.079067887929999997" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="NEW CONTRACT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jlc-My-k6u">
-                                <rect key="frame" x="8" y="268" width="170" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97524038459999995" green="0.95611802410000002" blue="0.95611802410000002" alpha="0.079067887929999997" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="NEW PRODUCT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWL-he-pdC">
-                                <rect key="frame" x="194" y="268" width="173" height="108"/>
+                                <rect key="frame" x="9" y="246" width="357" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97524038459999995" green="0.95611802410000002" blue="0.95611802410000002" alpha="0.079067887929999997" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="NEW OPPOTUNITY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -536,6 +533,14 @@
                     <navigationItem key="navigationItem" id="8au-OT-vlR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bt_newClient" destination="NXz-ZV-UHq" id="2a6-ek-d4s"/>
+                        <outlet property="bt_newContact" destination="So4-AJ-Jip" id="DvB-8V-nAN"/>
+                        <outlet property="bt_newContract" destination="7ja-4C-D84" id="Jbi-Dp-h5r"/>
+                        <outlet property="bt_newOppotunity" destination="MWL-he-pdC" id="xFc-Su-ajg"/>
+                        <outlet property="colorLabel" destination="TgU-1S-Fuk" id="U7u-pj-h9U"/>
+                        <outlet property="img_back" destination="gQE-hl-hDn" id="Yun-yd-k3m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vS5-84-KF8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
