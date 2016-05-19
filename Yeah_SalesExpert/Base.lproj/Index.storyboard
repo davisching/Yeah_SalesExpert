@@ -550,15 +550,23 @@
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TgU-1S-Fuk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.12281650641025643" green="0.10656637262054194" blue="0.12243763292016872" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20007129087496031" green="0.2024038461538461" blue="0.18597722590374668" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NXz-ZV-UHq">
-                                <rect key="frame" x="9" y="315" width="357" height="94"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="So4-AJ-Jip">
+                                <rect key="frame" x="24" y="456" width="327" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="新增联系人">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NXz-ZV-UHq">
+                                <rect key="frame" x="24" y="345" width="327" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="新增客户">
                                     <color key="titleColor" red="0.99031410310000001" green="1" blue="0.97432070140000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -567,26 +575,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7ja-4C-D84">
-                                <rect key="frame" x="9" y="87" width="357" height="100"/>
+                                <rect key="frame" x="24" y="117" width="327" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="新增合同">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWL-he-pdC">
-                                <rect key="frame" x="9" y="200" width="357" height="97"/>
+                                <rect key="frame" x="24" y="232" width="327" height="97"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="新增销售机会">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="So4-AJ-Jip">
-                                <rect key="frame" x="9" y="426" width="357" height="95"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.51988146551724135" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="新增联系人">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>

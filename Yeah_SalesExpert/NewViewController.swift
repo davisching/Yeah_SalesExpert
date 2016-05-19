@@ -35,7 +35,7 @@ class NewViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+        //self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = false
     }
 
