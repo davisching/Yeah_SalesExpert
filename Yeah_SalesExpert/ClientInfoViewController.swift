@@ -38,7 +38,7 @@ class ClientInfoViewController: UIViewController {
     
     @IBAction func bt_modify(sender: AnyObject) {
         if tf_name.text == "" {
-            let alert = UIAlertView.init(title: "Need a name", message: "Please give your client a name!", delegate: nil, cancelButtonTitle: "Return")
+            let alert = UIAlertView.init(title: "需要名称", message: "请为此客户添加一个名称！", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
             modifyAClient()
@@ -57,7 +57,7 @@ class ClientInfoViewController: UIViewController {
         newClient.setId(clientInfo.getId())
         DataReader.modifyClientInIndex(newClient, _clientIndex: index)
         
-        let alert = UIAlertView.init(title: "Success", message: "The information of this client has been modified successfully!", delegate: nil, cancelButtonTitle: "Great!")
+        let alert = UIAlertView.init(title: "更新成功", message: "客户的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
         alert.show()
     }
     

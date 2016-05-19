@@ -19,11 +19,15 @@ class DataReader {
     //The list of contacts
     private static var contactList = [ContactInfo]()
     
+    //The list of oppotunities
+    private static var oppoList = [OppoInfo]()
+    
     //To init data after login
     static func initDataProcess(){
         DataReader.initClientList()
         DataReader.initProductList()
         DataReader.initContactList()
+        DataReader.initOppoList()
     }
     
     //init list, will be cancel after using the dataBases
@@ -83,6 +87,14 @@ class DataReader {
         contactList.append(b)
     }
     
+    //To init the list of all the oppotunities
+    static func initOppoList() {
+        let a = OppoInfo.init(_name: "红毛象马桶商机")
+        let b = OppoInfo.init(_name: "南京大学寝室马桶更换")
+        oppoList.append(a)
+        oppoList.append(b)
+    }
+    
     //To return the count of the clients
     static func getClientCount() -> Int {
         return clientList.count
@@ -98,6 +110,11 @@ class DataReader {
         return contactList.count
     }
     
+    //To return the count of the oppotunities
+    static func getOppoCount() -> Int {
+        return oppoList.count
+    }
+    
     //To return the list of the clients
     static func getClientList() -> [ClientInfo]{
         return clientList
@@ -111,6 +128,11 @@ class DataReader {
     //To return the list of the contacts
     static func getContactList() -> [ContactInfo]{
         return contactList
+    }
+    
+    //To return the list of the oppotunities
+    static func getOppoList() -> [OppoInfo] {
+        return oppoList
     }
 
     //Append Client List
@@ -135,6 +157,11 @@ class DataReader {
         appendContactList(newContact)
     }
     
+    //To append the list of oppotunities
+    static func appendOppoList(newOppo : OppoInfo) {
+       oppoList.append(newOppo)
+    }
+    
     //The current client
     private static var currentClient = ClientInfo.init()
     
@@ -144,14 +171,20 @@ class DataReader {
     //The current contact
     private static var currentContact = ContactInfo.init()
     
+    //The current oppotunity
+    private static var currentOppo = OppoInfo.init()
+    
     //The row count in the client table of this client
     private static var currentClientIndex = 0
     
     //The row count in the product table of this product
     private static var currentProductIndex = 0
     
-    //The row count in the product table of this contact
+    //The row count in the contact table of this contact
     private static var currentContactIndex = 0
+    
+    //The row count in the oppotunity table of this oppotunity
+    private static var currentOppoIndex = 0
     
     //To get the row count of this client in the client table
     static func getCurrentClientIndex() -> Int{
@@ -166,6 +199,11 @@ class DataReader {
     //To get the row count of this contact in the contact table
     static func getCurrentContactIndex() -> Int{
         return currentContactIndex
+    }
+    
+    //To get the row count of this oppotunity in the oppotunity table
+    static func getCurrentOppoIndex() -> Int {
+        return currentOppoIndex
     }
     
     //To set the current client to this Data reader
@@ -186,19 +224,30 @@ class DataReader {
         currentContactIndex = _currentContactIndex
     }
     
+    //To set the current oppotunity to this Data readr
+    static func setCurrentOppo(_currentOppo : OppoInfo, _currentOppoIndex : Int){
+        currentOppo = _currentOppo
+        currentOppoIndex = _currentOppoIndex
+    }
+    
     //To return the current client to app
-    static func getCurrentClient() -> ClientInfo{
+    static func getCurrentClient() -> ClientInfo {
         return currentClient
     }
     
     //To return the current product to app
-    static func getCurrentProduct() -> ProductInfo{
+    static func getCurrentProduct() -> ProductInfo {
         return currentProduct
     }
     
     //To return the current contact to app
-    static func getCurrentContact() -> ContactInfo{
+    static func getCurrentContact() -> ContactInfo {
         return currentContact
+    }
+    
+    //To return the current oppotunity to app
+    static func getCurrentOppo() -> OppoInfo {
+        return currentOppo
     }
     
     //To modify the information of a client
@@ -236,6 +285,11 @@ class DataReader {
         }
     }
     
+    //To modify the information of a oppotunity
+    static func modifyOppo(_newOppo : OppoInfo, _oppoIndex : Int) {
+        oppoList[_oppoIndex] = _newOppo
+    }
+    
     //The id of next client
     private static var nextClientId = 0
     
@@ -244,6 +298,9 @@ class DataReader {
     
     //The id of next contact
     private static var nextContactId = 0
+    
+    //The id of next oppo
+    private static var nextOppoId = 0
     
     //to give the new client a id 
     static func getNewClientId() -> Int{
@@ -263,13 +320,30 @@ class DataReader {
         return nextContactId
     }
     
-//    //Get a Client with its id
-//    static func getClientById(_id : Int) -> ClientInfo{
-//        for i in 0 ..< getClientCount() {
-//            if clientList[i].getId() == _id {
-//                return clientList[i]
-//            }
-//        }
-//        return ClientInfo.init()
-//    }
+    //To give the new oppotunity a id
+    static func getNewOppoId() -> Int {
+        nextOppoId += 1
+        return nextOppoId
+    }
+    
+    //The client which user will select or have selected
+    private static var selectedClient = ClientInfo.init()
+    
+    //To set the selected client
+    static func setSelectClient(_client : ClientInfo) {
+        selectedClient = _client
+    }
+    
+    //To get the selected client
+    static func getSelectClient() -> ClientInfo {
+        return selectedClient
+    }
+    
+    //To tell whether the creation is initialize from select client functon or not
+    static var isCreateFromSelectClient = false
+    
+    //To return this value to its initialize value
+    static func clearIsCreateFromSelectClient() {
+        isCreateFromSelectClient = false
+    }
 }

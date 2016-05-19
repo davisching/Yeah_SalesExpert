@@ -1,25 +1,24 @@
 //
-//  ClientTableViewController.swift
+//  OppoTableViewController.swift
 //  Yeah_SalesExpert
 //
-//  Created by DavisChing on 16/5/10.
+//  Created by DavisChing on 16/5/18.
 //  Copyright © 2016年 DavisChing. All rights reserved.
 //
 
 import UIKit
 
-class ClientTableViewController: UITableViewController {
-
+class OppoTableViewController: UITableViewController {
+    
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var clientCount : Int = DataReader.getClientCount()
-    private var clientList = DataReader.getClientList()
+    private var oppoCount : Int = DataReader.getOppoCount()
+    private var oppoList = DataReader.getOppoList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initCells()
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,14 +26,14 @@ class ClientTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    private func updateClientData(){
-        clientCount = DataReader.getClientCount()
-        clientList = DataReader.getClientList()
+    private func updateContactData(){
+        oppoCount = DataReader.getOppoCount()
+        oppoList = DataReader.getOppoList()
     }
     
     private func initCells() {
         let dataTabelW : CGFloat = screenObject.width
-        let dataTabelH : CGFloat = 75 * (CGFloat(clientCount) + 10)
+        let dataTabelH : CGFloat = 75 * (CGFloat(oppoCount) + 10)
         let dataTabelX : CGFloat = 0
         let dataTabelY : CGFloat = 0
         dataTable = UITableView.init(frame: CGRect.init(x: dataTabelX, y: dataTabelY, width: dataTabelW, height: dataTabelH))
@@ -54,25 +53,15 @@ class ClientTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-     
-        return clientCount + 10
+        return oppoCount + 10
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 75
     }
-    
-    
-//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-//    
-//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0
-//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let id = "id";
@@ -80,17 +69,19 @@ class ClientTableViewController: UITableViewController {
         
         let index = indexPath.row
         
-        if index < clientCount {
+        if index < oppoCount {
             if cell == nil {
                 cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
             }
-
+            
             //cell.contentView.subviews lastObject] removeFromSuperview
             
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
-            cell?.textLabel?.text = clientList[index].getName() + "   " + clientList[index].getCompany()
+            
+            cell?.textLabel?.text = oppoList[index].getName()
+            
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
             if cell == nil {
@@ -101,40 +92,50 @@ class ClientTableViewController: UITableViewController {
         cell?.textLabel?.textColor = UIColor.whiteColor()
         
         tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-        cell?.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.35, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.35, green: 0.35, blue: 0.3, alpha: 1)
         
         //tableView.scrollEnabled = true
         
         // Configure the cell...
-
+        
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row < clientCount {
+        if indexPath.row < oppoCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentClient(clientList[indexPath.row], _currentClientIndex: indexPath.row)
-    
-            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let clientInfoView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
-            self.navigationController?.pushViewController(clientInfoView, animated: true)
+            DataReader.setCurrentOppo(oppoList[indexPath.row], _currentOppoIndex: indexPath.row)
+            
+            let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let contactInfoView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("OppoInfoViewController")
+            self.navigationController?.pushViewController(contactInfoView, animated: true)
         } else {
-            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewClientViewController")
-            self.navigationController?.pushViewController(clientaddView, animated: true)
+            let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let contactaddView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("NewOppoViewController")
+            self.navigationController?.pushViewController(contactaddView, animated: true)
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
-        updateClientData()
+        updateContactData()
         initCells()
-        self.title = "客户(\(clientCount))"
+        self.title = "销售机会(\(oppoCount))"
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.title = "客户"
+        self.title = "销售机会"
     }
+
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
 
     /*
     // Override to support conditional editing of the table view.

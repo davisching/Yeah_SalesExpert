@@ -1,14 +1,14 @@
 //
-//  ClientTableViewController.swift
+//  SelectClientTableViewController.swift
 //  Yeah_SalesExpert
 //
-//  Created by DavisChing on 16/5/10.
+//  Created by DavisChing on 16/5/19.
 //  Copyright © 2016年 DavisChing. All rights reserved.
 //
 
 import UIKit
 
-class ClientTableViewController: UITableViewController {
+class SelectClientTableViewController: UITableViewController {
 
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
@@ -34,7 +34,7 @@ class ClientTableViewController: UITableViewController {
     
     private func initCells() {
         let dataTabelW : CGFloat = screenObject.width
-        let dataTabelH : CGFloat = 75 * (CGFloat(clientCount) + 10)
+        let dataTabelH : CGFloat = 75 * (CGFloat(clientCount) + 1)
         let dataTabelX : CGFloat = 0
         let dataTabelY : CGFloat = 0
         dataTable = UITableView.init(frame: CGRect.init(x: dataTabelX, y: dataTabelY, width: dataTabelW, height: dataTabelH))
@@ -43,22 +43,23 @@ class ClientTableViewController: UITableViewController {
         self.view.addSubview(self.dataTable)
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-     
-        return clientCount + 10
+        
+        return clientCount + 1
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -66,32 +67,38 @@ class ClientTableViewController: UITableViewController {
     }
     
     
-//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-//    
-//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0
-//    }
+    //    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    //        return 0
+    //    }
+    //
+    //    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //        return 0
+    //    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let id = "id";
         var cell = tableView.dequeueReusableCellWithIdentifier(id)
         
-        let index = indexPath.row
+        let index = indexPath.row - 1
         
-        if index < clientCount {
+        if index < clientCount + 1 {
             if cell == nil {
                 cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
             }
-
+            
             //cell.contentView.subviews lastObject] removeFromSuperview
             
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
-            cell?.textLabel?.text = clientList[index].getName() + "   " + clientList[index].getCompany()
-            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            
+            if indexPath.row == 0 {
+                cell?.textLabel?.text = "+  使用新客户"
+            } else {
+                cell?.textLabel?.text = "\(index + 1))  " + clientList[index].getName() + "   " + clientList[index].getCompany()
+                cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            }
+           
         } else {
             if cell == nil {
                 cell = UITableViewCell.init()
@@ -100,41 +107,54 @@ class ClientTableViewController: UITableViewController {
         
         cell?.textLabel?.textColor = UIColor.whiteColor()
         
-        tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-        cell?.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.35, alpha: 1)
+        tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.32, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.32, alpha: 1)
         
         //tableView.scrollEnabled = true
         
         // Configure the cell...
-
+        
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row < clientCount {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentClient(clientList[indexPath.row], _currentClientIndex: indexPath.row)
-    
-            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let clientInfoView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
-            self.navigationController?.pushViewController(clientInfoView, animated: true)
+        
+        //If user choose to use a existed client
+        if indexPath.row != 0 {
+            DataReader.setSelectClient(clientList[indexPath.row - 1])
+            self.navigationController?.popViewControllerAnimated(true)
         } else {
+           
+             DataReader.isCreateFromSelectClient = true
+            
             let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewClientViewController")
             self.navigationController?.pushViewController(clientaddView, animated: true)
+            
         }
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.hidden = true
         updateClientData()
         initCells()
-        self.title = "客户(\(clientCount))"
+        self.title = "选择一个客户"
+        
+        if DataReader.isCreateFromSelectClient == true {
+            self.navigationController?.popViewControllerAnimated(true)
+            DataReader.clearIsCreateFromSelectClient()
+        }
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.title = "客户"
+
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
+
+        return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.

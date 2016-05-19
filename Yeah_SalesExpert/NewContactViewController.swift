@@ -1,5 +1,5 @@
 //
-//  ContactInfoViewController.swift
+//  NewContactViewController.swift
 //  Yeah_SalesExpert
 //
 //  Created by DavisChing on 16/5/18.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ContactInfoViewController: UIViewController {
-    
-    var contactInfo = ContactInfo.init()
+class NewContactViewController: UIViewController {
 
     @IBOutlet weak var bt_tap: UIButton!
     @IBOutlet weak var lb_name: UILabel!
@@ -19,10 +17,9 @@ class ContactInfoViewController: UIViewController {
     @IBOutlet weak var lb_phone: UILabel!
     @IBOutlet weak var tf_mobile: UITextField!
     @IBOutlet weak var tf_phone: UITextField!
-    @IBOutlet weak var tf_email: UITextField!
     @IBOutlet weak var lb_email: UILabel!
-    @IBOutlet weak var lb_line: UILabel!
-
+    @IBOutlet weak var tf_email: UITextField!
+    @IBOutlet weak var bt_new: UIButton!
     
     @IBAction func bt_tap(sender: AnyObject) {
         tf_name.resignFirstResponder()
@@ -30,41 +27,35 @@ class ContactInfoViewController: UIViewController {
         tf_phone.resignFirstResponder()
         tf_email.resignFirstResponder()
     }
-
-    @IBAction func bt_modify(sender: AnyObject) {
+    
+    @IBAction func bt_new(sender: AnyObject) {
         if tf_name.text == "" {
             let alert = UIAlertView.init(title: "需要名称", message: "请给予此联系人一个名称!", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
-            modifyAContact()
+            addAContact()
         }
     }
     
-    func modifyAContact(){
-        let index = DataReader.getCurrentContactIndex()
-        let newContact = ContactInfo.init()
-        newContact.setName(tf_name.text!)
+    func addAContact(){
+        let newContact = ContactInfo.init(_name: tf_name.text!)
         newContact.setMobile(tf_mobile.text!)
         newContact.setPhone(tf_phone.text!)
         newContact.setEmail(tf_email.text!)
-        newContact.setId(contactInfo.getId())
-        newContact.setClientId(contactInfo.getClientId())
-        DataReader.modifyContactInIndex(newContact, _contactIndex: index)
+        DataReader.appendContactList(newContact)
         
-        let alert = UIAlertView.init(title: "修改成功", message: "联系人的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+        let alert = UIAlertView.init(title: "添加成功", message: "此联系人已经被成功的添加至联系人列表中了！", delegate: nil, cancelButtonTitle: "我知道了！")
         alert.show()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         transAll()
-        contactInfo = DataReader.getCurrentContact()
-        self.title = contactInfo.getName()
-        tf_name.text = contactInfo.getName()
-        tf_mobile.text = contactInfo.getMobile()
-        tf_phone.text = contactInfo.getPhone()
-        tf_email.text = contactInfo.getEmail()
+        self.title = "新增联系人"
         // Do any additional setup after loading the view.
     }
 
@@ -73,9 +64,9 @@ class ContactInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.tabBarController?.tabBar.hidden = true
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        self.tabBarController?.tabBar.hidden = true
+//    }
     
 
     /*
@@ -88,6 +79,8 @@ class ContactInfoViewController: UIViewController {
     }
     */
     
+    
+    //Turn all UI into suitable size for each kinds of iphone
     private func transAll(){
         trans(lb_name)
         trans(tf_name)
@@ -98,9 +91,9 @@ class ContactInfoViewController: UIViewController {
         trans(tf_mobile)
         trans(tf_phone)
         trans(tf_email)
-        trans(lb_line)
+        trans(bt_new)
     }
-
+    
     //Turn one view and all its subviews into suitable size
     private func trans(temp : UIView){
         temp.frame = remakeFrame(temp.frame.origin.x, y: temp.frame.origin.y, width: temp.frame.size.width, height: temp.frame.size.height)
@@ -114,6 +107,7 @@ class ContactInfoViewController: UIViewController {
     
     let transX = UIScreen.mainScreen().bounds.size.width / 375
     let transY = UIScreen.mainScreen().bounds.size.height / 667
+    
     
     //Turn one view into suitable size
     private func remakeFrame(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) -> CGRect{
@@ -129,5 +123,5 @@ class ContactInfoViewController: UIViewController {
         rect.size.height = height * transY
         return rect
     }
-    
+
 }

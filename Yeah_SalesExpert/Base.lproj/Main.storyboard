@@ -38,7 +38,7 @@
                                     <action selector="bt_tap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IuY-2p-lbW"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="JfD-Lc-V0W">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="用 户 名  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="JfD-Lc-V0W">
                                 <rect key="frame" x="70" y="325" width="233" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,7 +47,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="9Em-rF-DXN">
-                                <rect key="frame" x="155" y="325" width="148" height="30"/>
+                                <rect key="frame" x="144" y="325" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
@@ -55,7 +55,7 @@
                                     <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="oaU-to-Rvc"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ded-FX-Byn">
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="密      码  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ded-FX-Byn">
                                 <rect key="frame" x="70" y="371" width="233" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +64,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PN0-JQ-Ocf">
-                                <rect key="frame" x="155" y="371" width="148" height="30"/>
+                                <rect key="frame" x="144" y="371" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -77,7 +77,7 @@
                                 <rect key="frame" x="70" y="489" width="233" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80294361527213942" green="1" blue="0.9812448526945432" alpha="0.2376885775862069" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="LOGIN">
+                                <state key="normal" title="登入">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.30105064655172414" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -88,7 +88,7 @@
                                 <rect key="frame" x="118" y="604" width="139" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.98778385320387574" blue="0.97807776492647269" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="SIGN UP NOW!">
+                                <state key="normal" title="现在注册!">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -121,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="683.5" y="305.5"/>
         </scene>
-        <!--SIGN UP-->
+        <!--注册-->
         <scene sceneID="TCM-pI-Y50">
             <objects>
                 <viewController id="C7d-WB-2BZ" customClass="SignUpViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SIGN UP" id="y9A-fu-sqx"/>
+                    <navigationItem key="navigationItem" title="注册" id="y9A-fu-sqx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fp-Zi-56Y" userLabel="First Responder" sceneMemberID="firstResponder"/>

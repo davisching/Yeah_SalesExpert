@@ -37,7 +37,7 @@ class NewClientViewController: UIViewController {
     
     @IBAction func bt_add(sender: AnyObject) {
         if tf_name.text == "" {
-            let alert = UIAlertView.init(title: "Need a name", message: "Please give your client a name!", delegate: nil, cancelButtonTitle: "Return")
+            let alert = UIAlertView.init(title: "需要名称", message: "请为此客户添加一个名称!", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
             addAClient()
@@ -54,14 +54,19 @@ class NewClientViewController: UIViewController {
         DataReader.appendClientList(newClient)
         
         //self.navigationController?.popViewControllerAnimated(true)
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.navigationController?.popViewControllerAnimated(true)
         
-        let alert = UIAlertView.init(title: "Success", message: "This client has been successfully added to the database!", delegate: nil, cancelButtonTitle: "Great!")
+        let alert = UIAlertView.init(title: "添加成功", message: "此客户已经被添加至客户列表中!", delegate: nil, cancelButtonTitle: "我知道了!")
         alert.show()
+        
+        if DataReader.isCreateFromSelectClient == true {
+            DataReader.setSelectClient(newClient)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         transAll()
         // Do any additional setup after loading the view.
     }
@@ -73,6 +78,10 @@ class NewClientViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
+        
+        if DataReader.isCreateFromSelectClient == true {
+            bt_add.setTitle("使用此客户", forState: UIControlState.Normal)
+        }
     }
     
 
@@ -133,7 +142,5 @@ class NewClientViewController: UIViewController {
         rect.size.height = height * transY
         return rect
     }
-    
-
 
 }

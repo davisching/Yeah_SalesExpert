@@ -81,7 +81,7 @@ class ContactTableViewController: UITableViewController {
             }
             
             if contactList[index].getClientId() > 0 {
-                cell?.textLabel?.text = contactList[index].getName() + "  (From Client)"
+                cell?.textLabel?.text = contactList[index].getName() + "  (来自客户)"
             } else {
                 cell?.textLabel?.text = contactList[index].getName()
             }
@@ -123,11 +123,11 @@ class ContactTableViewController: UITableViewController {
         self.tabBarController?.tabBar.hidden = true
         updateContactData()
         initCells()
-        self.title = "CONTACTS(\(contactCount))"
+        self.title = "联系人(\(contactCount))"
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.title = "CONTACTS"
+        self.title = "联系人"
     }
 
 

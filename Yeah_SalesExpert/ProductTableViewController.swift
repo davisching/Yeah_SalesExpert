@@ -111,11 +111,11 @@ class ProductTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
         //initCells()
-        self.title = "PRODUCTS(\(productCount))"
+        self.title = "产品(\(productCount))"
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.title = "PRODUCTS"
+        self.title = "产品"
     }
     
     
