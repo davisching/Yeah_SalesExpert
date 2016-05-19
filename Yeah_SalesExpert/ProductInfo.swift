@@ -39,4 +39,8 @@ class ProductInfo {
     func getImgNames() -> [String] {
         return imgNames
     }
+    
+    func getId() -> Int{
+        return id
+    }
 }

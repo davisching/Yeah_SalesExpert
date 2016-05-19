@@ -12,21 +12,11 @@ class  OppoInfo {
   
     private var id : Int = -1
     private var name : String = ""
-    private var clientId : Int = -1
+    private var clientId = -1
     private var stage : Int = -1
     private var targetSales : Int = 0
     private var productId : Int = -1
     private var isEnd = false
-    
-    //THE STAGE
-    /*
-     0% LOSE IT
-     10% 初步接洽
-     30% 需求确定
-     60% 方案/报价
-     80% 谈判审核
-     100% 赢单
-    */
     
     private var checkList = [Check]()
     
@@ -57,7 +47,7 @@ class  OppoInfo {
         clientId = _clientId
     }
     
-    func getClientId() -> Int {
+    func getClient() -> Int {
         return clientId
     }
     
@@ -155,4 +145,74 @@ class Date {
     func getDay() -> Int {
         return day
     }
+}
+
+//THE STAGE
+/*
+ 0% LOSE IT
+ 10% 初步接洽
+ 30% 需求确定
+ 60% 方案/报价
+ 80% 谈判审核
+ 100% 赢单
+ */
+
+class Stage {
+    static func getContextWithPercentage(index : Int) -> String{
+        switch index {
+        case 0:
+            return "初步接洽(10%)"
+        case 1:
+            return "需求确定(30%)"
+        case 2:
+            return "方案/报价(60%)"
+        case 3:
+            return "谈判审核(80%)"
+        case 4:
+            return "赢单(100%)"
+        case 5:
+            return "输单(0%)"
+        default:
+            return ""
+        }
+    }
+    
+    static func getContext(index : Int) -> String{
+        switch index {
+        case 0:
+            return "初步接洽"
+        case 1:
+            return "需求确定"
+        case 2:
+            return "方案/报价"
+        case 3:
+            return "谈判审核"
+        case 4:
+            return "赢单"
+        case 5:
+            return "输单"
+        default:
+            return ""
+        }
+    }
+    
+    static func getPercentage(index : Int) -> Int{
+        switch index {
+        case 0:
+            return 10
+        case 1:
+            return 30
+        case 2:
+            return 60
+        case 3:
+            return 80
+        case 4:
+            return 100
+        case 5:
+            return 0
+        default:
+            return -1
+        }
+    }
+
 }

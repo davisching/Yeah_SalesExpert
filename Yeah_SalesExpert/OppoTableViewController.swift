@@ -80,7 +80,7 @@ class OppoTableViewController: UITableViewController {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
             
-            cell?.textLabel?.text = oppoList[index].getName()
+            cell?.textLabel?.text = "\(index + 1)) " + oppoList[index].getName()
             
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
@@ -92,7 +92,7 @@ class OppoTableViewController: UITableViewController {
         cell?.textLabel?.textColor = UIColor.whiteColor()
         
         tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-        cell?.backgroundColor = UIColor.init(red: 0.35, green: 0.35, blue: 0.3, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.33, green: 0.33, blue: 0.3, alpha: 1)
         
         //tableView.scrollEnabled = true
         

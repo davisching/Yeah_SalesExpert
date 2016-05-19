@@ -59,8 +59,8 @@ class NewClientViewController: UIViewController {
         let alert = UIAlertView.init(title: "添加成功", message: "此客户已经被添加至客户列表中!", delegate: nil, cancelButtonTitle: "我知道了!")
         alert.show()
         
-        if DataReader.isCreateFromSelectClient == true {
-            DataReader.setSelectClient(newClient)
+        if DataReader.isCreatingAnOppotunity == true {
+            DataReader.setSelectedClient(newClient)
         }
     }
     
@@ -79,7 +79,7 @@ class NewClientViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
         
-        if DataReader.isCreateFromSelectClient == true {
+        if DataReader.isCreatingAnOppotunity == true {
             bt_add.setTitle("使用此客户", forState: UIControlState.Normal)
         }
     }

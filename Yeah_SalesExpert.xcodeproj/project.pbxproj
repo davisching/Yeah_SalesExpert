@@ -36,6 +36,7 @@
 		3AC365351CEB79E80080815B /* ContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC365341CEB79E80080815B /* ContactInfoViewController.swift */; };
 		3AFAB50F1CED9FB60087EA5E /* NewOppoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAB50E1CED9FB60087EA5E /* NewOppoViewController.swift */; };
 		3AFAB5131CEDAA850087EA5E /* SelectClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */; };
+		3AFAB5151CEE03BF0087EA5E /* SelectStageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAB5141CEE03BF0087EA5E /* SelectStageViewController.swift */; };
 		3C330D1957D7935AFAA9E2A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46044F7DCB136C7DAD04E8D4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		3AC365341CEB79E80080815B /* ContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
 		3AFAB50E1CED9FB60087EA5E /* NewOppoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOppoViewController.swift; sourceTree = "<group>"; };
 		3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectClientTableViewController.swift; sourceTree = "<group>"; };
+		3AFAB5141CEE03BF0087EA5E /* SelectStageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectStageViewController.swift; sourceTree = "<group>"; };
 		46044F7DCB136C7DAD04E8D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7635F3FDF6B6833DB8447804 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9B953213DEFC9C2FFF78AA82 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -221,7 +223,6 @@
 				3A7C70901CE207060011284C /* ClientTableViewController.swift */,
 				3AC365221CE9DCA00080815B /* NewClientViewController.swift */,
 				3AC365241CE9EB5C0080815B /* ClientInfoViewController.swift */,
-				3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */,
 			);
 			name = ClientControllers;
 			sourceTree = "<group>";
@@ -260,6 +261,8 @@
 			children = (
 				3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */,
 				3AFAB50E1CED9FB60087EA5E /* NewOppoViewController.swift */,
+				3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */,
+				3AFAB5141CEE03BF0087EA5E /* SelectStageViewController.swift */,
 			);
 			name = OppoControllers;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				3A0F219B1CD9CC2800A215C0 /* SignUpViewController.swift in Sources */,
 				3AC365311CEB704D0080815B /* ContactTableViewController.swift in Sources */,
 				3A0F21991CD8CFD600A215C0 /* LoginViewController.swift in Sources */,
+				3AFAB5151CEE03BF0087EA5E /* SelectStageViewController.swift in Sources */,
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
 				3AC365331CEB73670080815B /* OtherViewController.swift in Sources */,

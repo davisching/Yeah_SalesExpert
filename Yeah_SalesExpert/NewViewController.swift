@@ -17,6 +17,18 @@ class NewViewController: UIViewController {
     @IBOutlet weak var bt_newContract: UIButton!
     @IBOutlet weak var bt_newOppotunity: UIButton!
     
+    @IBAction func bt_newContract(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func bt_newOppotunity(sender: AnyObject) {
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        
+        self.navigationController?.navigationBarHidden = false
+        
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewOppoViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+    }
     
     @IBAction func bt_newClient(sender: AnyObject) {
         
@@ -25,6 +37,15 @@ class NewViewController: UIViewController {
         self.navigationController?.navigationBarHidden = false
         
         let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewClientViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+    }
+    
+    @IBAction func bt_newContact(sender: AnyObject) {
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        
+        self.navigationController?.navigationBarHidden = false
+        
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewContactViewController")
         self.navigationController?.pushViewController(clientaddView, animated: true)
     }
     

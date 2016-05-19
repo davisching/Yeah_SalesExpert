@@ -39,36 +39,69 @@ class NewOppoViewController: UIViewController {
     }
     
     @IBAction func bt_stage(sender: AnyObject) {
-        
+        let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let stageSelectView = indexStoryBoard.instantiateViewControllerWithIdentifier("SelectStageViewController")
+        self.navigationController?.pushViewController(stageSelectView, animated: true)
     }
     
     @IBAction func bt_product(sender: AnyObject) {
-        
+        DataReader.isCreatingAnOppotunity = true
+        let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let productSelectView = indexStoryBoard.instantiateViewControllerWithIdentifier("ProductTableViewController")
+        self.navigationController?.pushViewController(productSelectView, animated: true)
     }
     
     @IBAction func bt_add(sender: AnyObject) {
+        if tf_name.text == "" || tf_client.text == ""  || tf_stage.text == ""  || tf_target.text == "" {
+            let alert = UIAlertView.init(title: "必要信息未填写", message: "请为此销售机会填写所有必填项目!", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+        } else {
+            addOppo()
+        }
+    }
+    
+    func addOppo() {
+        newOppo.setName(tf_name.text!)
+        newOppo.setTargetSales(Int(tf_target.text!)!)
+        DataReader.appendOppoList(newOppo)
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+        let alert = UIAlertView.init(title: "添加成功", message: "此销售机会已经被成功的添加！", delegate: nil, cancelButtonTitle: "我知道了!")
+        alert.show()
         
     }
     
-    private var client = ClientInfo.init()
+    private var newOppo = OppoInfo.init()
     
     func setClient(_client: ClientInfo) {
-        client = _client
-        if client.getCompany() != "" {
-            tf_client.text = client.getName() + " (来自 " + client.getCompany() + ")"
+        if _client.getCompany() != "" {
+            tf_client.text = _client.getName() + " (来自 " + _client.getCompany() + ")"
         } else {
-            tf_client.text = client.getName()
+            tf_client.text = _client.getName()
         }
-        
+        newOppo.setClientId(_client.getId())
+    }
+    
+    func setStage(_stage : Int) {
+        tf_stage.text = Stage.getContextWithPercentage(_stage)
+        newOppo.setStage(_stage)
+    }
+    
+    func setProduct(_product : ProductInfo) {
+        tf_product.text = _product.getName()
+        newOppo.setProductId(_product.getId())
     }
     
     func initText() {
-        setClient(DataReader.getSelectClient())
+        setClient(DataReader.getSelectedClient())
+        setStage(DataReader.getSelectedStage())
+        setProduct(DataReader.getSelectedProduct())
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        transAll()
         // Do any additional setup after loading the view.
     }
 
@@ -79,6 +112,7 @@ class NewOppoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
+        DataReader.clearIsCreatingAnOppotunity()
         initText()
     }
 
@@ -91,5 +125,54 @@ class NewOppoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    private func transAll(){
+        trans(bt_tap)
+        trans(lb_name)
+        trans(lb_client)
+        trans(lb_stage)
+        trans(lb_target)
+        trans(lb_product)
+        trans(lb_yuan)
+        trans(tf_name)
+        trans(tf_client)
+        trans(tf_stage)
+        trans(tf_target)
+        trans(tf_product)
+        trans(bt_client)
+        trans(bt_stage)
+        trans(bt_product)
+        trans(bt_add)
+    }
+    
+    //Turn one view and all its subviews into suitable size
+    private func trans(temp : UIView){
+        temp.frame = remakeFrame(temp.frame.origin.x, y: temp.frame.origin.y, width: temp.frame.size.width, height: temp.frame.size.height)
+        
+        if(temp.subviews.count != 0){
+            for i in temp.subviews{
+                trans(i)
+            }
+        }
+    }
+    
+    let transX = UIScreen.mainScreen().bounds.size.width / 375
+    let transY = UIScreen.mainScreen().bounds.size.height / 667
+    
+    
+    //Turn one view into suitable size
+    private func remakeFrame(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) -> CGRect{
+        var rect = CGRect.init()
+        if(rect.origin.x < 0){
+            
+        }else{
+            rect.origin.x = x * transX
+        }
+        
+        rect.origin.y = y * transY
+        rect.size.width = width * transX
+        rect.size.height = height * transY
+        return rect
+    }
 
 }

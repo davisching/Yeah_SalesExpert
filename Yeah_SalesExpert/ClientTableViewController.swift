@@ -90,7 +90,17 @@ class ClientTableViewController: UITableViewController {
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
-            cell?.textLabel?.text = clientList[index].getName() + "   " + clientList[index].getCompany()
+            
+            if clientList[index].getCompany() != "" {
+            
+                 cell?.textLabel?.text = "\(index + 1)) " + clientList[index].getName() + " (来自 " + clientList[index].getCompany() + ")"
+                
+            } else {
+            
+                 cell?.textLabel?.text = "\(index + 1)) " + clientList[index].getName()
+                
+            }
+           
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
             if cell == nil {

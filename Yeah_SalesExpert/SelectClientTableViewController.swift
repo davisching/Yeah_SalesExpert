@@ -121,11 +121,11 @@ class SelectClientTableViewController: UITableViewController {
         
         //If user choose to use a existed client
         if indexPath.row != 0 {
-            DataReader.setSelectClient(clientList[indexPath.row - 1])
+            DataReader.setSelectedClient(clientList[indexPath.row - 1])
             self.navigationController?.popViewControllerAnimated(true)
         } else {
            
-             DataReader.isCreateFromSelectClient = true
+             DataReader.isCreatingAnOppotunity = true
             
             let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewClientViewController")
@@ -140,9 +140,9 @@ class SelectClientTableViewController: UITableViewController {
         initCells()
         self.title = "选择一个客户"
         
-        if DataReader.isCreateFromSelectClient == true {
+        if DataReader.isCreatingAnOppotunity == true {
             self.navigationController?.popViewControllerAnimated(true)
-            DataReader.clearIsCreateFromSelectClient()
+            DataReader.clearIsCreatingAnOppotunity()
         }
     }
 

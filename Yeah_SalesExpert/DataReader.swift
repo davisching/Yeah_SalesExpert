@@ -329,21 +329,48 @@ class DataReader {
     //The client which user will select or have selected
     private static var selectedClient = ClientInfo.init()
     
+    //The stage which user will select or have selected
+    private static var selectedStage = -1
+    
+    //The product which user will select or have selected
+    private static var selectedProduct = ProductInfo.init()
+    
     //To set the selected client
-    static func setSelectClient(_client : ClientInfo) {
+    static func setSelectedClient(_client : ClientInfo) {
         selectedClient = _client
     }
     
     //To get the selected client
-    static func getSelectClient() -> ClientInfo {
+    static func getSelectedClient() -> ClientInfo {
         return selectedClient
     }
     
-    //To tell whether the creation is initialize from select client functon or not
-    static var isCreateFromSelectClient = false
+    //To set the selected stage
+    static func setSelectedStage(_stage : Int) {
+        selectedStage = _stage
+    }
+    
+    //To get the selected stage
+    static func getSelectedStage() -> Int{
+        return selectedStage
+    }
+    
+    //To set the selected product
+    static func setSelectedProduct(_product : ProductInfo) {
+        selectedProduct = _product
+    }
+    
+    //To get the selected product
+    static func getSelectedProduct() -> ProductInfo{
+        return selectedProduct
+    }
+    
+    //To tell whether the process is act during creating an oppotunity
+    static var isCreatingAnOppotunity = false
     
     //To return this value to its initialize value
-    static func clearIsCreateFromSelectClient() {
-        isCreateFromSelectClient = false
+    static func clearIsCreatingAnOppotunity() {
+        isCreatingAnOppotunity = false
     }
+    
 }

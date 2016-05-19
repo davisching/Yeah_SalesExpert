@@ -81,9 +81,9 @@ class ContactTableViewController: UITableViewController {
             }
             
             if contactList[index].getClientId() > 0 {
-                cell?.textLabel?.text = contactList[index].getName() + "  (来自客户)"
+                cell?.textLabel?.text = "\(index + 1)) " + contactList[index].getName() + "  (来自客户)"
             } else {
-                cell?.textLabel?.text = contactList[index].getName()
+                cell?.textLabel?.text = "\(index + 1)) " + contactList[index].getName()
             }
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {

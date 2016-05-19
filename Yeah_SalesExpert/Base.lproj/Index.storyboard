@@ -138,7 +138,7 @@
         <!--PRODUCTS (4)-->
         <scene sceneID="O79-Hu-Bnn">
             <objects>
-                <tableViewController id="hOj-ge-pw7" customClass="ProductTableViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProductTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hOj-ge-pw7" customClass="ProductTableViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2dg-kG-iP6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,6 +562,9 @@
                                 <state key="normal" title="新增联系人">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bt_newContact:" destination="VPw-li-zMM" eventType="touchUpInside" id="76g-yT-j3A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NXz-ZV-UHq">
                                 <rect key="frame" x="24" y="345" width="327" height="94"/>
@@ -581,6 +584,9 @@
                                 <state key="normal" title="新增合同">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bt_newContract:" destination="VPw-li-zMM" eventType="touchUpInside" id="NG4-hD-gSM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWL-he-pdC">
                                 <rect key="frame" x="24" y="232" width="327" height="97"/>
@@ -589,6 +595,9 @@
                                 <state key="normal" title="新增销售机会">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="bt_newOppotunity:" destination="VPw-li-zMM" eventType="touchUpInside" id="VU6-CT-eqs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -609,6 +618,85 @@
             </objects>
             <point key="canvasLocation" x="2761.5" y="902.5"/>
         </scene>
+        <!--Select Stage View Controller-->
+        <scene sceneID="VRi-QF-YSd">
+            <objects>
+                <viewController storyboardIdentifier="SelectStageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v3g-nR-lM8" customClass="SelectStageViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZQG-E6-eiO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WWq-EB-0Gq">
+                                <rect key="frame" x="37" y="208" width="300" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.45098039215686275" green="0.76470588235294112" blue="0.90588235294117647" alpha="0.76355064655172411" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="初步接洽">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_stage_0:" destination="v3g-nR-lM8" eventType="touchUpInside" id="cwC-Xn-FwN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cz7-Is-pBM">
+                                <rect key="frame" x="55" y="260" width="260" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.28235294117647058" blue="0.49019607843137253" alpha="0.76969288793103452" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="确定需求">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_stage_1:" destination="v3g-nR-lM8" eventType="touchUpInside" id="efu-i6-yfg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LQg-yk-Gqa">
+                                <rect key="frame" x="95" y="364" width="180" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81176470588235294" green="0.6705882352941176" blue="0.20000000000000001" alpha="0.79886853448275863" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="谈判审核">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_stage_3:" destination="v3g-nR-lM8" eventType="touchUpInside" id="J3i-7o-8Te"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3MG-Iv-xxO">
+                                <rect key="frame" x="77" y="312" width="220" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50980392156862742" green="0.32941176470588235" blue="0.63137254901960782" alpha="0.81290409482758619" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="方案/报价">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_stage_2:" destination="v3g-nR-lM8" eventType="touchUpInside" id="kby-Z7-3Jl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bMd-cc-O4U">
+                                <rect key="frame" x="117" y="416" width="140" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98301282051282046" green="0.21178147617121137" blue="0.23018943392687438" alpha="0.62362607758620692" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="赢单">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="bt_stage_4:" destination="v3g-nR-lM8" eventType="touchUpInside" id="HW7-90-ZdI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.16184201082171598" green="0.21024022867860831" blue="0.26981169871794874" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bt_stage_0" destination="WWq-EB-0Gq" id="OOa-fQ-mF8"/>
+                        <outlet property="bt_stage_1" destination="cz7-Is-pBM" id="DDG-h1-HDa"/>
+                        <outlet property="bt_stage_2" destination="3MG-Iv-xxO" id="27a-ka-0DU"/>
+                        <outlet property="bt_stage_3" destination="LQg-yk-Gqa" id="fza-y2-sfI"/>
+                        <outlet property="bt_stage_4" destination="bMd-cc-O4U" id="nJJ-j0-iwd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cJ-e3-Knh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-859.5" y="629.5"/>
+        </scene>
         <!--Select Client Table View Controller-->
         <scene sceneID="FZi-DE-tgG">
             <objects>
@@ -616,7 +704,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="94W-yh-kQ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.40464341926405706" green="0.37191575316775566" blue="0.53741987179487172" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="L3c-CO-0AP" id="Btg-uG-es9"/>
                             <outlet property="delegate" destination="L3c-CO-0AP" id="Bpa-Wb-1nE"/>
@@ -626,7 +714,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dow-uG-7xN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-506.5" y="629.5"/>
+            <point key="canvasLocation" x="-482.5" y="629.5"/>
         </scene>
         <!--新增销售机会-->
         <scene sceneID="kwj-vT-NY7">

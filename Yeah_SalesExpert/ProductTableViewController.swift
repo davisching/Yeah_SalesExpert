@@ -19,7 +19,6 @@ class ProductTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initCells()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -76,7 +75,7 @@ class ProductTableViewController: UITableViewController {
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
-            cell?.textLabel?.text = productList[index].getName()
+            cell?.textLabel?.text = "\(index + 1)) " + productList[index].getName()
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
             if cell == nil {
@@ -87,7 +86,7 @@ class ProductTableViewController: UITableViewController {
         cell?.textLabel?.textColor = UIColor.whiteColor()
         
         tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
-        cell?.backgroundColor = UIColor.init(red: 0.4, green: 0.3, blue: 0.3, alpha: 1)
+        cell?.backgroundColor = UIColor.init(red: 0.35, green: 0.3, blue: 0.3, alpha: 1)
         
         //tableView.scrollEnabled = true
         
@@ -99,12 +98,21 @@ class ProductTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.row < productCount {
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
             
-            let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
-            self.navigationController?.pushViewController(productInfoView, animated: true)
+            if DataReader.isCreatingAnOppotunity == true {
+                
+                DataReader.setSelectedProduct(productList[indexPath.row])
+                self.navigationController?.popViewControllerAnimated(true)
+                
+            } else {
+                
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
+            
+                let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+                let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
+                self.navigationController?.pushViewController(productInfoView, animated: true)
+            }
         }
     }
     
@@ -112,6 +120,10 @@ class ProductTableViewController: UITableViewController {
         self.tabBarController?.tabBar.hidden = false
         //initCells()
         self.title = "产品(\(productCount))"
+        if DataReader.isCreatingAnOppotunity == true {
+            self.title = "关联一个产品"
+            self.tabBarController?.tabBar.hidden = true
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
