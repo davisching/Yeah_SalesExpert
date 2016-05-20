@@ -15,6 +15,7 @@
 		3A0F21941CD8CE7A00A215C0 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3A0F21931CD8CE7A00A215C0 /* Podfile */; };
 		3A0F21991CD8CFD600A215C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F21981CD8CFD600A215C0 /* LoginViewController.swift */; };
 		3A0F219B1CD9CC2800A215C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F219A1CD9CC2800A215C0 /* SignUpViewController.swift */; };
+		3A5A24A71CEF030A00998C56 /* OppoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A24A61CEF030A00998C56 /* OppoInfoViewController.swift */; };
 		3A5D93A61CEC76FA00F3400B /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93A51CEC76FA00F3400B /* NewContactViewController.swift */; };
 		3A5D93A81CEC7CF200F3400B /* OppoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */; };
 		3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */; };
@@ -73,6 +74,7 @@
 		3A0F21951CD8CF5200A215C0 /* Yeah_SalesExpert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yeah_SalesExpert-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A0F21981CD8CFD600A215C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A0F219A1CD9CC2800A215C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3A5A24A61CEF030A00998C56 /* OppoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoInfoViewController.swift; sourceTree = "<group>"; };
 		3A5D93A51CEC76FA00F3400B /* NewContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoInfo.swift; sourceTree = "<group>"; };
 		3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				3AFAB50E1CED9FB60087EA5E /* NewOppoViewController.swift */,
 				3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */,
 				3AFAB5141CEE03BF0087EA5E /* SelectStageViewController.swift */,
+				3A5A24A61CEF030A00998C56 /* OppoInfoViewController.swift */,
 			);
 			name = OppoControllers;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
 				3AC365331CEB73670080815B /* OtherViewController.swift in Sources */,
+				3A5A24A71CEF030A00998C56 /* OppoInfoViewController.swift in Sources */,
 				3AC365231CE9DCA00080815B /* NewClientViewController.swift in Sources */,
 				3AC365271CEA22870080815B /* NewViewController.swift in Sources */,
 				3AC3652F1CEB65250080815B /* ContactInfo.swift in Sources */,

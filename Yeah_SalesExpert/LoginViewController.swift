@@ -22,7 +22,6 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     @IBOutlet weak var bt_login: UIButton!
     @IBOutlet weak var wallPaper: JSAnimatedImagesView!
     
-    
     //Happened after user clicked the "GO" button in the password's keyboard
     @IBAction func tf_password_action(sender: AnyObject) {
         login()
