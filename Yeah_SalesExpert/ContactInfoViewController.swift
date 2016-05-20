@@ -13,17 +13,12 @@ class ContactInfoViewController: UIViewController {
     var contactInfo = ContactInfo.init()
 
     @IBOutlet weak var bt_tap: UIButton!
-    @IBOutlet weak var lb_name: UILabel!
     @IBOutlet weak var tf_name: UITextField!
-    @IBOutlet weak var lb_mobile: UILabel!
-    @IBOutlet weak var lb_phone: UILabel!
     @IBOutlet weak var tf_mobile: UITextField!
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_email: UITextField!
-    @IBOutlet weak var lb_email: UILabel!
-    @IBOutlet weak var lb_line: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
 
-    
     @IBAction func bt_tap(sender: AnyObject) {
         tf_name.resignFirstResponder()
         tf_mobile.resignFirstResponder()
@@ -59,6 +54,7 @@ class ContactInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transAll()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
         contactInfo = DataReader.getCurrentContact()
         self.title = contactInfo.getName()
         tf_name.text = contactInfo.getName()
@@ -89,16 +85,7 @@ class ContactInfoViewController: UIViewController {
     */
     
     private func transAll(){
-        trans(lb_name)
-        trans(tf_name)
-        trans(bt_tap)
-        trans(lb_mobile)
-        trans(lb_phone)
-        trans(lb_email)
-        trans(tf_mobile)
-        trans(tf_phone)
-        trans(tf_email)
-        trans(lb_line)
+        trans(scrollView)
     }
 
     //Turn one view and all its subviews into suitable size

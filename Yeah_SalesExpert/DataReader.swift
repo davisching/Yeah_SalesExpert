@@ -368,9 +368,66 @@ class DataReader {
     //To tell whether the process is act during creating an oppotunity
     static var isCreatingAnOppotunity = false
     
+    //To tell whether the process is act during modifing an oppotunity
+    static var isModifyingAnOppotunity = false
+    
     //To return this value to its initialize value
     static func clearIsCreatingAnOppotunity() {
         isCreatingAnOppotunity = false
     }
     
+    //To return this value to its initialize value
+    static func clearIsModifyingAnOppotunity() {
+        isModifyingAnOppotunity = false
+    }
+    
+    //getawaynNaviBarDIVIDEscreen
+    static func getAwayNaviBarDIVIDEscreen(width : CGFloat) -> CGFloat{
+        if width > 375 {
+            return (667 - 102) / 667
+        } else {
+            return (667 - 112) / 667
+
+        }
+    }
+    
+    //To get the client with its id
+    static func getClientWithId(clientId : Int) -> ClientInfo {
+        for i in 0 ..< clientList.count {
+            if clientList[i].getId() == clientId {
+                return clientList[i]
+            }
+        }
+        return ClientInfo.init()
+    }
+    
+    //To get the product with its id
+    static func getProductWithId(productId : Int) -> ProductInfo {
+        for i in 0 ..< productList.count {
+            if productList[i].getId() == productId {
+                return productList[i]
+            }
+        }
+        return ProductInfo.init()
+    }
+    
+    //To get the contact with its id
+    static func getContactWithId(contactId : Int) -> ContactInfo {
+        for i in 0 ..< contactList.count {
+            if contactList[i].getId() == contactId {
+                return contactList[i]
+            }
+        }
+        return ContactInfo.init()
+    }
+    
+    //To get the oppotunity with its id
+    static func getOppotunityWithId(oppoId : Int) -> OppoInfo {
+        for i in 0 ..< oppoList.count {
+            if oppoList[i].getId() == oppoId {
+                return oppoList[i]
+            }
+        }
+        return OppoInfo.init()
+    }
 }

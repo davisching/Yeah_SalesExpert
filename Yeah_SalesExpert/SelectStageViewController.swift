@@ -10,11 +10,7 @@ import UIKit
 
 class SelectStageViewController: UIViewController {
 
-    @IBOutlet weak var bt_stage_0: UIButton!
-    @IBOutlet weak var bt_stage_1: UIButton!
-    @IBOutlet weak var bt_stage_2: UIButton!
-    @IBOutlet weak var bt_stage_3: UIButton!
-    @IBOutlet weak var bt_stage_4: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func bt_stage_0(sender: AnyObject) {
         chooseStage(0)
@@ -45,6 +41,7 @@ class SelectStageViewController: UIViewController {
         super.viewDidLoad()
         self.title = "阶段选择"
         transAll()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
         // Do any additional setup after loading the view.
     }
 
@@ -65,11 +62,7 @@ class SelectStageViewController: UIViewController {
     */
     
     private func transAll(){
-        trans(bt_stage_0)
-        trans(bt_stage_1)
-        trans(bt_stage_2)
-        trans(bt_stage_3)
-        trans(bt_stage_4)
+        trans(scrollView)
     }
     
     //Turn one view and all its subviews into suitable size

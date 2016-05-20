@@ -27,6 +27,10 @@ class  OppoInfo {
         name = _name
     }
     
+    func giveId(){
+        id = DataReader.getNewOppoId()
+    }
+    
     func setId(_id : Int){
         id = _id
     }
@@ -47,7 +51,7 @@ class  OppoInfo {
         clientId = _clientId
     }
     
-    func getClient() -> Int {
+    func getClientId() -> Int {
         return clientId
     }
     
@@ -163,7 +167,7 @@ class Stage {
         case 0:
             return "初步接洽(10%)"
         case 1:
-            return "需求确定(30%)"
+            return "确定需求(30%)"
         case 2:
             return "方案/报价(60%)"
         case 3:
@@ -182,7 +186,7 @@ class Stage {
         case 0:
             return "初步接洽"
         case 1:
-            return "需求确定"
+            return "确定需求"
         case 2:
             return "方案/报价"
         case 3:

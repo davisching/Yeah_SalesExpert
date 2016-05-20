@@ -11,12 +11,7 @@ import UIKit
 class OtherViewController: UIViewController {
 
     @IBOutlet weak var bacImage: UIImageView!
-    @IBOutlet weak var bt_myCompany: UIButton!
-    @IBOutlet weak var bt_contact: UIButton!
-    @IBOutlet weak var bt_contracts: UIButton!
-    @IBOutlet weak var bt_visiting: UIButton!
-    @IBOutlet weak var bt_sales: UIButton!
-    @IBOutlet weak var bt_system: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func bt_contact(sender: AnyObject) {
         let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
@@ -30,6 +25,7 @@ class OtherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transAll()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height + 1)
         // Do any additional setup after loading the view.
     }
 
@@ -54,12 +50,7 @@ class OtherViewController: UIViewController {
     */
     private func transAll(){
         trans(bacImage)
-        trans(bt_myCompany)
-        trans(bt_contact)
-        trans(bt_contracts)
-        trans(bt_visiting)
-        trans(bt_sales)
-        trans(bt_system)
+        trans(scrollView)
     }
     
     //Turn one view and all its subviews into suitable size

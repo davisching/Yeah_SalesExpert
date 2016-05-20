@@ -10,22 +10,13 @@ import UIKit
 
 class NewOppoViewController: UIViewController {
 
-    @IBOutlet weak var bt_tap: UIButton!
-    @IBOutlet weak var lb_name: UILabel!
-    @IBOutlet weak var lb_client: UILabel!
-    @IBOutlet weak var lb_stage: UILabel!
-    @IBOutlet weak var lb_target: UILabel!
-    @IBOutlet weak var lb_product: UILabel!
-    @IBOutlet weak var lb_yuan: UILabel!
+    @IBOutlet weak var bt_add: UIButton!
     @IBOutlet weak var tf_name: UITextField!
     @IBOutlet weak var tf_client: UITextField!
     @IBOutlet weak var tf_stage: UITextField!
     @IBOutlet weak var tf_target: UITextField!
     @IBOutlet weak var tf_product: UITextField!
-    @IBOutlet weak var bt_client: UIButton!
-    @IBOutlet weak var bt_stage: UIButton!
-    @IBOutlet weak var bt_product: UIButton!
-    @IBOutlet weak var bt_add: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func bt_tap(sender: AnyObject) {
         tf_name.resignFirstResponder()
@@ -52,17 +43,39 @@ class NewOppoViewController: UIViewController {
     }
     
     @IBAction func bt_add(sender: AnyObject) {
+        
         if tf_name.text == "" || tf_client.text == ""  || tf_stage.text == ""  || tf_target.text == "" {
             let alert = UIAlertView.init(title: "必要信息未填写", message: "请为此销售机会填写所有必填项目!", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
-            addOppo()
+            if Int(tf_target.text!)! == 0 {
+                
+                let alert = UIAlertView.init(title: "不能为0", message: "销售目标不能为0！", delegate: nil, cancelButtonTitle: "返回")
+                alert.show()
+                
+            } else {
+            
+                if DataReader.isModifyingAnOppotunity == true {
+                    newOppo.setName(tf_name.text!)
+                    newOppo.setTargetSales(Int(tf_target.text!)!)
+                    DataReader.modifyOppo(newOppo, _oppoIndex: DataReader.getCurrentOppoIndex())
+                
+                    DataReader.clearIsModifyingAnOppotunity()
+                    let alert = UIAlertView.init(title: "修改成功", message: "此销售机会已经被成功地修改！", delegate: nil, cancelButtonTitle: "我知道了!")
+                    alert.show()
+                    self.navigationController?.popViewControllerAnimated(true)
+                
+                } else {
+                    addOppo()
+                }
+            }
         }
     }
     
     func addOppo() {
         newOppo.setName(tf_name.text!)
         newOppo.setTargetSales(Int(tf_target.text!)!)
+        newOppo.giveId()
         DataReader.appendOppoList(newOppo)
         
         self.navigationController?.popViewControllerAnimated(true)
@@ -102,7 +115,29 @@ class NewOppoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transAll()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
+        if DataReader.isModifyingAnOppotunity == true {
+            initInfo()
+            bt_add.setTitle("修改销售机会", forState: UIControlState.Normal)
+            newOppo = DataReader.getCurrentOppo()
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    private var oppo = OppoInfo.init()
+    private var client = ClientInfo.init()
+    private var product = ProductInfo.init()
+    
+    private func initInfo() {
+        oppo = DataReader.getCurrentOppo()
+        self.title = oppo.getName()
+        client = DataReader.getClientWithId(oppo.getClientId())
+        product = DataReader.getProductWithId(oppo.getProductId())
+        tf_name.text = oppo.getName()
+        tf_client.text = client.getName()
+        tf_stage.text = Stage.getContextWithPercentage(oppo.getStage())
+        tf_target.text = String(oppo.getTargetSales())
+        tf_product.text = product.getName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,22 +162,7 @@ class NewOppoViewController: UIViewController {
     */
     
     private func transAll(){
-        trans(bt_tap)
-        trans(lb_name)
-        trans(lb_client)
-        trans(lb_stage)
-        trans(lb_target)
-        trans(lb_product)
-        trans(lb_yuan)
-        trans(tf_name)
-        trans(tf_client)
-        trans(tf_stage)
-        trans(tf_target)
-        trans(tf_product)
-        trans(bt_client)
-        trans(bt_stage)
-        trans(bt_product)
-        trans(bt_add)
+        trans(scrollView)
     }
     
     //Turn one view and all its subviews into suitable size

@@ -26,76 +26,82 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indexBac" id="J7n-8T-VQR">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Sol-Wj-XMS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fGl-Lz-Ol4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="bt_tap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IuY-2p-lbW"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="用 户 名  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="JfD-Lc-V0W">
-                                <rect key="frame" x="70" y="325" width="233" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="9Em-rF-DXN">
-                                <rect key="frame" x="144" y="325" width="159" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="oaU-to-Rvc"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="密      码  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ded-FX-Byn">
-                                <rect key="frame" x="70" y="371" width="233" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="textColor" white="0.0" alpha="0.70167025862068966" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PN0-JQ-Ocf">
-                                <rect key="frame" x="144" y="371" width="159" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                <connections>
-                                    <action selector="tf_password_action:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ZTK-oo-9jg"/>
-                                    <action selector="tf_password_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="ymk-j6-fA4"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3DL-tW-vL4">
-                                <rect key="frame" x="70" y="489" width="233" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80294361527213942" green="1" blue="0.9812448526945432" alpha="0.2376885775862069" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="登入">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.30105064655172414" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bt_login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Uf-aW-R4D"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kBX-a3-JL8">
-                                <rect key="frame" x="118" y="604" width="139" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.98778385320387574" blue="0.97807776492647269" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="现在注册!">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bt_signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZJ-wJ-rYk"/>
-                                    <segue destination="C7d-WB-2BZ" kind="push" id="r73-s6-VmL"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="indexBac" id="J7n-8T-VQR">
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="667"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fGl-Lz-Ol4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="bt_tap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IuY-2p-lbW"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="用 户 名  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="JfD-Lc-V0W">
+                                        <rect key="frame" x="71" y="363" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="0.0" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="9Em-rF-DXN">
+                                        <rect key="frame" x="145" y="363" width="159" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="oaU-to-Rvc"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="密      码  |" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Ded-FX-Byn">
+                                        <rect key="frame" x="71" y="408" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="0.0" alpha="0.70167025862068966" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PN0-JQ-Ocf">
+                                        <rect key="frame" x="145" y="408" width="159" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="tf_password_action:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ZTK-oo-9jg"/>
+                                            <action selector="tf_password_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="ymk-j6-fA4"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kBX-a3-JL8">
+                                        <rect key="frame" x="118" y="617" width="139" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.98778385320387574" blue="0.97807776492647269" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="现在注册!">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IZJ-wJ-rYk"/>
+                                            <segue destination="C7d-WB-2BZ" kind="push" id="r73-s6-VmL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3DL-tW-vL4">
+                                        <rect key="frame" x="71" y="474" width="233" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.80294361527213942" green="1" blue="0.9812448526945432" alpha="0.2376885775862069" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="登入">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.30105064655172414" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Uf-aW-R4D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -111,6 +117,7 @@
                         <outlet property="lb_bacColor" destination="vss-xJ-4I6" id="gdr-cC-Lqd"/>
                         <outlet property="lb_password" destination="Ded-FX-Byn" id="huf-ja-yLI"/>
                         <outlet property="lb_username" destination="JfD-Lc-V0W" id="GZn-zh-2dK"/>
+                        <outlet property="scrollView" destination="Sol-Wj-XMS" id="ATp-rC-Fco"/>
                         <outlet property="tf_password" destination="PN0-JQ-Ocf" id="mr7-g1-YR2"/>
                         <outlet property="tf_userName" destination="9Em-rF-DXN" id="ZLQ-AM-Upr"/>
                         <outlet property="wallPaper" destination="Eq4-T9-P8l" id="7yn-Hd-RbT"/>

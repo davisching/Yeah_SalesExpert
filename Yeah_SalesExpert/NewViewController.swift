@@ -17,6 +17,8 @@ class NewViewController: UIViewController {
     @IBOutlet weak var bt_newContract: UIButton!
     @IBOutlet weak var bt_newOppotunity: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBAction func bt_newContract(sender: AnyObject) {
         
     }
@@ -51,6 +53,7 @@ class NewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height + 1)
         transAll()
         // Do any additional setup after loading the view.
     }
@@ -78,11 +81,7 @@ class NewViewController: UIViewController {
     
     private func transAll(){
         trans(img_back)
-        trans(colorLabel)
-        trans(bt_newContact)
-        trans(bt_newClient)
-        trans(bt_newContract)
-        trans(bt_newOppotunity)
+        trans(scrollView)
     }
     
     

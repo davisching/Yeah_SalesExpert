@@ -10,19 +10,45 @@ import UIKit
 
 class OppoInfoViewController: UIViewController {
 
-    private var oppo = OppoInfo.init()
-    
+    @IBOutlet weak var tf_name: UITextField!
+    @IBOutlet weak var tf_client: UITextField!
+    @IBOutlet weak var tf_stage: UITextField!
+    @IBOutlet weak var tf_target: UITextField!
+    @IBOutlet weak var tf_product: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBAction func bt_modify(sender: AnyObject) {
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewOppoViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+        DataReader.isModifyingAnOppotunity = true
+    }
+    
     
     let _w : CGFloat = UIScreen.mainScreen().bounds.size.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        oppo = DataReader.getCurrentOppo()
-        self.title = oppo.getName()
         scrollView.contentSize = CGSize.init(width: _w, height: 1000)
         transAll()
+        initInfo()
         // Do any additional setup after loading the view.
+    }
+    
+    private var oppo = OppoInfo.init()
+    private var client = ClientInfo.init()
+    private var product = ProductInfo.init()
+    
+    private func initInfo() {
+        oppo = DataReader.getCurrentOppo()
+        self.title = oppo.getName()
+        client = DataReader.getClientWithId(oppo.getClientId())
+        product = DataReader.getProductWithId(oppo.getProductId())
+        tf_name.text = oppo.getName()
+        tf_client.text = client.getName()
+        tf_stage.text = Stage.getContextWithPercentage(oppo.getStage())
+        tf_target.text = String(oppo.getTargetSales())
+        tf_product.text = product.getName()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +58,7 @@ class OppoInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
+        initInfo()
     }
 
     /*
@@ -78,8 +105,5 @@ class OppoInfoViewController: UIViewController {
         rect.size.height = height * transY
         return rect
     }
-    
-    
-
 
 }

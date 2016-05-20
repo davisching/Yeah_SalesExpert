@@ -21,6 +21,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     @IBOutlet weak var bt_signUp: UIButton!
     @IBOutlet weak var bt_login: UIButton!
     @IBOutlet weak var wallPaper: JSAnimatedImagesView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //Happened after user clicked the "GO" button in the password's keyboard
     @IBAction func tf_password_action(sender: AnyObject) {
@@ -95,6 +96,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
 
         wallPaper.dataSource = self
         
+        scrollView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.size.width + 1, height: UIScreen.mainScreen().bounds.size.height)
         transAll()
         
         self.navigationController?.navigationBarHidden = true
@@ -111,14 +113,8 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     //Turn all UI into suitable size for each kinds of iphone
     private func transAll(){
         trans(lb_bacColor)
-        trans(image_bac)
         trans(button)
-        trans(lb_username)
-        trans(tf_userName)
-        trans(lb_password)
-        trans(tf_password)
-        trans(bt_signUp)
-        trans(bt_login)
+        trans(scrollView)
     }
     
     
