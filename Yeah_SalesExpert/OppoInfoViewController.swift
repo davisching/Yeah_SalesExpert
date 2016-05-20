@@ -17,11 +17,34 @@ class OppoInfoViewController: UIViewController {
     @IBOutlet weak var tf_product: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBAction func bt_Client(sender: AnyObject) {
+        DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+    }
+    
+    @IBAction func bt_stage(sender: AnyObject) {
+        DataReader.setCurrentStage(oppo.getStage())
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("SelectStageViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+    }
+    
+    @IBAction func bt_product(sender: AnyObject) {
+        if tf_product.text != "" {
+            DataReader.setCurrentProduct(product, _currentProductIndex: DataReader.getCurrentProductIndex(product.getId()))
+            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
+            self.navigationController?.pushViewController(clientaddView, animated: true)
+        }
+    }
+    
     @IBAction func bt_modify(sender: AnyObject) {
+        DataReader.isModifyingAnOppotunity = true
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
         let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewOppoViewController")
         self.navigationController?.pushViewController(clientaddView, animated: true)
-        DataReader.isModifyingAnOppotunity = true
     }
     
     

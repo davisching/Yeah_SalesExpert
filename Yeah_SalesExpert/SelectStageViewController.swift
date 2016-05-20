@@ -12,6 +12,12 @@ class SelectStageViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var bt_stage_0: UIButton!
+    @IBOutlet weak var bt_stage_1: UIButton!
+    @IBOutlet weak var bt_stage_2: UIButton!
+    @IBOutlet weak var bt_stage_3: UIButton!
+    @IBOutlet weak var bt_stage_4: UIButton!
+    
     @IBAction func bt_stage_0(sender: AnyObject) {
         chooseStage(0)
     }
@@ -37,12 +43,41 @@ class SelectStageViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    private var currentStage = -6
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "阶段选择"
         transAll()
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
+        
+        currentStage = DataReader.getCurrentStage()
+        
+        if currentStage < 0 {
+            self.title = "阶段选择"
+        } else {
+            self.title = "当前阶段"
+            highLight(currentStage)
+        }
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func highLight(index : Int) {
+        switch index {
+        case 0:
+            bt_stage_0.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        case 1:
+            bt_stage_1.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        case 2:
+            bt_stage_2.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        case 3:
+            bt_stage_3.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        case 4:
+            bt_stage_4.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        default:
+            break
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +85,9 @@ class SelectStageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        DataReader.setCurrentStage(-1)
+    }
 
     /*
     // MARK: - Navigation

@@ -742,6 +742,39 @@
                                         <color key="textColor" red="0.8479567308" green="0.8479567308" blue="0.8479567308" alpha="0.40153556029999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Xb-V0-AuP">
+                                        <rect key="frame" x="115" y="143" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_stage:" destination="7AU-lk-KA4" eventType="touchUpInside" id="J8N-0H-WpC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kNI-Wa-ci3">
+                                        <rect key="frame" x="115" y="93" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_Client:" destination="7AU-lk-KA4" eventType="touchUpInside" id="O6v-Uc-1V1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8CZ-Kp-sJG">
+                                        <rect key="frame" x="115" y="245" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_product:" destination="7AU-lk-KA4" eventType="touchUpInside" id="6Xv-a6-e6z"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -842,6 +875,11 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bt_stage_0" destination="i0e-pT-t9b" id="Dq4-y6-YiK"/>
+                        <outlet property="bt_stage_1" destination="fYf-8f-JZU" id="Cvg-LI-OCY"/>
+                        <outlet property="bt_stage_2" destination="CSx-X2-Z8b" id="DT5-kq-uTJ"/>
+                        <outlet property="bt_stage_3" destination="IWW-sO-v17" id="XSy-ot-ta3"/>
+                        <outlet property="bt_stage_4" destination="mLV-KV-pbd" id="gGT-gC-JXm"/>
                         <outlet property="scrollView" destination="fl4-9q-xB0" id="6Tp-eq-P5s"/>
                     </connections>
                 </viewController>

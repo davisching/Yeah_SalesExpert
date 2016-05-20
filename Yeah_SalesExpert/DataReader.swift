@@ -32,23 +32,26 @@ class DataReader {
     
     //init list, will be cancel after using the dataBases
     static func initClientList(){
-        let a = ClientInfo.init(_name: "Davis")
-        a.setJob("Vice President")
-        a.setCompany("Ching Co.")
-        a.setMobile("15850532350")
+        let a = ClientInfo.init(_name: "郑新")
+        a.setJob("总经理")
+        a.setCompany("上海超新幼儿用品有限公司")
+        a.setMobile("15850532311")
         a.setPhone("02164738291")
-        a.setEmail("davisching@yahoo.com")
-        let b = ClientInfo.init(_name: "Ching")
+        a.setEmail("xinsuparim@gmail.com")
+        let b = ClientInfo.init(_name: "丘小姐")
+        b.setJob("采购总管")
+        b.setCompany("厦门秋之城儿童商贸有限公司")
+        b.setMobile("13810928102")
+        b.setPhone("059234732217")
+        b.setEmail("qiuQZC@163.com")
         appendClientList(a)
         appendClientList(b)
-        appendClientList(ClientInfo.init(_name : "Is"))
-        appendClientList(ClientInfo.init(_name : "The Handsome"))
     }
     
     //To init the list of all the products
     static func initProductList(){
-        let a = ProductInfo.init(_name: "恒洁卫浴马桶")
-        let b = ProductInfo.init(_name: "九牧卫浴马桶")
+        let a = ProductInfo.init(_name: "杰利卡儿童绘本")
+        let b = ProductInfo.init(_name: "太空猴儿童益智积木")
         a.appendImgNames("01_01")
         a.appendImgNames("01_02")
         a.appendImgNames("01_03")
@@ -81,18 +84,21 @@ class DataReader {
     
     //To init the list of all the contacts
     static func initContactList(){
-        let a = ContactInfo.init(_name: "asd")
-        let b = ContactInfo.init(_name: "qsd")
+        let a = ContactInfo.init(_name: "王杰")
+        a.setEmail("Wangnim@qq.com")
+        a.setPhone("02563811931")
+        a.setMobile("15850239164")
         contactList.append(a)
-        contactList.append(b)
     }
     
     //To init the list of all the oppotunities
     static func initOppoList() {
-        let a = OppoInfo.init(_name: "红毛象马桶商机")
-        let b = OppoInfo.init(_name: "南京大学寝室马桶更换")
+        let a = OppoInfo.init(_name: "太空猴益智玩具")
+        a.setStage(3)
+        a.setClientId(1)
+        a.setProductId(2)
+        a.setTargetSales(50000)
         oppoList.append(a)
-        oppoList.append(b)
     }
     
     //To return the count of the clients
@@ -191,6 +197,27 @@ class DataReader {
         return currentClientIndex
     }
     
+    //To get the index of this client in the client list with its id
+    static func getCurrentClientIndex(clientId : Int) -> Int {
+        for i in 0 ..< clientList.count {
+            if clientList[i].getId() == clientId {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    //To get the index of this product in the client list with its id
+    static func getCurrentProductIndex(productId : Int) -> Int {
+        for i in 0 ..< productList.count {
+            if productList[i].getId() == productId {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    
     //To get the row count of this product in the product table
     static func getCurrentProductIndex() -> Int{
         return currentProductIndex
@@ -234,7 +261,7 @@ class DataReader {
     static func getCurrentClient() -> ClientInfo {
         return currentClient
     }
-    
+
     //To return the current product to app
     static func getCurrentProduct() -> ProductInfo {
         return currentProduct
@@ -429,5 +456,18 @@ class DataReader {
             }
         }
         return OppoInfo.init()
+    }
+    
+    //The current stage
+    private static var currentStage = -1
+    
+    //To set the current stage
+    static func setCurrentStage(_stage : Int) {
+        currentStage = _stage
+    }
+    
+    //To get the current stage
+    static func getCurrentStage() -> Int {
+       return currentStage
     }
 }

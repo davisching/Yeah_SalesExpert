@@ -119,7 +119,6 @@ class NewOppoViewController: UIViewController {
         if DataReader.isModifyingAnOppotunity == true {
             initInfo()
             bt_add.setTitle("修改销售机会", forState: UIControlState.Normal)
-            newOppo = DataReader.getCurrentOppo()
         }
         // Do any additional setup after loading the view.
     }
@@ -148,7 +147,9 @@ class NewOppoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
         DataReader.clearIsCreatingAnOppotunity()
-        initText()
+        if !DataReader.isModifyingAnOppotunity {
+            initText()
+        }
     }
 
     /*
