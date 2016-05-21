@@ -22,6 +22,8 @@
 		3A75058D1CE07CF600406844 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75058B1CE07CF600406844 /* Index.storyboard */; };
 		3A7C70911CE207060011284C /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70901CE207060011284C /* ClientTableViewController.swift */; };
 		3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */; };
+		3A91FB561CF07E360089DF14 /* FollowViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */; };
+		3A91FB581CF0966A0089DF14 /* NewFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */; };
 		3AC3651F1CE9C7080080815B /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3651E1CE9C7080080815B /* DataReader.swift */; };
 		3AC365211CE9C7180080815B /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC365201CE9C7180080815B /* ClientInfo.swift */; };
 		3AC365231CE9DCA00080815B /* NewClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC365221CE9DCA00080815B /* NewClientViewController.swift */; };
@@ -80,6 +82,8 @@
 		3A75058C1CE07CF600406844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Index.storyboard; sourceTree = "<group>"; };
 		3A7C70901CE207060011284C /* ClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
 		3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
+		3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowViewBuilder.swift; sourceTree = "<group>"; };
+		3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFollowViewController.swift; sourceTree = "<group>"; };
 		3AC3651E1CE9C7080080815B /* DataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
 		3AC365201CE9C7180080815B /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		3AC365221CE9DCA00080815B /* NewClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewClientViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				3AFAB5121CEDAA850087EA5E /* SelectClientTableViewController.swift */,
 				3AFAB5141CEE03BF0087EA5E /* SelectStageViewController.swift */,
 				3A5A24A61CEF030A00998C56 /* OppoInfoViewController.swift */,
+				3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */,
+				3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */,
 			);
 			name = OppoControllers;
 			sourceTree = "<group>";
@@ -484,8 +490,10 @@
 				3AC365271CEA22870080815B /* NewViewController.swift in Sources */,
 				3AC3652F1CEB65250080815B /* ContactInfo.swift in Sources */,
 				3AC365351CEB79E80080815B /* ContactInfoViewController.swift in Sources */,
+				3A91FB581CF0966A0089DF14 /* NewFollowViewController.swift in Sources */,
 				3AC365251CE9EB5C0080815B /* ClientInfoViewController.swift in Sources */,
 				3AC365211CE9C7180080815B /* ClientInfo.swift in Sources */,
+				3A91FB561CF07E360089DF14 /* FollowViewBuilder.swift in Sources */,
 				3AC3652B1CEB4AFE0080815B /* ProductInfoViewController.swift in Sources */,
 				3AFAB5131CEDAA850087EA5E /* SelectClientTableViewController.swift in Sources */,
 				3AC365291CEB1D450080815B /* ProductInfo.swift in Sources */,

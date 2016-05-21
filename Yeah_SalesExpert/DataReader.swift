@@ -99,6 +99,8 @@ class DataReader {
         a.setProductId(2)
         a.setTargetSales(50000)
         a.giveId()
+        a.appendList(Check.init(YY: 2016, MM: 4, DD: 19, _context: "我在这一天创建了这个销售机会。"))
+        a.appendList(Check.init(YY: 2016, MM: 4, DD: 21, _context: "我在这一天第一次拜访了这个客户。"))
         oppoList.append(a)
     }
     

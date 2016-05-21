@@ -742,6 +742,13 @@
                                         <color key="textColor" red="0.8479567308" green="0.8479567308" blue="0.8479567308" alpha="0.40153556029999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="___________________________________________" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RLc-g7-Kae">
+                                        <rect key="frame" x="26" y="401" width="322" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.8479567308" green="0.8479567308" blue="0.8479567308" alpha="0.40153556029999998" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Xb-V0-AuP">
                                         <rect key="frame" x="115" y="143" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -773,6 +780,17 @@
                                         </state>
                                         <connections>
                                             <action selector="bt_product:" destination="7AU-lk-KA4" eventType="touchUpInside" id="6Xv-a6-e6z"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yQp-r2-Ack">
+                                        <rect key="frame" x="73" y="453" width="228" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.99482353364534326" blue="0.99009420923309688" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.68965517241379315" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_newFollow:" destination="7AU-lk-KA4" eventType="touchUpInside" id="2Mk-PD-7Dn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1474,6 +1492,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1j-8t-8Ic" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2379.5" y="1660.5"/>
+        </scene>
+        <!--New Follow View Controller-->
+        <scene sceneID="Mv7-du-1zL">
+            <objects>
+                <viewController storyboardIdentifier="NewFollowViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lck-2p-neh" customClass="NewFollowViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="04o-Iz-KcH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="fib-hV-Tbt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="fhd-VU-L17">
+                                        <rect key="frame" x="38" y="101" width="299" height="194"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="0.84585129310344831" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a2U-zP-dxg">
+                                        <rect key="frame" x="73" y="444" width="228" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.99482353359999998" blue="0.99009420920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="记录跟进">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.68965517239999996" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_Add:" destination="lck-2p-neh" eventType="touchUpInside" id="yCh-wg-wwA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.30980392156862746" green="0.32549019607843138" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="fib-hV-Tbt" id="moU-BS-dP5"/>
+                        <outlet property="tf" destination="fhd-VU-L17" id="IwK-vM-B7N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CIZ-1a-NRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1401.5" y="629.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cf8-ad-F1T">

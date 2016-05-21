@@ -17,6 +17,14 @@ class OppoInfoViewController: UIViewController {
     @IBOutlet weak var tf_product: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBAction func bt_newFollow(sender: AnyObject) {
+      
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewFollowViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+        
+        
+    }
     @IBAction func bt_Client(sender: AnyObject) {
         DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
@@ -52,10 +60,24 @@ class OppoInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize.init(width: _w, height: 1000)
-        transAll()
         initInfo()
         // Do any additional setup after loading the view.
+        
+        //The following views
+        creatFollowViews()
+        scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 30)
+        transAll()
+      
+    }
+    
+    func creatFollowViews() {
+        let followViewBuilder = FollowViewBuilder.init()
+        let checkList = oppo.getCheckList()
+        let count = checkList.count
+        for i in 0 ..< count {
+            let _view = followViewBuilder.getView(checkList[count - i - 1])
+            scrollView.addSubview(_view)
+        }
     }
     
     private var oppo = OppoInfo.init()
@@ -82,6 +104,8 @@ class OppoInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
         initInfo()
+        creatFollowViews()
+        scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 30)
         DataReader.clearIsModifyingAnOppotunity()
     }
 

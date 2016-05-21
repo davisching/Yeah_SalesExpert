@@ -120,6 +120,11 @@ class Check {
         
     }
     
+    init(YY : Int, MM : Int, DD : Int, _context : String) {
+        date = Date.init(YY: YY, MM: MM, DD: DD)
+        context = _context
+    }
+    
     func setDate(YY : Int, MM : Int, DD : Int) {
         date = Date.init(YY: YY, MM: MM, DD: DD)
     }

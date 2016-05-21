@@ -105,7 +105,6 @@ class OppoTableViewController: UITableViewController {
         if indexPath.row < oppoCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             DataReader.setCurrentOppo(oppoList[indexPath.row], _currentOppoIndex: indexPath.row)
-            
             let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let contactInfoView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("OppoInfoViewController")
             self.navigationController?.pushViewController(contactInfoView, animated: true)
