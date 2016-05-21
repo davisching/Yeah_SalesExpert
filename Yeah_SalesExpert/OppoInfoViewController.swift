@@ -82,6 +82,7 @@ class OppoInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
         initInfo()
+        DataReader.clearIsModifyingAnOppotunity()
     }
 
     /*

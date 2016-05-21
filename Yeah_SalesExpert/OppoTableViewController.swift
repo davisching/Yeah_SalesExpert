@@ -121,6 +121,7 @@ class OppoTableViewController: UITableViewController {
         updateContactData()
         initCells()
         self.title = "销售机会(\(oppoCount))"
+        DataReader.clearAllSelected()
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -98,6 +98,7 @@ class DataReader {
         a.setClientId(1)
         a.setProductId(2)
         a.setTargetSales(50000)
+        a.giveId()
         oppoList.append(a)
     }
     
@@ -315,6 +316,7 @@ class DataReader {
     //To modify the information of a oppotunity
     static func modifyOppo(_newOppo : OppoInfo, _oppoIndex : Int) {
         oppoList[_oppoIndex] = _newOppo
+        setCurrentOppo(_newOppo, _currentOppoIndex: _oppoIndex)
     }
     
     //The id of next client
@@ -390,6 +392,13 @@ class DataReader {
     //To get the selected product
     static func getSelectedProduct() -> ProductInfo{
         return selectedProduct
+    }
+    
+    //Clear all selected
+    static func clearAllSelected() {
+        setSelectedClient(ClientInfo.init())
+        setSelectedProduct(ProductInfo.init())
+        setSelectedStage(-1)
     }
     
     //To tell whether the process is act during creating an oppotunity

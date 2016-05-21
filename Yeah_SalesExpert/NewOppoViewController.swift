@@ -30,12 +30,16 @@ class NewOppoViewController: UIViewController {
     }
     
     @IBAction func bt_stage(sender: AnyObject) {
+        DataReader.isCreatingAnOppotunity = true
+        DataReader.setCurrentStage(newOppo.getStage())
         let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
         let stageSelectView = indexStoryBoard.instantiateViewControllerWithIdentifier("SelectStageViewController")
         self.navigationController?.pushViewController(stageSelectView, animated: true)
+        
     }
     
     @IBAction func bt_product(sender: AnyObject) {
+       
         DataReader.isCreatingAnOppotunity = true
         let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
         let productSelectView = indexStoryBoard.instantiateViewControllerWithIdentifier("ProductTableViewController")
@@ -59,8 +63,7 @@ class NewOppoViewController: UIViewController {
                     newOppo.setName(tf_name.text!)
                     newOppo.setTargetSales(Int(tf_target.text!)!)
                     DataReader.modifyOppo(newOppo, _oppoIndex: DataReader.getCurrentOppoIndex())
-                
-                    DataReader.clearIsModifyingAnOppotunity()
+                    
                     let alert = UIAlertView.init(title: "修改成功", message: "此销售机会已经被成功地修改！", delegate: nil, cancelButtonTitle: "我知道了!")
                     alert.show()
                     self.navigationController?.popViewControllerAnimated(true)
@@ -86,13 +89,10 @@ class NewOppoViewController: UIViewController {
     }
     
     private var newOppo = OppoInfo.init()
+    private var oppo = OppoInfo.init()
     
     func setClient(_client: ClientInfo) {
-        if _client.getCompany() != "" {
-            tf_client.text = _client.getName() + " (来自 " + _client.getCompany() + ")"
-        } else {
-            tf_client.text = _client.getName()
-        }
+        tf_client.text = _client.getName()
         newOppo.setClientId(_client.getId())
     }
     
@@ -116,27 +116,27 @@ class NewOppoViewController: UIViewController {
         super.viewDidLoad()
         transAll()
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
+        
         if DataReader.isModifyingAnOppotunity == true {
             initInfo()
+            title = "修改"
             bt_add.setTitle("修改销售机会", forState: UIControlState.Normal)
         }
         // Do any additional setup after loading the view.
     }
     
-    private var oppo = OppoInfo.init()
-    private var client = ClientInfo.init()
-    private var product = ProductInfo.init()
-    
     private func initInfo() {
-        oppo = DataReader.getCurrentOppo()
-        self.title = oppo.getName()
-        client = DataReader.getClientWithId(oppo.getClientId())
-        product = DataReader.getProductWithId(oppo.getProductId())
-        tf_name.text = oppo.getName()
-        tf_client.text = client.getName()
-        tf_stage.text = Stage.getContextWithPercentage(oppo.getStage())
-        tf_target.text = String(oppo.getTargetSales())
-        tf_product.text = product.getName()
+        newOppo = OppoInfo.init(_oppo: DataReader.getCurrentOppo())
+        self.title = newOppo.getName()
+       
+        DataReader.setSelectedClient(DataReader.getClientWithId(newOppo.getClientId()))
+        DataReader.setSelectedProduct(DataReader.getProductWithId(newOppo.getProductId()))
+        DataReader.setSelectedStage(newOppo.getStage())
+        
+        tf_name.text = newOppo.getName()
+        tf_target.text = String(newOppo.getTargetSales())
+        
+        initText()
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,12 +144,14 @@ class NewOppoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+     
+    }
+    
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
         DataReader.clearIsCreatingAnOppotunity()
-        if !DataReader.isModifyingAnOppotunity {
-            initText()
-        }
+        initText()
     }
 
     /*

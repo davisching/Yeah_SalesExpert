@@ -39,8 +39,10 @@ class SelectStageViewController: UIViewController {
     }
     
     func chooseStage(_stage : Int) {
-        DataReader.setSelectedStage(_stage)
-        self.navigationController?.popViewControllerAnimated(true)
+        if DataReader.isModifyingAnOppotunity || DataReader.isCreatingAnOppotunity {
+            DataReader.setSelectedStage(_stage)
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     private var currentStage = -6
@@ -52,11 +54,12 @@ class SelectStageViewController: UIViewController {
         
         currentStage = DataReader.getCurrentStage()
         
-        if currentStage < 0 {
+        highLight(currentStage)
+        
+        if DataReader.isModifyingAnOppotunity || DataReader.isCreatingAnOppotunity {
             self.title = "阶段选择"
         } else {
             self.title = "当前阶段"
-            highLight(currentStage)
         }
         
         

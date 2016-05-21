@@ -20,6 +20,17 @@ class  OppoInfo {
     
     private var checkList = [Check]()
     
+    init(_oppo : OppoInfo) {
+        id = _oppo.getId()
+        name = _oppo.getName()
+        clientId = _oppo.getClientId()
+        stage = _oppo.getStage()
+        targetSales = _oppo.getTargetSales()
+        productId = _oppo.getProductId()
+        isEnd = _oppo.isEndOrNot()
+        checkList = _oppo.getCheckList()
+    }
+    
     init(){
     }
     
