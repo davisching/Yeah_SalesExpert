@@ -146,6 +146,16 @@ class DataReader {
 
     //Append Client List
     static func appendClientList(newClient : ClientInfo){
+        let today:NSDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        
+        dateFormatter.dateFormat = "YYYY"
+        let year = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "MM"
+        let month = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "dd"
+        let day = Int(dateFormatter.stringFromDate(today))
+        newClient.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了客户: \(newClient.getName())。"))
         clientList.append(newClient)
         appendContactListWithAClient(newClient)
     }
@@ -168,6 +178,18 @@ class DataReader {
     
     //To append the list of oppotunities
     static func appendOppoList(newOppo : OppoInfo) {
+        let today:NSDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYY"
+        let year = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "MM"
+        let month = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "dd"
+        let day = Int(dateFormatter.stringFromDate(today))
+        newOppo.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())。"))
+        
+        DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。"))
+        
        oppoList.append(newOppo)
     }
     
@@ -219,8 +241,7 @@ class DataReader {
         }
         return -1
     }
-    
-    
+
     //To get the row count of this product in the product table
     static func getCurrentProductIndex() -> Int{
         return currentProductIndex
@@ -481,4 +502,6 @@ class DataReader {
     static func getCurrentStage() -> Int {
        return currentStage
     }
+    
+    static var isCreatingFollowFromClient = false
 }

@@ -21,6 +21,12 @@ class ClientInfoViewController: UIViewController {
     @IBOutlet weak var tf_email: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBAction func bt_addFollow(sender: AnyObject) {
+        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewFollowViewController")
+        self.navigationController?.pushViewController(clientaddView, animated: true)
+    }
+    
     @IBAction func bt_tap(sender: UIButton) {
         tf_name.resignFirstResponder()
         tf_company.resignFirstResponder()
@@ -55,10 +61,23 @@ class ClientInfoViewController: UIViewController {
         alert.show()
     }
     
+    func creatFollowViews() {
+        let followViewBuilder = FollowViewBuilder.init()
+        let checkList = clientInfo.getCheckList()
+        let count = checkList.count
+        for i in 0 ..< count {
+            let _view = followViewBuilder.getView(checkList[count - i - 1])
+            scrollView.addSubview(_view)
+        }
+    }
+    
+    let _w : CGFloat = UIScreen.mainScreen().bounds.size.width
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        creatFollowViews()
+        scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
         transAll()
-        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
         clientInfo = DataReader.getCurrentClient()
         self.title = clientInfo.getName()
         tf_name.text = clientInfo.getName()
@@ -76,7 +95,10 @@ class ClientInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataReader.isCreatingFollowFromClient = true
         self.tabBarController?.tabBar.hidden = true
+        creatFollowViews()
+        scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
     }
     
 

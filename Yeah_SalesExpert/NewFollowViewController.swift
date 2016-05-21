@@ -10,14 +10,19 @@ import UIKit
 
 class NewFollowViewController: UIViewController {
 
+    @IBAction func bt_tap(sender: AnyObject) {
+            tf.resignFirstResponder()
+    }
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tf: UITextView!
     @IBAction func bt_Add(sender: AnyObject) {
         if tf.text == "" {
-        
+            
         } else {
             let today:NSDate = NSDate()
             let dateFormatter = NSDateFormatter()
+            
             dateFormatter.dateFormat = "YYYY"
             let year = Int(dateFormatter.stringFromDate(today))
             dateFormatter.dateFormat = "MM"
@@ -25,11 +30,16 @@ class NewFollowViewController: UIViewController {
             dateFormatter.dateFormat = "dd"
             let day = Int(dateFormatter.stringFromDate(today))
             
-            print(year)
-             print(month)
-             print(day)
+            if DataReader.isCreatingFollowFromClient == true {
+                DataReader.getCurrentClient().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+    
+                
+            } else {
+                DataReader.getCurrentOppo().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+                DataReader.getClientWithId(DataReader.getCurrentOppo().getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+            }
             
-            DataReader.getCurrentOppo().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+            DataReader.isCreatingFollowFromClient = false
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -51,7 +61,6 @@ class NewFollowViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = true
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -80,7 +89,6 @@ class NewFollowViewController: UIViewController {
     let transX = UIScreen.mainScreen().bounds.size.width / 375
     let transY = UIScreen.mainScreen().bounds.size.height / 667
     
-    
     //Turn one view into suitable size
     private func remakeFrame(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) -> CGRect{
         var rect = CGRect.init()
@@ -95,5 +103,4 @@ class NewFollowViewController: UIViewController {
         rect.size.height = height * transY
         return rect
     }
-
 }

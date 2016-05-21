@@ -22,9 +22,8 @@ class OppoInfoViewController: UIViewController {
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
         let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewFollowViewController")
         self.navigationController?.pushViewController(clientaddView, animated: true)
-        
-        
     }
+    
     @IBAction func bt_Client(sender: AnyObject) {
         DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
@@ -102,6 +101,7 @@ class OppoInfoViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        DataReader.isCreatingFollowFromClient = false
         self.tabBarController?.tabBar.hidden = true
         initInfo()
         creatFollowViews()
@@ -137,7 +137,6 @@ class OppoInfoViewController: UIViewController {
     
     let transX = UIScreen.mainScreen().bounds.size.width / 375
     let transY = UIScreen.mainScreen().bounds.size.height / 667
-    
     
     //Turn one view into suitable size
     private func remakeFrame(x : CGFloat, y : CGFloat, width : CGFloat, height : CGFloat) -> CGRect{

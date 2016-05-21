@@ -16,7 +16,7 @@ class ClientInfo {
     private var mobile = ""
     private var phone = ""
     private var email = ""
-    
+    private var checkList = [Check]()
     private var id = 0
     
     init(){
@@ -84,4 +84,16 @@ class ClientInfo {
         return email
     }
 
+    func getCheckList() -> [Check] {
+        return checkList
+    }
+    
+    func getCheckCount() -> Int {
+        return checkList.count
+    }
+    
+    func appendList(check : Check){
+        checkList.append(check)
+    }
+    
 }
