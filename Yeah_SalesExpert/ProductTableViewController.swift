@@ -65,21 +65,62 @@ class ProductTableViewController: UITableViewController {
         
         let index = indexPath.row
         
-        if index < productCount {
-            if cell == nil {
-                cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
+        if DataReader.isCreatingAnOppotunity == true {
+            
+            if index < productCount + 1 {
+                
+                if indexPath.row == 0 {
+                    if cell == nil {
+                        cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
+                    }
+                    
+                    //cell.contentView.subviews lastObject] removeFromSuperview
+                    
+                    while cell?.contentView.subviews.last != nil {
+                        cell?.contentView.subviews.last?.removeFromSuperview()
+                    }
+                    cell?.textLabel?.text = "不关联任何产品"
+                    cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                } else {
+                    if cell == nil {
+                        cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
+                    }
+                    
+                    //cell.contentView.subviews lastObject] removeFromSuperview
+                    
+                    while cell?.contentView.subviews.last != nil {
+                        cell?.contentView.subviews.last?.removeFromSuperview()
+                    }
+                    cell?.textLabel?.text = "\(index)) " + productList[index - 1].getName()
+                    cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                }
+                
+           
+            } else {
+                if cell == nil {
+                    cell = UITableViewCell.init()
+                }
             }
             
-            //cell.contentView.subviews lastObject] removeFromSuperview
             
-            while cell?.contentView.subviews.last != nil {
-                cell?.contentView.subviews.last?.removeFromSuperview()
-            }
-            cell?.textLabel?.text = "\(index + 1)) " + productList[index].getName()
-            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
-            if cell == nil {
-                cell = UITableViewCell.init()
+        
+            if index < productCount {
+                if cell == nil {
+                    cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
+                }
+            
+                //cell.contentView.subviews lastObject] removeFromSuperview
+            
+                while cell?.contentView.subviews.last != nil {
+                    cell?.contentView.subviews.last?.removeFromSuperview()
+                }
+                cell?.textLabel?.text = "\(index + 1)) " + productList[index].getName()
+                cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            } else {
+                if cell == nil {
+                    cell = UITableViewCell.init()
+                }
             }
         }
         
@@ -97,21 +138,29 @@ class ProductTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.row < productCount {
+        if indexPath.row < productCount + 1 {
             
             if DataReader.isCreatingAnOppotunity == true {
                 
-                DataReader.setSelectedProduct(productList[indexPath.row])
-                self.navigationController?.popViewControllerAnimated(true)
+                if indexPath.row == 0 {
+                    DataReader.setSelectedProduct(ProductInfo.init())
+                    self.navigationController?.popViewControllerAnimated(true)
+                } else {
+                    DataReader.setSelectedProduct(productList[indexPath.row - 1])
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
                 
             } else {
                 
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
+                if indexPath.row < productCount {
+                
+                    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
             
-                let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-                let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
-                self.navigationController?.pushViewController(productInfoView, animated: true)
+                    let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+                    let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
+                    self.navigationController?.pushViewController(productInfoView, animated: true)
+                }
             }
         }
     }
