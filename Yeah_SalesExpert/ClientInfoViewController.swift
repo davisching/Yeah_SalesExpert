@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientInfoViewController: UIViewController {
+class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
 
     var clientInfo = ClientInfo.init()
     
@@ -20,6 +20,22 @@ class ClientInfoViewController: UIViewController {
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_email: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBAction func bt_del(sender: AnyObject) {
+        let alert = UIAlertView.init(title: "确认删除操作", message: "客户删除后，数据将无法恢复！", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认删除")
+        alert.show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            delTheClient()
+        }
+    }
+    
+    private func delTheClient() {
+        DataReader.delCurrentClient()
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     @IBAction func bt_addFollow(sender: AnyObject) {
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
@@ -55,6 +71,7 @@ class ClientInfoViewController: UIViewController {
         newClient.setPhone(tf_phone.text!)
         newClient.setEmail(tf_email.text!)
         newClient.setId(clientInfo.getId())
+        newClient.setCheckList(clientInfo.getCheckList())
         DataReader.modifyClientInIndex(newClient, _clientIndex: index)
         
         let alert = UIAlertView.init(title: "更新成功", message: "客户的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
@@ -99,6 +116,10 @@ class ClientInfoViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = true
         creatFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+         DataReader.isCreatingFollowFromClient = false
     }
     
 

@@ -504,4 +504,22 @@ class DataReader {
     }
     
     static var isCreatingFollowFromClient = false
+    
+    //A list to reserve those clients who has been deleted
+    static var delClientList = [ClientInfo]()
+    
+    //To delete one client
+    static func delCurrentClient() {
+        delClientList.append(getCurrentClient())
+        clientList.removeAtIndex(getCurrentClientIndex())
+    }
+    
+    static func getClientFromDelList(_id : Int) -> ClientInfo {
+        for i in 0 ..< delClientList.count {
+            if delClientList[i].getId() == _id {
+                return delClientList[i]
+            }
+        }
+        return ClientInfo.init()
+    }
 }

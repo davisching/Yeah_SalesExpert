@@ -25,10 +25,15 @@ class OppoInfoViewController: UIViewController {
     }
     
     @IBAction func bt_Client(sender: AnyObject) {
-        DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
-        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
-        self.navigationController?.pushViewController(clientaddView, animated: true)
+        if isClientDeleted == true {
+            let alert = UIAlertView.init(title: "无法查看", message: "该客户已经被删除！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+        } else {
+            DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
+            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
+            self.navigationController?.pushViewController(clientaddView, animated: true)
+        }
     }
     
     @IBAction func bt_stage(sender: AnyObject) {
@@ -59,6 +64,7 @@ class OppoInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isClientDeleted = false
         initInfo()
         // Do any additional setup after loading the view.
         
@@ -82,11 +88,16 @@ class OppoInfoViewController: UIViewController {
     private var oppo = OppoInfo.init()
     private var client = ClientInfo.init()
     private var product = ProductInfo.init()
+    private var isClientDeleted = false
     
     private func initInfo() {
         oppo = DataReader.getCurrentOppo()
         self.title = oppo.getName()
         client = DataReader.getClientWithId(oppo.getClientId())
+        if client.getName() == "" {
+           client = DataReader.getClientFromDelList(oppo.getClientId())
+            isClientDeleted = true
+        }
         product = DataReader.getProductWithId(oppo.getProductId())
         tf_name.text = oppo.getName()
         tf_client.text = client.getName()

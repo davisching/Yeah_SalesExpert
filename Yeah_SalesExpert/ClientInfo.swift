@@ -88,6 +88,10 @@ class ClientInfo {
         return checkList
     }
     
+    func setCheckList(_list : [Check]) {
+        checkList = _list
+    }
+    
     func getCheckCount() -> Int {
         return checkList.count
     }
