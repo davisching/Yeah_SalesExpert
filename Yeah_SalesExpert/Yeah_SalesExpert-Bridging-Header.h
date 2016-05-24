@@ -3,3 +3,4 @@
 //
 
 #import <JSAnimatedImagesView/JSAnimatedImagesView.h>
+#import <AVOSCloud/AVOSCloud.h>

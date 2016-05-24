@@ -100,4 +100,22 @@ class ClientInfo {
         checkList.append(check)
     }
     
+    private var userId = -1
+    private var comId = -1
+    
+    func getUserId() -> Int {
+        return userId
+    }
+    
+    func setUserId(_id : Int) {
+        userId = _id
+    }
+    
+    func getComId() -> Int {
+        return comId
+    }
+    
+    func setComId(_id : Int) {
+        comId = _id
+    }
 }

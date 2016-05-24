@@ -50,7 +50,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         
         if loginCanProcess(userName!, password: password!) {
             
-             DataReader.initDataProcess()
+            DataReader.initDataProcess()
             
             let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let indexViewController = indexStoryBoard.instantiateViewControllerWithIdentifier("IndexTabBarController")

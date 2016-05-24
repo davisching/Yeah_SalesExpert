@@ -24,10 +24,14 @@ class DataReader {
     
     //To init data after login
     static func initDataProcess(){
-        DataReader.initClientList()
+       // DataReader.initClientList()
         DataReader.initProductList()
-        DataReader.initContactList()
-        DataReader.initOppoList()
+        //DataReader.initContactList()
+        //DataReader.initOppoList()
+    }
+    
+    static func saveAllToWeb() {
+        MyCloud.saveData()
     }
     
     //init list, will be cancel after using the dataBases
@@ -129,6 +133,10 @@ class DataReader {
         return clientList
     }
     
+    static func setClientList(_clientList : [ClientInfo]){
+        clientList = _clientList
+    }
+    
     //To return the list of the products
     static func getProductList() -> [ProductInfo]{
         return productList
@@ -158,22 +166,26 @@ class DataReader {
         newClient.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了客户: \(newClient.getName())。"))
         clientList.append(newClient)
         appendContactListWithAClient(newClient)
+        saveAllToWeb()
     }
     
     //Append Product List
     static func appendProductList(newProduct : ProductInfo){
         productList.append(newProduct)
+        saveAllToWeb()
     }
     
     //Append Contact List
     static func appendContactList(newContact : ContactInfo){
         contactList.append(newContact)
+        saveAllToWeb()
     }
     
     //Append Contact List With a client
     static func appendContactListWithAClient(newClient : ClientInfo) {
         let newContact = ContactInfo.init(_clientInfo: newClient)
         appendContactList(newContact)
+        saveAllToWeb()
     }
     
     //To append the list of oppotunities
@@ -191,6 +203,7 @@ class DataReader {
         DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。"))
         
        oppoList.append(newOppo)
+        saveAllToWeb()
     }
     
     //The current client
@@ -304,20 +317,38 @@ class DataReader {
     //To modify the information of a client
     static func modifyClientInIndex(_newClient : ClientInfo, _clientIndex : Int){
         clientList[_clientIndex] = _newClient
-        modifyContactWithAClient(_newClient)
+        
+        if flagxx < 1 {
+            modifyContactWithAClient(_newClient)
+        } else {
+            flagxx = 0
+        }
+        saveAllToWeb()
     }
     
     //To modify the information of a contact
     static func modifyContactInIndex(_newContact : ContactInfo, _contactIndex : Int){
         contactList[_contactIndex] = _newContact
-        modifyClientWithAContact(_newContact)
+        
+        if flagxx < 1 {
+            modifyClientWithAContact(_newContact)
+        } else {
+            flagxx = 0
+        }
+        saveAllToWeb()
     }
+    
+    static var flagxx = 0
     
     //To modify the information of a contact with a client
     static func modifyContactWithAClient(_newClient : ClientInfo){
         for i in 0 ..< contactList.count {
             if contactList[i].getClientId() == _newClient.getId() {
-                contactList[i] = ContactInfo.init(_clientInfo: _newClient)
+                contactList[i].setEmail(_newClient.getEmail())
+                contactList[i].setPhone(_newClient.getPhone())
+                contactList[i].setMobile(_newClient.getMobile())
+                flagxx += 1
+                modifyContactInIndex(contactList[i], _contactIndex: i)
             }
         }
     }
@@ -326,12 +357,11 @@ class DataReader {
     static func modifyClientWithAContact(_newContact : ContactInfo){
         for i in 0 ..< clientList.count {
             if clientList[i].getId() == _newContact.getClientId() {
-                let newClient = clientList[i]
-                newClient.setName(_newContact.getName())
-                newClient.setMobile(_newContact.getMobile())
-                newClient.setPhone(_newContact.getPhone())
-                newClient.setEmail(_newContact.getEmail())
-                clientList[i] = newClient
+                clientList[i].setMobile(_newContact.getMobile())
+                clientList[i].setPhone(_newContact.getPhone())
+                clientList[i].setEmail(_newContact.getEmail())
+                flagxx += 1
+                modifyClientInIndex(clientList[i], _clientIndex: i)
             }
         }
     }
@@ -340,6 +370,7 @@ class DataReader {
     static func modifyOppo(_newOppo : OppoInfo, _oppoIndex : Int) {
         oppoList[_oppoIndex] = _newOppo
         setCurrentOppo(_newOppo, _currentOppoIndex: _oppoIndex)
+        saveAllToWeb()
     }
     
     //The id of next client
@@ -353,6 +384,32 @@ class DataReader {
     
     //The id of next oppo
     private static var nextOppoId = 0
+    
+    static func setNextId(index : Int, value : Int) {
+        switch index {
+        case 0 :
+            nextClientId = value
+        case 1:
+            nextProductId = value
+        case 2 :
+            nextContactId = value
+        default:
+            nextOppoId = value
+        }
+    }
+    
+    static func getID(index : Int) -> Int{
+        switch index {
+        case 0 :
+            return nextClientId
+        case 1:
+            return nextProductId
+        case 2 :
+            return nextContactId
+        default:
+            return nextOppoId
+        }
+    }
     
     //to give the new client a id 
     static func getNewClientId() -> Int{
@@ -512,6 +569,7 @@ class DataReader {
     static func delCurrentClient() {
         delClientList.append(getCurrentClient())
         clientList.removeAtIndex(getCurrentClientIndex())
+        saveAllToWeb()
     }
     
     static func getClientFromDelList(_id : Int) -> ClientInfo {
@@ -521,5 +579,22 @@ class DataReader {
             }
         }
         return ClientInfo.init()
+    }
+    
+    static func getClientIndexWithId(id : Int) -> Int{
+        for i in 0 ..< clientList.count {
+            if clientList[i].getId() == id {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    static func setContactList(list : [ContactInfo]){
+        contactList = list
+    }
+    
+    static func setOppoList(list : [OppoInfo]){
+        oppoList = list
     }
 }

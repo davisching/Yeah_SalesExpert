@@ -63,22 +63,20 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     
     func modifyAClient(){
         let index = DataReader.getCurrentClientIndex()
-        let newClient = ClientInfo.init()
+        let newClient = clientInfo
         newClient.setName(tf_name.text!)
         newClient.setCompany(tf_company.text!)
         newClient.setJob(tf_job.text!)
         newClient.setMobile(tf_mobile.text!)
         newClient.setPhone(tf_phone.text!)
         newClient.setEmail(tf_email.text!)
-        newClient.setId(clientInfo.getId())
-        newClient.setCheckList(clientInfo.getCheckList())
         DataReader.modifyClientInIndex(newClient, _clientIndex: index)
         
         let alert = UIAlertView.init(title: "更新成功", message: "客户的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
         alert.show()
     }
     
-    func creatFollowViews() {
+    func createFollowViews() {
         let followViewBuilder = FollowViewBuilder.init()
         let checkList = clientInfo.getCheckList()
         let count = checkList.count
@@ -92,7 +90,7 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        creatFollowViews()
+        createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
         transAll()
         clientInfo = DataReader.getCurrentClient()
@@ -114,12 +112,12 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     override func viewWillAppear(animated: Bool) {
         DataReader.isCreatingFollowFromClient = true
         self.tabBarController?.tabBar.hidden = true
-        creatFollowViews()
+        createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
     }
     
     override func viewWillDisappear(animated: Bool) {
-         DataReader.isCreatingFollowFromClient = false
+         //DataReader.isCreatingFollowFromClient = false
     }
     
 

@@ -36,9 +36,9 @@ class NewContactViewController: UIViewController {
     
     func addAContact(){
         let newContact = ContactInfo.init(_name: tf_name.text!)
-        newContact.setMobile(tf_mobile.text!)
-        newContact.setPhone(tf_phone.text!)
-        newContact.setEmail(tf_email.text!)
+        newContact.setMobile(tf_mobile.text! + " ")
+        newContact.setPhone(tf_phone.text! + " ")
+        newContact.setEmail(tf_email.text! + " ")
         DataReader.appendContactList(newContact)
         
         //self.navigationController?.popToRootViewControllerAnimated(true)

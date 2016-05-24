@@ -19,6 +19,8 @@
 		3A5D93A61CEC76FA00F3400B /* NewContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93A51CEC76FA00F3400B /* NewContactViewController.swift */; };
 		3A5D93A81CEC7CF200F3400B /* OppoInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */; };
 		3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */; };
+		3A6327051CF347EC00CCB21A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6327041CF347EC00CCB21A /* UserInfo.swift */; };
+		3A6327071CF34FEE00CCB21A /* MyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6327061CF34FEE00CCB21A /* MyCloud.swift */; };
 		3A75058D1CE07CF600406844 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75058B1CE07CF600406844 /* Index.storyboard */; };
 		3A7C70911CE207060011284C /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70901CE207060011284C /* ClientTableViewController.swift */; };
 		3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */; };
@@ -71,7 +73,7 @@
 		3A0F21811CD8CC1900A215C0 /* Yeah_SalesExpertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yeah_SalesExpertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0F21851CD8CC1900A215C0 /* Yeah_SalesExpertUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yeah_SalesExpertUITests.swift; sourceTree = "<group>"; };
 		3A0F21871CD8CC1900A215C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A0F21931CD8CE7A00A215C0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		3A0F21931CD8CE7A00A215C0 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3A0F21951CD8CF5200A215C0 /* Yeah_SalesExpert-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Yeah_SalesExpert-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A0F21981CD8CFD600A215C0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A0F219A1CD9CC2800A215C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		3A5D93A51CEC76FA00F3400B /* NewContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContactViewController.swift; sourceTree = "<group>"; };
 		3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoInfo.swift; sourceTree = "<group>"; };
 		3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoTableViewController.swift; sourceTree = "<group>"; };
+		3A6327041CF347EC00CCB21A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		3A6327061CF34FEE00CCB21A /* MyCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCloud.swift; sourceTree = "<group>"; };
 		3A75058C1CE07CF600406844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Index.storyboard; sourceTree = "<group>"; };
 		3A7C70901CE207060011284C /* ClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
 		3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				3AC365201CE9C7180080815B /* ClientInfo.swift */,
 				3AC3652E1CEB65250080815B /* ContactInfo.swift */,
 				3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */,
+				3A6327041CF347EC00CCB21A /* UserInfo.swift */,
+				3A6327061CF34FEE00CCB21A /* MyCloud.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
 				3AC365331CEB73670080815B /* OtherViewController.swift in Sources */,
+				3A6327051CF347EC00CCB21A /* UserInfo.swift in Sources */,
 				3A5A24A71CEF030A00998C56 /* OppoInfoViewController.swift in Sources */,
 				3AC365231CE9DCA00080815B /* NewClientViewController.swift in Sources */,
 				3AC365271CEA22870080815B /* NewViewController.swift in Sources */,
@@ -497,6 +504,7 @@
 				3AC3652B1CEB4AFE0080815B /* ProductInfoViewController.swift in Sources */,
 				3AFAB5131CEDAA850087EA5E /* SelectClientTableViewController.swift in Sources */,
 				3AC365291CEB1D450080815B /* ProductInfo.swift in Sources */,
+				3A6327071CF34FEE00CCB21A /* MyCloud.swift in Sources */,
 				3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */,
 				3A5D93A81CEC7CF200F3400B /* OppoInfo.swift in Sources */,
 				3AFAB50F1CED9FB60087EA5E /* NewOppoViewController.swift in Sources */,

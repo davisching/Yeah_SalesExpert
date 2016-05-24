@@ -10,10 +10,10 @@ import Foundation
 
 class ContactInfo {
     
-    private var name : String = ""
-    private var mobile = ""
-    private var phone = ""
-    private var email = ""
+    private var name : String = " "
+    private var mobile = " "
+    private var phone = " "
+    private var email = " "
     private var id = 0
     private var clientId = -1
     
@@ -82,5 +82,14 @@ class ContactInfo {
     func getEmail() -> String{
         return email
     }
-
+    
+    private var userId = -1
+    
+    func getUserId() -> Int {
+        return userId
+    }
+    
+    func setUserId(_id : Int) {
+        userId = _id
+    }
 }

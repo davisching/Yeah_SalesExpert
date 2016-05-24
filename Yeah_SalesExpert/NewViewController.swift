@@ -56,6 +56,7 @@ class NewViewController: UIViewController {
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height + 1)
         transAll()
         // Do any additional setup after loading the view.
+        MyCloud.initConnection()
     }
     
     override func viewWillAppear(animated: Bool) {

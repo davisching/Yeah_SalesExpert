@@ -98,9 +98,13 @@ class OppoInfoViewController: UIViewController {
            client = DataReader.getClientFromDelList(oppo.getClientId())
             isClientDeleted = true
         }
+        
+        tf_client.text = client.getName()
+        if client.getName() == "" {
+            tf_client.text = "客户不存在"
+        }
         product = DataReader.getProductWithId(oppo.getProductId())
         tf_name.text = oppo.getName()
-        tf_client.text = client.getName()
         tf_stage.text = Stage.getContextWithPercentage(oppo.getStage())
         tf_target.text = String(oppo.getTargetSales())
         tf_product.text = product.getName()

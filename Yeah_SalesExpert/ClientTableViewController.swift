@@ -91,7 +91,7 @@ class ClientTableViewController: UITableViewController {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
             
-            if clientList[index].getCompany() != "" {
+            if clientList[index].getCompany() != "" && clientList[index].getCompany() != " " {
             
                  cell?.textLabel?.text = "\(index + 1)) " + clientList[index].getName() + " (来自 " + clientList[index].getCompany() + ")"
                 

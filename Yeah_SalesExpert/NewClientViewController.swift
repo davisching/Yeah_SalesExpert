@@ -47,11 +47,11 @@ class NewClientViewController: UIViewController {
     
     func addAClient(){
         let newClient = ClientInfo.init(_name: tf_name.text!)
-        newClient.setCompany(tf_company.text!)
-        newClient.setJob(tf_job.text!)
-        newClient.setMobile(tf_mobile.text!)
-        newClient.setPhone(tf_phone.text!)
-        newClient.setEmail(tf_email.text!)
+        newClient.setCompany(tf_company.text! + " ")
+        newClient.setJob(tf_job.text! + " ")
+        newClient.setMobile(tf_mobile.text! + " ")
+        newClient.setPhone(tf_phone.text! + " ")
+        newClient.setEmail(tf_email.text! + " ")
         DataReader.appendClientList(newClient)
         
         //self.navigationController?.popViewControllerAnimated(true)

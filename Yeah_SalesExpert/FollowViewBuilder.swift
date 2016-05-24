@@ -17,10 +17,7 @@ class FollowViewBuilder {
     static var currentY : CGFloat = 525 * UIScreen.mainScreen().bounds.size.height / 667
     
     init(){
-        FollowViewBuilder.currentY = 525 * UIScreen.mainScreen().bounds.size.height / 667
-        if DataReader.isCreatingFollowFromClient != false {
-            FollowViewBuilder.currentY = (525 + 40) * UIScreen.mainScreen().bounds.size.height / 667
-        }
+        FollowViewBuilder.currentY = 565 * UIScreen.mainScreen().bounds.size.height / 667
     }
     
     func getView(check : Check) -> UIView {
