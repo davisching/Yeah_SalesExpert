@@ -152,6 +152,7 @@ class NewOppoViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = true
         DataReader.clearIsCreatingAnOppotunity()
         initText()
+        MyCloud.updateURLS()
     }
 
     /*

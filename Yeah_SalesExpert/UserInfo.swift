@@ -9,20 +9,100 @@
 import Foundation
 
 class UserInfo {
-    
     private var id = -1
     private var userName = ""
     private var password = ""
     private var name = ""
-    private var companyId = -1
+    private var comId = -1
     
+    func getId() -> Int{
+        return id
+    }
+    
+    func setId(_id : Int) {
+        id = _id
+    }
+    
+    func getUserName() -> String {
+        return userName
+    }
+    
+    func setUserName(_name : String) {
+        userName = _name
+    }
+    
+    func getPassword() -> String {
+        return password
+    }
+    
+    func setPassword(_pass : String) {
+        password = _pass
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func setName(_name : String ) {
+        name = _name
+    }
+    
+    func getComId() -> Int {
+        return comId
+    }
+    
+    func setComId(_id : Int) {
+        comId = _id
+    }
 }
 
 class CompanyInfo {
-    
     private var id = -1
     private var code = ""
     private var name = ""
     private var userList = [Int]()
-
+    
+    func getId() -> Int{
+        return id
+    }
+    
+    func setId(_id : Int){
+        id = _id
+    }
+    
+    func getCode() -> String {
+        return code
+    }
+    
+    func setCode(_code : String) {
+        code = _code
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func setName(_name : String) {
+        name = _name
+    }
+    
+    func getUserList() -> [Int]{
+        return userList
+    }
+    
+    func setUserList(list : [Int]) {
+        userList = list
+    }
+    
+    func appendUserList(_id : Int) {
+        userList.append(_id)
+    }
+    
+    func removeUser(_id : Int) {
+        for i in 0 ..< userList.count {
+            if userList[i] == _id {
+                userList.removeAtIndex(i)
+            }
+        }
+    }
 }

@@ -6,10 +6,10 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Index Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="sdv-hK-Qrz">
             <objects>
-                <tabBarController storyboardIdentifier="IndexTabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XmW-aT-Ipm" customClass="IndexTabBarController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="IndexTabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XmW-aT-Ipm" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" alpha="0.80000000000000004" contentMode="scaleToFill" barStyle="black" id="mqK-N3-cda">
                         <autoresizingMask key="autoresizingMask"/>

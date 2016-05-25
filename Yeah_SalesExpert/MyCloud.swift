@@ -15,55 +15,138 @@ class MyCloud {
         let _clientKey = "XNfIrk0lItdQFWt2DAQ8yQ57"
         AVOSCloud.setApplicationId(_appId, clientKey : _clientKey)
         //saveData()
-        getURLS()
-        readFromInternet()
+        updateURLS()
     }
     
-    static var url_ClientList = "a", url_Contact = "b", url_ID = "c", url_Oppo = "d"
+    static var url_ClientList = "a", url_Contact = "b", url_ID = "c", url_Oppo = "d", url_user = "e", url_com = "f"
     
-    static func saveURLS(){
-        var saveString = ""
-        saveString += url_ClientList + ";"
-        saveString += url_Contact + ";"
-        saveString += url_ID + ";"
-        saveString += url_Oppo + ";"
-         let filePath : String = documentPath.stringByAppendingPathComponent("urls")
-        do {
-            try saveString.writeToFile(filePath, atomically: true, encoding: _encoding)
-        } catch {
-            print("IO ERROR")
+    static func saveURLSToCloud() {
+        let urlList = AVObject.init(className: "URLS")
+        urlList.setObject(url_ClientList, forKey: "url_ClientList")
+        urlList.setObject(url_Contact, forKey: "url_Contact")
+        urlList.setObject(url_ID, forKey: "url_ID")
+        urlList.setObject(url_Oppo, forKey: "url_Oppo")
+        urlList.setObject(url_user, forKey: "url_user")
+        urlList.setObject(url_com, forKey: "url_com")
+        urlList.saveInBackground()
+    }
+    
+    static func updateURLS2() {
+        let urlQuery = AVQuery.init(className: "URLS")
+        let urlList = urlQuery.getObjectWithId("5745b6672e958a002da87dda")
+        urlList.setObject(url_ClientList, forKey: "url_ClientList")
+        urlList.setObject(url_Contact, forKey: "url_Contact")
+        urlList.setObject(url_ID, forKey: "url_ID")
+        urlList.setObject(url_Oppo, forKey: "url_Oppo")
+        urlList.setObject(url_user, forKey: "url_user")
+        urlList.setObject(url_com, forKey: "url_com")
+        urlList.saveInBackgroundWithBlock { (flag : Bool, error : NSError!) in
+            isSaveFinish = true
+            readFromInternet()
         }
     }
     
-    static func getURLS() {
-        do {
-            let filePath : String = documentPath.stringByAppendingPathComponent("urls")
-            let savedString = try String.init(contentsOfFile: filePath, encoding: _encoding)
-            let str = savedString.characters.split(";")
-            url_ClientList = String(str[0])
-            url_Contact = String(str[1])
-            url_ID = String(str[2])
-            url_Oppo = String(str[3])
-        }catch{}
+    //getURLSFromCloud
+    static func updateURLS() {
+        if isSaveFinish == true {
+        let urlQuery = AVQuery.init(className: "URLS")
+        urlQuery.getObjectInBackgroundWithId("5745b6672e958a002da87dda", block: { (urlList : AVObject!, error : NSError!) in
+            url_ClientList = urlList.objectForKey("url_ClientList") as! String
+            url_Contact = urlList.objectForKey("url_Contact") as! String
+            url_ID = urlList.objectForKey("url_ID") as! String
+            url_Oppo = urlList.objectForKey("url_Oppo") as! String
+            url_user = urlList.objectForKey("url_user") as! String
+            url_com = urlList.objectForKey("url_com") as! String
+            readFromInternet()
+            })
+        }
     }
+    
+//    static func saveURLS(){
+//        var saveString = ""
+//        saveString += url_ClientList + ";"
+//        saveString += url_Contact + ";"
+//        saveString += url_ID + ";"
+//        saveString += url_Oppo + ";"
+//        saveString += url_user + ";"
+//        saveString += url_com + ";"
+//         let filePath : String = documentPath.stringByAppendingPathComponent("urls")
+//        do {
+//            try saveString.writeToFile(filePath, atomically: true, encoding: _encoding)
+//        } catch {
+//            print("IO ERROR")
+//        }
+//    }
+//    
+//    static func getURLS() {
+//        do {
+//            let filePath : String = documentPath.stringByAppendingPathComponent("urls")
+//            let savedString = try String.init(contentsOfFile: filePath, encoding: _encoding)
+//            let str = savedString.characters.split(";")
+//            url_ClientList = String(str[0])
+//            url_Contact = String(str[1])
+//            url_ID = String(str[2])
+//            url_Oppo = String(str[3])
+//            url_user = String(str[4])
+//            url_com = String(str[5])
+//        }catch{}
+//    }
     
     static let sandboxPath : NSString = NSHomeDirectory()
     static let documentPath : NSString = sandboxPath.stringByAppendingPathComponent("Documents")
     static let _encoding = NSUTF8StringEncoding
     
-    static func saveData() {
-        let idList : String = dataToStringForIDs()
-        saveIDs(idList)
+    static func readFromInternet() {
+        var _file = AVFile.init(URL: url_ClientList)
+        var str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForClientList(str!)
+        
+        _file = AVFile.init(URL: url_Contact)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForContactList(str!)
+        
+        _file = AVFile.init(URL: url_ID)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForIDs(str!)
+        
+        _file = AVFile.init(URL: url_Oppo)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForOppo(str!)
+        
+        _file = AVFile.init(URL: url_user)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForUserList(str!)
+        
+        _file = AVFile.init(URL: url_com)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForComList(str!)
     }
     
-    static func saveOppo(str : String) {
-        let oppoList = AVFile.init(name: "OppoInfo", data: str.dataUsingEncoding(_encoding))
-        oppoList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
-            url_Oppo = oppoList.url
-            saveURLS()
-            readFromInternet()
+    static func saveData() {
+        isSaveFinish = false
+        let comList : String = dataToString(DataReader.getComList())
+        saveCom(comList)
+    }
+    
+    static func saveCom(str : String) {
+        let comlist = AVFile.init(name: "ComInfo", data: str.dataUsingEncoding(_encoding))
+        comlist.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
+            url_com = comlist.url
+            let userList : String = dataToString(DataReader.getUserList())
+            saveUser(userList)
         }
     }
+    
+    static func saveUser(str : String){
+        let userist = AVFile.init(name: "UserInfo", data: str.dataUsingEncoding(_encoding))
+        userist.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
+            url_user = userist.url
+            let idList : String = dataToStringForIDs()
+            saveIDs(idList)
+        }
+    }
+    
+    static var isSaveFinish = true
     
     static func saveIDs(str : String) {
         let idList = AVFile.init(name: "IDs", data: str.dataUsingEncoding(_encoding))
@@ -92,22 +175,48 @@ class MyCloud {
         }
     }
     
-    static func readFromInternet() {
-        var _file = AVFile.init(URL: url_ClientList)
-        var str = String.init(data: _file.getData(), encoding: _encoding)
-        StringToDataForClientList(str!)
-        
-        _file = AVFile.init(URL: url_Contact)
-        str = String.init(data: _file.getData(), encoding: _encoding)
-        StringToDataForContactList(str!)
-        
-        _file = AVFile.init(URL: url_ID)
-        str = String.init(data: _file.getData(), encoding: _encoding)
-        StringToDataForIDs(str!)
-        
-        _file = AVFile.init(URL: url_Oppo)
-        str = String.init(data: _file.getData(), encoding: _encoding)
-        StringToDataForOppo(str!)
+    static func saveOppo(str : String) {
+        let oppoList = AVFile.init(name: "OppoInfo", data: str.dataUsingEncoding(_encoding))
+        oppoList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
+            url_Oppo = oppoList.url
+            updateURLS2()
+        }
+    }
+    
+    static func StringToDataForComList(_string : String) {
+        var comList = [CompanyInfo]()
+        let comStr = _string.characters.split("|")
+        for i in 0 ..< comStr.count {
+            let com = CompanyInfo.init()
+            let elementStr = String(comStr[i])
+            let elements = elementStr.characters.split("`")
+            com.setId(Int(String(elements[0]))!)
+            com.setCode(String(elements[1]))
+            com.setName(String(elements[2]))
+            let userListStr = String(elements[3]).characters.split(";")
+            for j in 0 ..< userListStr.count {
+                com.appendUserList(Int(String(userListStr[j]))!)
+            }
+            comList.append(com)
+        }
+        DataReader.setComList(comList)
+    }
+    
+    static func StringToDataForUserList(_string : String) {
+        var userList = [UserInfo]()
+        let userStr = _string.characters.split("|")
+        for i in 0 ..< userStr.count {
+            let user = UserInfo.init()
+            let elementStr = String(userStr[i])
+            let elements = elementStr.characters.split("`")
+            user.setId(Int(String(elements[0]))!)
+            user.setUserName(String(elements[1]))
+            user.setPassword(String(elements[2]))
+            user.setName(String(elements[3]))
+            user.setComId(Int(String(elements[4]))!)
+            userList.append(user)
+        }
+        DataReader.setUserList(userList)
     }
     
     static func StringToDataForContactList(_string : String){
@@ -227,6 +336,36 @@ class MyCloud {
             theString += String(contact.getEmail()) + "`"
             theString += String(contact.getClientId()) + "`"
             theString += String(contact.getUserId()) + "`"
+        }
+        return theString
+    }
+    
+    static func dataToString(userList : [UserInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< userList.count {
+            theString += "|"
+            let user = userList[i]
+            theString += String(user.getId()) + "`"
+            theString += String(user.getUserName()) + "`"
+            theString += String(user.getPassword()) + "`"
+            theString += String(user.getName()) + "`"
+            theString += String(user.getComId()) + "`"
+        }
+        return theString
+    }
+    
+    static func dataToString(comList : [CompanyInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< comList.count {
+            theString += "|"
+            let com = comList[i]
+            theString += String(com.getId()) + "`"
+            theString += String(com.getCode()) + "`"
+            theString += String(com.getName()) + "`"
+            let ids = com.getUserList()
+            for i in 0 ..< ids.count {
+                theString += String(ids[i]) + ";"
+            }
         }
         return theString
     }

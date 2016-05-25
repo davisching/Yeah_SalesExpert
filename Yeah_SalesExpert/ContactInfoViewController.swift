@@ -71,6 +71,7 @@ class ContactInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
+        MyCloud.updateURLS()
     }
     
 

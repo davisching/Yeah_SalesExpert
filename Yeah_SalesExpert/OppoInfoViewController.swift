@@ -122,6 +122,7 @@ class OppoInfoViewController: UIViewController {
         creatFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 30)
         DataReader.clearIsModifyingAnOppotunity()
+        MyCloud.updateURLS()
     }
 
     /*

@@ -144,6 +144,7 @@ class SelectClientTableViewController: UITableViewController {
             self.navigationController?.popViewControllerAnimated(true)
             DataReader.clearIsCreatingAnOppotunity()
         }
+        MyCloud.updateURLS()
     }
 
     /*

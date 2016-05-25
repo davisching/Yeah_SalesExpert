@@ -140,6 +140,7 @@ class ClientTableViewController: UITableViewController {
         updateClientData()
         initCells()
         self.title = "客户(\(clientCount))"
+        MyCloud.updateURLS()
     }
     
     override func viewWillDisappear(animated: Bool) {

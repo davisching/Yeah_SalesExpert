@@ -37,6 +37,7 @@ class OtherViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = false
+        MyCloud.updateURLS()
     }
 
     /*

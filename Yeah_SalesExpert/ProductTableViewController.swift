@@ -173,6 +173,7 @@ class ProductTableViewController: UITableViewController {
             self.title = "关联一个产品"
             self.tabBarController?.tabBar.hidden = true
         }
+        MyCloud.updateURLS()
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -70,7 +70,6 @@ class NewClientViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         transAll()
         
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
@@ -90,6 +89,7 @@ class NewClientViewController: UIViewController {
         if DataReader.isCreatingAnOppotunity == true {
             bt_add.setTitle("使用此客户", forState: UIControlState.Normal)
         }
+        MyCloud.updateURLS()
     }
     
 

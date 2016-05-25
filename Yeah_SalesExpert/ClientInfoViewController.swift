@@ -114,6 +114,7 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
         self.tabBarController?.tabBar.hidden = true
         createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
+        MyCloud.updateURLS()
     }
     
     override func viewWillDisappear(animated: Bool) {

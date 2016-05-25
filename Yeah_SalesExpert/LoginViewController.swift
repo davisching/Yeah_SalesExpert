@@ -29,7 +29,6 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         tf_password.resignFirstResponder()
     }
     
-    
     //Happened after user clicked the sign up button
     @IBAction func bt_signUp(sender: AnyObject) {
         signUp()
@@ -57,13 +56,17 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
             self.navigationController?.pushViewController(indexViewController, animated: true)
             
         } else {
-        
+            
         }
     }
     
     //Determine is the login info currect or not
     func loginCanProcess(userName : String, password : String) -> Bool {
-        return true
+        if DataReader.checkPassword(userName, password : password) {
+            return true
+        } else {
+            return true
+        }
     }
     
     
@@ -103,11 +106,14 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         
         lb_username.textColor = UIColor.blackColor()
         lb_password.textColor = UIColor.blackColor()
+        
+        MyCloud.initConnection()
     }
     
     // Do while view will appear
     override func viewWillAppear(animated: Bool) {
          self.navigationController?.navigationBarHidden = true
+        MyCloud.updateURLS()
     }
     
     //Turn all UI into suitable size for each kinds of iphone

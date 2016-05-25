@@ -124,6 +124,7 @@ class ContactTableViewController: UITableViewController {
         updateContactData()
         initCells()
         self.title = "联系人(\(contactCount))"
+        MyCloud.updateURLS()
     }
     
     override func viewWillDisappear(animated: Bool) {

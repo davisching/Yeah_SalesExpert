@@ -10,6 +10,81 @@ import Foundation
 
 class DataReader {
     
+    static func checkPassword(userName : String, password : String) -> Bool{
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getName() && password == userList[i].getPassword() {
+                setCurrentUser(userList[i].getId())
+                setCurrentCom(userList[i].getComId())
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func checkIsExist(userName : String) -> Bool {
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getName() {
+                return true
+            }
+        }
+        return false
+    }
+    
+    //The companys
+    private static var comList = [CompanyInfo]()
+    private static var currentCom = CompanyInfo.init()
+    
+    static func setCurrentCom(id : Int) {
+        currentCom = getComById(id)
+    }
+    
+    static func getComList() -> [CompanyInfo] {
+        return comList
+    }
+    
+    static func setComList(list : [CompanyInfo]) {
+        comList = list
+    }
+    
+    static func getComById(id : Int) -> CompanyInfo {
+        for i in 0 ..< comList.count {
+            if id == comList[i].getId() {
+                return comList[i]
+            }
+        }
+        return CompanyInfo.init()
+    }
+    
+    //The current user
+    private static var currentUser = UserInfo.init()
+    
+    static func setCurrentUser(_userId : Int) {
+        currentUser = getUserById(_userId)
+    }
+    
+    static func getCurrentUser() -> UserInfo {
+        return currentUser
+    }
+    
+    private static var userList = [UserInfo]()
+    
+    static func setUserList(list : [UserInfo]) {
+        userList = list
+    }
+    
+    static func getUserList() -> [UserInfo] {
+        return userList
+    }
+    
+    static func getUserById(id : Int) -> UserInfo {
+        for i in 0 ..< userList.count {
+            if id == userList[i].getId() {
+                return userList[i]
+            }
+        }
+        return UserInfo.init()
+    }
+    
     //The list of clients
     private static var clientList = [ClientInfo]()
     
@@ -166,7 +241,6 @@ class DataReader {
         newClient.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了客户: \(newClient.getName())。"))
         clientList.append(newClient)
         appendContactListWithAClient(newClient)
-        saveAllToWeb()
     }
     
     //Append Product List
@@ -185,7 +259,6 @@ class DataReader {
     static func appendContactListWithAClient(newClient : ClientInfo) {
         let newContact = ContactInfo.init(_clientInfo: newClient)
         appendContactList(newContact)
-        saveAllToWeb()
     }
     
     //To append the list of oppotunities
@@ -322,8 +395,8 @@ class DataReader {
             modifyContactWithAClient(_newClient)
         } else {
             flagxx = 0
+            saveAllToWeb()
         }
-        saveAllToWeb()
     }
     
     //To modify the information of a contact
@@ -334,8 +407,8 @@ class DataReader {
             modifyClientWithAContact(_newContact)
         } else {
             flagxx = 0
+            saveAllToWeb()
         }
-        saveAllToWeb()
     }
     
     static var flagxx = 0
