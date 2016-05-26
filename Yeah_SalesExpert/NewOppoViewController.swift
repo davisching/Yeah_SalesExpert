@@ -79,13 +79,14 @@ class NewOppoViewController: UIViewController {
         newOppo.setName(tf_name.text!)
         newOppo.setTargetSales(Int(tf_target.text!)!)
         newOppo.giveId()
+        newOppo.setUserId(DataReader.getCurrentUser().getId())
+        newOppo.setComId(DataReader.getCurrentUser().getComId())
         DataReader.appendOppoList(newOppo)
         
         self.navigationController?.popViewControllerAnimated(true)
         
         let alert = UIAlertView.init(title: "添加成功", message: "此销售机会已经被成功的添加！", delegate: nil, cancelButtonTitle: "我知道了!")
         alert.show()
-        
     }
     
     private var newOppo = OppoInfo.init()

@@ -9,35 +9,7 @@
 import Foundation
 
 class DataReader {
-    
-    static func checkPassword(userName : String, password : String) -> Bool{
-        for i in 0 ..< userList.count {
-            if userName == userList[i].getName() && password == userList[i].getPassword() {
-                setCurrentUser(userList[i].getId())
-                setCurrentCom(userList[i].getComId())
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func checkIsExist(userName : String) -> Bool {
-        for i in 0 ..< userList.count {
-            if userName == userList[i].getName() {
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func isCodeExist(code : String) -> Bool{
-        for i in 0 ..< comList.count {
-            if code == comList[i].getCode() {
-                return true
-            }
-        }
-        return false
-    }
+    private static var userList = [UserInfo]()
     
     //The companys
     private static var comList = [CompanyInfo]()
@@ -84,8 +56,6 @@ class DataReader {
         return currentUser
     }
     
-    private static var userList = [UserInfo]()
-    
     static func setUserList(list : [UserInfo]) {
         userList = list
     }
@@ -124,6 +94,37 @@ class DataReader {
         saveAllToWeb()
     }
     
+    static func checkPassword(userName : String, password : String) -> Bool{
+        for i in 0 ..< userList.count {
+            let user = userList[i]
+            if userName == user.getName() && password == user.getPassword() {
+                setCurrentUser(user)
+                setCurrentCom(user.getComId())
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func checkIsExist(userName : String) -> Bool {
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getName() {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isCodeExist(code : String) -> Bool{
+        for i in 0 ..< comList.count {
+            if code == comList[i].getCode() {
+                return true
+            }
+        }
+        return false
+    }
+
+    
     //The list of clients
     private static var clientList = [ClientInfo]()
     
@@ -149,22 +150,22 @@ class DataReader {
     }
     
     //init list, will be cancel after using the dataBases
-    static func initClientList(){
-        let a = ClientInfo.init(_name: "郑新")
-        a.setJob("总经理")
-        a.setCompany("上海超新幼儿用品有限公司")
-        a.setMobile("15850532311")
-        a.setPhone("02164738291")
-        a.setEmail("xinsuparim@gmail.com")
-        let b = ClientInfo.init(_name: "丘小姐")
-        b.setJob("采购总管")
-        b.setCompany("厦门秋之城儿童商贸有限公司")
-        b.setMobile("13810928102")
-        b.setPhone("059234732217")
-        b.setEmail("qiuQZC@163.com")
-        appendClientList(a)
-        appendClientList(b)
-    }
+//    static func initClientList(){
+//        let a = ClientInfo.init(_name: "郑新")
+//        a.setJob("总经理")
+//        a.setCompany("上海超新幼儿用品有限公司")
+//        a.setMobile("15850532311")
+//        a.setPhone("02164738291")
+//        a.setEmail("xinsuparim@gmail.com")
+//        let b = ClientInfo.init(_name: "丘小姐")
+//        b.setJob("采购总管")
+//        b.setCompany("厦门秋之城儿童商贸有限公司")
+//        b.setMobile("13810928102")
+//        b.setPhone("059234732217")
+//        b.setEmail("qiuQZC@163.com")
+//        appendClientList(a)
+//        appendClientList(b)
+//    }
     
     //To init the list of all the products
     static func initProductList(){
@@ -201,26 +202,26 @@ class DataReader {
     }
     
     //To init the list of all the contacts
-    static func initContactList(){
-        let a = ContactInfo.init(_name: "王杰")
-        a.setEmail("Wangnim@qq.com")
-        a.setPhone("02563811931")
-        a.setMobile("15850239164")
-        contactList.append(a)
-    }
-    
-    //To init the list of all the oppotunities
-    static func initOppoList() {
-        let a = OppoInfo.init(_name: "太空猴益智玩具")
-        a.setStage(3)
-        a.setClientId(1)
-        a.setProductId(2)
-        a.setTargetSales(50000)
-        a.giveId()
-        a.appendList(Check.init(YY: 2016, MM: 4, DD: 19, _context: "我在这一天创建了这个销售机会。"))
-        a.appendList(Check.init(YY: 2016, MM: 4, DD: 21, _context: "我在这一天第一次拜访了这个客户。"))
-        oppoList.append(a)
-    }
+//    static func initContactList(){
+//        let a = ContactInfo.init(_name: "王杰")
+//        a.setEmail("Wangnim@qq.com")
+//        a.setPhone("02563811931")
+//        a.setMobile("15850239164")
+//        contactList.append(a)
+//    }
+//    
+//    //To init the list of all the oppotunities
+//    static func initOppoList() {
+//        let a = OppoInfo.init(_name: "太空猴益智玩具")
+//        a.setStage(3)
+//        a.setClientId(1)
+//        a.setProductId(2)
+//        a.setTargetSales(50000)
+//        a.giveId()
+//        a.appendList(Check.init(YY: 2016, MM: 4, DD: 19, _context: "我在这一天创建了这个销售机会。"))
+//        a.appendList(Check.init(YY: 2016, MM: 4, DD: 21, _context: "我在这一天第一次拜访了这个客户。"))
+//        oppoList.append(a)
+//    }
     
     //To return the count of the clients
     static func getClientCount() -> Int {
@@ -277,7 +278,7 @@ class DataReader {
         let month = Int(dateFormatter.stringFromDate(today))
         dateFormatter.dateFormat = "dd"
         let day = Int(dateFormatter.stringFromDate(today))
-        newClient.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了客户: \(newClient.getName())。"))
+        newClient.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了客户: \(newClient.getName())。", _userId : DataReader.getCurrentUser().getId()))
         clientList.append(newClient)
         appendContactListWithAClient(newClient)
     }
@@ -310,9 +311,9 @@ class DataReader {
         let month = Int(dateFormatter.stringFromDate(today))
         dateFormatter.dateFormat = "dd"
         let day = Int(dateFormatter.stringFromDate(today))
-        newOppo.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())。"))
+        newOppo.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())。", _userId : DataReader.getCurrentUser().getId()))
         
-        DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。"))
+        DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。", _userId : DataReader.getCurrentUser().getId()))
         
        oppoList.append(newOppo)
         saveAllToWeb()

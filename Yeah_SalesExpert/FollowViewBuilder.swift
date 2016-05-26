@@ -49,7 +49,7 @@ class FollowViewBuilder {
         view.frame = CGRect.init(x: v_x, y: v_y, width: v_w, height: v_h)
         
         label.frame = CGRect.init(x: _x, y: _y + _h, width: _w, height: v_h - _h - _y)
-        label.text = "\(check.getDate().getYear())年 \(check.getDate().getMonth())月 \(check.getDate().getDay())日"
+        label.text = DataReader.getUserById(check.getUserId()).getName() + " 创建于 \(check.getDate().getYear())年 \(check.getDate().getMonth())月 \(check.getDate().getDay())日"
         label.textAlignment = NSTextAlignment.Right
         label.font = UIFont.init(name: (label.font?.fontName)!, size: (textView.font?.pointSize)!)
         view.addSubview(label)

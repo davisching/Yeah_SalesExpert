@@ -145,9 +145,10 @@ class Check {
         
     }
     
-    init(YY : Int, MM : Int, DD : Int, _context : String) {
+    init(YY : Int, MM : Int, DD : Int, _context : String, _userId : Int) {
         date = Date.init(YY: YY, MM: MM, DD: DD)
         context = _context
+        userId = _userId
     }
     
     func setDate(YY : Int, MM : Int, DD : Int) {

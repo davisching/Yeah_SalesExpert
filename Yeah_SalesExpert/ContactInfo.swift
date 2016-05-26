@@ -28,6 +28,7 @@ class ContactInfo {
         email = _clientInfo.getEmail()
         clientId = _clientInfo.getId()
         id = DataReader.getNewContactId()
+        userId = _clientInfo.getUserId()
     }
     
     init(_name : String) {

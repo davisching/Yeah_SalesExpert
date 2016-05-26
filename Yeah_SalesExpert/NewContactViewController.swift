@@ -39,6 +39,7 @@ class NewContactViewController: UIViewController {
         newContact.setMobile(tf_mobile.text! + " ")
         newContact.setPhone(tf_phone.text! + " ")
         newContact.setEmail(tf_email.text! + " ")
+        newContact.setUserId(DataReader.getCurrentUser().getId())
         DataReader.appendContactList(newContact)
         
         //self.navigationController?.popToRootViewControllerAnimated(true)

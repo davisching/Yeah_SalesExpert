@@ -52,6 +52,8 @@ class NewClientViewController: UIViewController {
         newClient.setMobile(tf_mobile.text! + " ")
         newClient.setPhone(tf_phone.text! + " ")
         newClient.setEmail(tf_email.text! + " ")
+        newClient.setUserId(DataReader.getCurrentUser().getId())
+        newClient.setComId(DataReader.getCurrentUser().getComId())
         DataReader.appendClientList(newClient)
         
         //self.navigationController?.popViewControllerAnimated(true)

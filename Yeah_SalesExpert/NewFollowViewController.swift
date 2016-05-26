@@ -31,17 +31,17 @@ class NewFollowViewController: UIViewController {
             let day = Int(dateFormatter.stringFromDate(today))
             
             if DataReader.isCreatingFollowFromClient == true {
-                DataReader.getCurrentClient().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+                DataReader.getCurrentClient().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text, _userId: DataReader.getCurrentUser().getId()))
                 DataReader.modifyClientInIndex(DataReader.getCurrentClient(), _clientIndex: DataReader.getCurrentClientIndex())
                 DataReader.isCreatingFollowFromClient = false
             } else {
-                DataReader.getCurrentOppo().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+                DataReader.getCurrentOppo().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text,  _userId : DataReader.getCurrentUser().getId()))
                 
                 DataReader.modifyOppo( DataReader.getCurrentOppo(), _oppoIndex: DataReader.getCurrentOppoIndex())
                 
                 let client = DataReader.getClientWithId(DataReader.getCurrentOppo().getClientId())
                 
-                client.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text))
+                client.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text,   _userId : DataReader.getCurrentUser().getId()))
 
                 DataReader.modifyClientInIndex(client, _clientIndex: DataReader.getClientIndexWithId(client.getId()))
             }
