@@ -15,6 +15,16 @@ class UserInfo {
     private var name = ""
     private var comId = -1
     
+    init() {
+    
+    }
+    
+    init(_userName : String, _password : String) {
+        userName = _userName
+        password = _password
+        id = DataReader.getNewUserId()
+    }
+    
     func getId() -> Int{
         return id
     }
@@ -61,6 +71,20 @@ class CompanyInfo {
     private var code = ""
     private var name = ""
     private var userList = [Int]()
+    
+    init(){
+    
+    }
+    
+    func newCode() -> String {
+        return "qwe"
+    }
+    
+    init(_name : String) {
+        name = _name
+        id = DataReader.getNewComId()
+        code = newCode()
+    }
     
     func getId() -> Int{
         return id

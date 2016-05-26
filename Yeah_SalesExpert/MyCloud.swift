@@ -275,7 +275,7 @@ class MyCloud {
     
     static func StringToDataForIDs(_string : String) {
         let str = _string.characters.split("|")
-        for i in 0 ..< 4 {
+        for i in 0 ..< 6 {
             DataReader.setNextId(i, value: Int(String(str[i]))!)
         }
     }
@@ -286,6 +286,8 @@ class MyCloud {
         theString += String(DataReader.getID(1)) + "|"
         theString += String(DataReader.getID(2)) + "|"
         theString += String(DataReader.getID(3)) + "|"
+        theString += String(DataReader.getID(4)) + "|"
+        theString += String(DataReader.getID(5)) + "|"
         return theString
         
     }

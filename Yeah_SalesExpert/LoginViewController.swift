@@ -43,20 +43,17 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     
     //Function for loginning process.
     func login() {
-        let userName = tf_userName.text
+        let userName : String = tf_userName.text!
         let password = tf_password.text
-        print("userName : \(userName), password : \(password)")
-        
-        if loginCanProcess(userName!, password: password!) {
-            
+        if loginCanProcess(userName, password: password!) {
             DataReader.initDataProcess()
-            
             let indexStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let indexViewController = indexStoryBoard.instantiateViewControllerWithIdentifier("IndexTabBarController")
+            DataReader.setCurrentUser(DataReader.getUserByUserName(userName))
             self.navigationController?.pushViewController(indexViewController, animated: true)
-            
         } else {
-            
+            let alert = UIAlertView.init(title: "登录错误", message: "很抱歉，账号和密码不匹配!", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
         }
     }
     
@@ -65,7 +62,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         if DataReader.checkPassword(userName, password : password) {
             return true
         } else {
-            return true
+            return false
         }
     }
     

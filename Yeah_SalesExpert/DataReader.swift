@@ -30,6 +30,15 @@ class DataReader {
         return false
     }
     
+    static func isCodeExist(code : String) -> Bool{
+        for i in 0 ..< comList.count {
+            if code == comList[i].getCode() {
+                return true
+            }
+        }
+        return false
+    }
+    
     //The companys
     private static var comList = [CompanyInfo]()
     private static var currentCom = CompanyInfo.init()
@@ -55,11 +64,20 @@ class DataReader {
         return CompanyInfo.init()
     }
     
+    static func getComByCode(code : String) -> CompanyInfo {
+        for i in 0 ..< comList.count {
+            if code == comList[i].getCode() {
+                return comList[i]
+            }
+        }
+        return CompanyInfo.init()
+    }
+    
     //The current user
     private static var currentUser = UserInfo.init()
     
-    static func setCurrentUser(_userId : Int) {
-        currentUser = getUserById(_userId)
+    static func setCurrentUser(_user : UserInfo) {
+        currentUser = _user
     }
     
     static func getCurrentUser() -> UserInfo {
@@ -76,6 +94,15 @@ class DataReader {
         return userList
     }
     
+    static func getUserByUserName(userName : String) -> UserInfo {
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getUserName() {
+                return userList[i]
+            }
+        }
+        return UserInfo.init()
+    }
+    
     static func getUserById(id : Int) -> UserInfo {
         for i in 0 ..< userList.count {
             if id == userList[i].getId() {
@@ -83,6 +110,18 @@ class DataReader {
             }
         }
         return UserInfo.init()
+    }
+    
+    static func appendUserList(_user : UserInfo) {
+        userList.append(_user)
+        getComById(_user.getComId()).appendUserList(_user.getId())
+        saveAllToWeb()
+    }
+    
+    static func appendComList(_com : CompanyInfo, _user : UserInfo) {
+        comList.append(_com)
+        userList.append(_user)
+        saveAllToWeb()
     }
     
     //The list of clients
@@ -458,6 +497,12 @@ class DataReader {
     //The id of next oppo
     private static var nextOppoId = 0
     
+    //The id of next user
+    private static var nextUserId = 0
+    
+    //The id of next com
+    private static var nextComId = 0
+    
     static func setNextId(index : Int, value : Int) {
         switch index {
         case 0 :
@@ -466,8 +511,12 @@ class DataReader {
             nextProductId = value
         case 2 :
             nextContactId = value
-        default:
+        case 3 :
             nextOppoId = value
+        case 4 :
+            nextUserId = value
+        default:
+            nextComId = value
         }
     }
     
@@ -479,8 +528,12 @@ class DataReader {
             return nextProductId
         case 2 :
             return nextContactId
-        default:
+        case 3 :
             return nextOppoId
+        case 4 :
+            return nextUserId
+        default:
+            return nextComId
         }
     }
     
@@ -506,6 +559,18 @@ class DataReader {
     static func getNewOppoId() -> Int {
         nextOppoId += 1
         return nextOppoId
+    }
+    
+    //To give the new User a id
+    static func getNewUserId() -> Int {
+        nextUserId += 1
+        return nextUserId
+    }
+    
+    //To give the new company a id 
+    static func getNewComId() -> Int {
+        nextComId += 1
+        return nextComId
     }
     
     //The client which user will select or have selected
