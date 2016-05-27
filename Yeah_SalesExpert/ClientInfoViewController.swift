@@ -62,7 +62,6 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     }
     
     func modifyAClient(){
-        let index = DataReader.getCurrentClientIndex()
         let newClient = clientInfo
         newClient.setName(tf_name.text!)
         newClient.setCompany(tf_company.text!)
@@ -70,7 +69,7 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
         newClient.setMobile(tf_mobile.text!)
         newClient.setPhone(tf_phone.text!)
         newClient.setEmail(tf_email.text!)
-        DataReader.modifyClientInIndex(newClient, _clientIndex: index)
+        DataReader.modifyClient(newClient)
         
         let alert = UIAlertView.init(title: "更新成功", message: "客户的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
         alert.show()
@@ -114,7 +113,7 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
         self.tabBarController?.tabBar.hidden = true
         createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     override func viewWillDisappear(animated: Bool) {

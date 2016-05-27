@@ -110,7 +110,7 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
     // Do while view will appear
     override func viewWillAppear(animated: Bool) {
          self.navigationController?.navigationBarHidden = true
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     //Turn all UI into suitable size for each kinds of iphone

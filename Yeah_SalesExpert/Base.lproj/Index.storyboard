@@ -225,11 +225,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="CLIENTS (4)" id="WBk-yy-260">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="bEn-HE-0mV">
-                            <connections>
-                                <segue destination="8oQ-q7-Mya" kind="push" id="5RR-h3-K2H"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="bEn-HE-0mV">
+                                <connections>
+                                    <segue destination="8oQ-q7-Mya" kind="push" id="5RR-h3-K2H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Uwa-yg-A4B">
+                                <connections>
+                                    <action selector="bt_change:" destination="aVf-0a-pJu" id="IkY-J1-L5r"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

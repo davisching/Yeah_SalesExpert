@@ -13,7 +13,7 @@ class ContactTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var contactCount : Int = DataReader.getContactCount()
+    private var contactCount : Int = DataReader.getContactList().count
     private var contactList = DataReader.getContactList()
     
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class ContactTableViewController: UITableViewController {
     }
     
     private func updateContactData(){
-        contactCount = DataReader.getContactCount()
+        contactCount = DataReader.getContactList().count
         contactList = DataReader.getContactList()
     }
 
@@ -107,7 +107,7 @@ class ContactTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < contactCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentContact(contactList[indexPath.row], _currentContactIndex: indexPath.row)
+            DataReader.setCurrentContact(contactList[indexPath.row])
             
             let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let contactInfoView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("ContactInfoViewController")
@@ -124,7 +124,7 @@ class ContactTableViewController: UITableViewController {
         updateContactData()
         initCells()
         self.title = "联系人(\(contactCount))"
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     override func viewWillDisappear(animated: Bool) {

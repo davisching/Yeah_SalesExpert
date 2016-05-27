@@ -62,7 +62,7 @@ class ProductInfoViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.title = product.getName()
         self.tabBarController?.tabBar.hidden = true
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
 
     /*

@@ -29,7 +29,7 @@ class OppoInfoViewController: UIViewController {
             let alert = UIAlertView.init(title: "无法查看", message: "该客户已经被删除！", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
-            DataReader.setCurrentClient(client, _currentClientIndex: DataReader.getCurrentClientIndex(client.getId()))
+            DataReader.setCurrentClient(client)
             let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
             self.navigationController?.pushViewController(clientaddView, animated: true)
@@ -45,7 +45,7 @@ class OppoInfoViewController: UIViewController {
     
     @IBAction func bt_product(sender: AnyObject) {
         if tf_product.text != "" {
-            DataReader.setCurrentProduct(product, _currentProductIndex: DataReader.getCurrentProductIndex(product.getId()))
+            DataReader.setCurrentProduct(product)
             let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
             self.navigationController?.pushViewController(clientaddView, animated: true)
@@ -122,7 +122,7 @@ class OppoInfoViewController: UIViewController {
         creatFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 30)
         DataReader.clearIsModifyingAnOppotunity()
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
 
     /*

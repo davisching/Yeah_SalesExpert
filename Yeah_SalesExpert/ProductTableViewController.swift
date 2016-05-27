@@ -13,7 +13,7 @@ class ProductTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var productCount : Int = DataReader.getProductCount()
+    private var productCount : Int = DataReader.getProductList().count
     private var productList = DataReader.getProductList()
     
     override func viewDidLoad() {
@@ -155,7 +155,7 @@ class ProductTableViewController: UITableViewController {
                 if indexPath.row < productCount {
                 
                     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                    DataReader.setCurrentProduct(productList[indexPath.row], _currentProductIndex: indexPath.row)
+                    DataReader.setCurrentProduct(productList[indexPath.row])
             
                     let productInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
                     let productInfoView = productInfoStoryBoard.instantiateViewControllerWithIdentifier("ProductInfoViewController")
@@ -173,7 +173,7 @@ class ProductTableViewController: UITableViewController {
             self.title = "关联一个产品"
             self.tabBarController?.tabBar.hidden = true
         }
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     override func viewWillDisappear(animated: Bool) {

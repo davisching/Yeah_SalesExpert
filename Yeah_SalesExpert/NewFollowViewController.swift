@@ -32,18 +32,18 @@ class NewFollowViewController: UIViewController {
             
             if DataReader.isCreatingFollowFromClient == true {
                 DataReader.getCurrentClient().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text, _userId: DataReader.getCurrentUser().getId()))
-                DataReader.modifyClientInIndex(DataReader.getCurrentClient(), _clientIndex: DataReader.getCurrentClientIndex())
+                DataReader.modifyClient(DataReader.getCurrentClient())
                 DataReader.isCreatingFollowFromClient = false
             } else {
                 DataReader.getCurrentOppo().appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text,  _userId : DataReader.getCurrentUser().getId()))
                 
-                DataReader.modifyOppo( DataReader.getCurrentOppo(), _oppoIndex: DataReader.getCurrentOppoIndex())
+                DataReader.modifyOppo( DataReader.getCurrentOppo())
                 
                 let client = DataReader.getClientWithId(DataReader.getCurrentOppo().getClientId())
                 
                 client.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: tf.text,   _userId : DataReader.getCurrentUser().getId()))
 
-                DataReader.modifyClientInIndex(client, _clientIndex: DataReader.getClientIndexWithId(client.getId()))
+                DataReader.modifyClient(client)
             }
             
             DataReader.isCreatingFollowFromClient = false

@@ -13,7 +13,7 @@ class OppoTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var oppoCount : Int = DataReader.getOppoCount()
+    private var oppoCount : Int = DataReader.getOppoList().count
     private var oppoList = DataReader.getOppoList()
     
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class OppoTableViewController: UITableViewController {
     }
     
     private func updateContactData(){
-        oppoCount = DataReader.getOppoCount()
+        oppoCount = DataReader.getOppoList().count
         oppoList = DataReader.getOppoList()
     }
     
@@ -104,7 +104,7 @@ class OppoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < oppoCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentOppo(oppoList[indexPath.row], _currentOppoIndex: indexPath.row)
+            DataReader.setCurrentOppo(oppoList[indexPath.row])
             let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let contactInfoView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("OppoInfoViewController")
             self.navigationController?.pushViewController(contactInfoView, animated: true)
@@ -121,7 +121,7 @@ class OppoTableViewController: UITableViewController {
         initCells()
         self.title = "销售机会(\(oppoCount))"
         DataReader.clearAllSelected()
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     override func viewWillDisappear(animated: Bool) {

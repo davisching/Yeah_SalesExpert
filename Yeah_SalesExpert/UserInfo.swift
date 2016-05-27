@@ -77,7 +77,7 @@ class CompanyInfo {
     }
     
     func newCode() -> String {
-        return "qwe"
+        return randomString(8)
     }
     
     init(_name : String) {
@@ -128,5 +128,18 @@ class CompanyInfo {
                 userList.removeAtIndex(i)
             }
         }
+    }
+    
+    func random(min : UInt32, max : UInt32) -> UInt32 {
+        return  arc4random_uniform(max - min) + min
+    }
+    
+    func randomString(len : Int) -> String {
+        let min : UInt32 = 97, max : UInt32 = 122
+        var string = ""
+        for _ in 0 ..< len {
+            string.append(UnicodeScalar(random(min, max : max)))
+        }
+        return string
     }
 }

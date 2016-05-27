@@ -13,23 +13,43 @@ class ClientTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var clientCount : Int = DataReader.getClientCount()
-    private var clientList = DataReader.getClientList()
+    private var clientCount = DataReader.getClientListForCurrentCom().count
+    private var clientList = DataReader.getClientListForCurrentUser()
+    
+    @IBAction func bt_change(sender: AnyObject) {
+        //Exchange the list of the clients from on to another
+        
+        MyCloud.getURLsFromCloud()
+        
+        if part == 0 {
+            part = 1
+        } else {
+            part = 0
+        }
+        updateClientData()
+        initCells()
+    }
+    
+    /*Part stands for whether the user is searching the clients by
+        0 . User itself
+        1 . His or her company */
+    private var part = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initCells()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       // initCells()
     }
     
     private func updateClientData(){
-        clientCount = DataReader.getClientCount()
-        clientList = DataReader.getClientList()
+        if part == 0 {
+            clientList = DataReader.getClientListForCurrentUser()
+            clientCount = clientList.count
+            self.title = "我的客户(\(clientCount))"
+        } else {
+            clientList = DataReader.getClientListForCurrentCom()
+            clientCount = clientList.count
+            self.title = "公司客户(\(clientCount))"
+        }
     }
     
     private func initCells() {
@@ -65,15 +85,6 @@ class ClientTableViewController: UITableViewController {
         return 75
     }
     
-    
-//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-//    
-//    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 0
-//    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let id = "id";
         var cell = tableView.dequeueReusableCellWithIdentifier(id)
@@ -85,8 +96,6 @@ class ClientTableViewController: UITableViewController {
                 cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
             }
 
-            //cell.contentView.subviews lastObject] removeFromSuperview
-            
             while cell?.contentView.subviews.last != nil {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
@@ -112,10 +121,6 @@ class ClientTableViewController: UITableViewController {
         
         tableView.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
         cell?.backgroundColor = UIColor.init(red: 0.3, green: 0.3, blue: 0.35, alpha: 1)
-        
-        //tableView.scrollEnabled = true
-        
-        // Configure the cell...
 
         return cell!
     }
@@ -123,7 +128,7 @@ class ClientTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < clientCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentClient(clientList[indexPath.row], _currentClientIndex: indexPath.row)
+            DataReader.setCurrentClient(clientList[indexPath.row])
     
             let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
             let clientInfoView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("ClientInfoViewController")
@@ -139,8 +144,7 @@ class ClientTableViewController: UITableViewController {
         self.tabBarController?.tabBar.hidden = false
         updateClientData()
         initCells()
-        self.title = "客户(\(clientCount))"
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -13,7 +13,7 @@ class SelectClientTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var clientCount : Int = DataReader.getClientCount()
+    private var clientCount : Int = DataReader.getClientList().count
     private var clientList = DataReader.getClientList()
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class SelectClientTableViewController: UITableViewController {
     }
     
     private func updateClientData(){
-        clientCount = DataReader.getClientCount()
+        clientCount = DataReader.getClientList().count
         clientList = DataReader.getClientList()
     }
     
@@ -144,7 +144,7 @@ class SelectClientTableViewController: UITableViewController {
             self.navigationController?.popViewControllerAnimated(true)
             DataReader.clearIsCreatingAnOppotunity()
         }
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
 
     /*

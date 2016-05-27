@@ -10,28 +10,37 @@ import Foundation
 
 class MyCloud {
 
+    //To initialize the connection between app and cloud
     static func initConnection(){
         let _appId = "SQjRufL6lSJR5Rc5g51rn1Rw-gzGzoHsz"
         let _clientKey = "XNfIrk0lItdQFWt2DAQ8yQ57"
         AVOSCloud.setApplicationId(_appId, clientKey : _clientKey)
+        
+        //Do when there's no data in the cloud
         //saveData()
-        updateURLS()
+        
+        //Do when there's data in the cloud
+        getURLsFromCloud()
     }
     
+    //The urls
     static var url_ClientList = "a", url_Contact = "b", url_ID = "c", url_Oppo = "d", url_user = "e", url_com = "f"
     
-    static func saveURLSToCloud() {
-        let urlList = AVObject.init(className: "URLS")
-        urlList.setObject(url_ClientList, forKey: "url_ClientList")
-        urlList.setObject(url_Contact, forKey: "url_Contact")
-        urlList.setObject(url_ID, forKey: "url_ID")
-        urlList.setObject(url_Oppo, forKey: "url_Oppo")
-        urlList.setObject(url_user, forKey: "url_user")
-        urlList.setObject(url_com, forKey: "url_com")
-        urlList.saveInBackground()
-    }
+    //Only need when first time save the urls, otherwise, useless
+    //To save the urls to cloud as an object
+//    static func saveURLSToCloud() {
+//        let urlList = AVObject.init(className: "URLS")
+//        urlList.setObject(url_ClientList, forKey: "url_ClientList")
+//        urlList.setObject(url_Contact, forKey: "url_Contact")
+//        urlList.setObject(url_ID, forKey: "url_ID")
+//        urlList.setObject(url_Oppo, forKey: "url_Oppo")
+//        urlList.setObject(url_user, forKey: "url_user")
+//        urlList.setObject(url_com, forKey: "url_com")
+//        urlList.saveInBackground()
+//    }
     
-    static func updateURLS2() {
+    //To update the urls to cloud
+    static func updateURLS() {
         let urlQuery = AVQuery.init(className: "URLS")
         let urlList = urlQuery.getObjectWithId("5745b6672e958a002da87dda")
         urlList.setObject(url_ClientList, forKey: "url_ClientList")
@@ -46,8 +55,8 @@ class MyCloud {
         }
     }
     
-    //getURLSFromCloud
-    static func updateURLS() {
+    //To get the urls from cloud so that the app could receive the closest datas
+    static func getURLsFromCloud() {
         if isSaveFinish == true {
         let urlQuery = AVQuery.init(className: "URLS")
         urlQuery.getObjectInBackgroundWithId("5745b6672e958a002da87dda", block: { (urlList : AVObject!, error : NSError!) in
@@ -61,41 +70,15 @@ class MyCloud {
             })
         }
     }
+
+    //The path of the sandbox in a phone (Userless now)
+//    static let sandboxPath : NSString = NSHomeDirectory()
+//    static let documentPath : NSString = sandboxPath.stringByAppendingPathComponent("Documents")
     
-//    static func saveURLS(){
-//        var saveString = ""
-//        saveString += url_ClientList + ";"
-//        saveString += url_Contact + ";"
-//        saveString += url_ID + ";"
-//        saveString += url_Oppo + ";"
-//        saveString += url_user + ";"
-//        saveString += url_com + ";"
-//         let filePath : String = documentPath.stringByAppendingPathComponent("urls")
-//        do {
-//            try saveString.writeToFile(filePath, atomically: true, encoding: _encoding)
-//        } catch {
-//            print("IO ERROR")
-//        }
-//    }
-//    
-//    static func getURLS() {
-//        do {
-//            let filePath : String = documentPath.stringByAppendingPathComponent("urls")
-//            let savedString = try String.init(contentsOfFile: filePath, encoding: _encoding)
-//            let str = savedString.characters.split(";")
-//            url_ClientList = String(str[0])
-//            url_Contact = String(str[1])
-//            url_ID = String(str[2])
-//            url_Oppo = String(str[3])
-//            url_user = String(str[4])
-//            url_com = String(str[5])
-//        }catch{}
-//    }
-    
-    static let sandboxPath : NSString = NSHomeDirectory()
-    static let documentPath : NSString = sandboxPath.stringByAppendingPathComponent("Documents")
+    //The encoding using when saving the datas
     static let _encoding = NSUTF8StringEncoding
     
+    //To read all the datas from the internet , AKA, cloud
     static func readFromInternet() {
         var _file = AVFile.init(URL: url_ClientList)
         var str = String.init(data: _file.getData(), encoding: _encoding)
@@ -122,13 +105,18 @@ class MyCloud {
         StringToDataForComList(str!)
     }
     
+    //To tell whether the process of the saving is finish or not
+    static var isSaveFinish = true
+    
+    //To save the data to my cloud
     static func saveData() {
         isSaveFinish = false
         let comList : String = dataToString(DataReader.getComList())
         saveCom(comList)
     }
     
-    static func saveCom(str : String) {
+    //To save the data of the list of all the companies
+     static func saveCom(str : String) {
         let comlist = AVFile.init(name: "ComInfo", data: str.dataUsingEncoding(_encoding))
         comlist.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
             url_com = comlist.url
@@ -137,6 +125,7 @@ class MyCloud {
         }
     }
     
+    //To save the data of the list of all the users
     static func saveUser(str : String){
         let userist = AVFile.init(name: "UserInfo", data: str.dataUsingEncoding(_encoding))
         userist.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
@@ -145,9 +134,8 @@ class MyCloud {
             saveIDs(idList)
         }
     }
-    
-    static var isSaveFinish = true
-    
+   
+   //To save the data of the list of all the IDs
     static func saveIDs(str : String) {
         let idList = AVFile.init(name: "IDs", data: str.dataUsingEncoding(_encoding))
         idList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
@@ -157,6 +145,7 @@ class MyCloud {
         }
     }
     
+    //To save the data of the list of all the contacts
     static func saveContact(str : String) {
         let contactList = AVFile.init(name: "ContactInfo", data: str.dataUsingEncoding(_encoding))
         contactList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
@@ -166,6 +155,7 @@ class MyCloud {
         }
     }
     
+    //To save the data of the list of all the clients
     static func saveClient(str : String) {
         let clientList = AVFile.init(name: "ClientInfo", data: str.dataUsingEncoding(_encoding))
         clientList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
@@ -175,14 +165,16 @@ class MyCloud {
         }
     }
     
+    //To save the data of the list of all the oppotunities
     static func saveOppo(str : String) {
         let oppoList = AVFile.init(name: "OppoInfo", data: str.dataUsingEncoding(_encoding))
         oppoList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
             url_Oppo = oppoList.url
-            updateURLS2()
+            updateURLS()
         }
     }
     
+    //To transfrom the String of the companys to data
     static func StringToDataForComList(_string : String) {
         var comList = [CompanyInfo]()
         let comStr = _string.characters.split("|")
@@ -202,6 +194,24 @@ class MyCloud {
         DataReader.setComList(comList)
     }
     
+    //To transfrom the data of all the companys to the form of String
+    static func dataToString(comList : [CompanyInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< comList.count {
+            theString += "|"
+            let com = comList[i]
+            theString += String(com.getId()) + "`"
+            theString += String(com.getCode()) + "`"
+            theString += String(com.getName()) + "`"
+            let ids = com.getUserList()
+            for i in 0 ..< ids.count {
+                theString += String(ids[i]) + ";"
+            }
+        }
+        return theString
+    }
+    
+    //To transfrom the String of the users to data
     static func StringToDataForUserList(_string : String) {
         var userList = [UserInfo]()
         let userStr = _string.characters.split("|")
@@ -219,6 +229,22 @@ class MyCloud {
         DataReader.setUserList(userList)
     }
     
+    //To transfrom the data of all the users to the form of String
+    static func dataToString(userList : [UserInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< userList.count {
+            theString += "|"
+            let user = userList[i]
+            theString += String(user.getId()) + "`"
+            theString += String(user.getUserName()) + "`"
+            theString += String(user.getPassword()) + "`"
+            theString += String(user.getName()) + "`"
+            theString += String(user.getComId()) + "`"
+        }
+        return theString
+    }
+    
+    //To transfrom the String of the contacts to data
     static func StringToDataForContactList(_string : String){
         var contactList = [ContactInfo]()
         let contactString = _string.characters.split("|")
@@ -238,6 +264,24 @@ class MyCloud {
         DataReader.setContactList(contactList)
     }
     
+    //To transfrom the data of all the users to the form of String
+    static func dataToString(contactList : [ContactInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< contactList.count {
+            let contact = contactList[i]
+            theString += "|"
+            theString += String(contact.getId()) + "`"
+            theString += String(contact.getName()) + "`"
+            theString += String(contact.getMobile()) + "`"
+            theString += String(contact.getPhone()) + "`"
+            theString += String(contact.getEmail()) + "`"
+            theString += String(contact.getClientId()) + "`"
+            theString += String(contact.getUserId()) + "`"
+        }
+        return theString
+    }
+    
+    //To transfrom the String of the clients to data
     static func StringToDataForClientList(_string : String){
         var clientList = [ClientInfo]()
         let clientString = _string.characters.split("|")
@@ -273,6 +317,34 @@ class MyCloud {
         DataReader.setClientList(clientList)
     }
     
+    //To transfrom the data of all the clients to the form of String
+    static func dataToString(clientList : [ClientInfo]) -> String {
+        var theString = ""
+        for i in 0 ..< clientList.count {
+            theString += "|"
+            let client = clientList[i]
+            theString += String(client.getId()) + "`"
+            theString += String(client.getName()) + "`"
+            theString += String(client.getCompany()) + "`"
+            theString += String(client.getJob()) + "`"
+            theString += String(client.getMobile()) + "`"
+            theString += String(client.getPhone()) + "`"
+            theString += String(client.getEmail()) + "`"
+            theString += String(client.getUserId()) + "`"
+            theString += String(client.getComId()) + "`"
+            let checkList = client.getCheckList()
+            for j in 0 ..< checkList.count {
+                theString += "\\" + String(checkList[j].getUserId()) + ";"
+                theString += String(checkList[j].getContext()) + ";"
+                theString += String(checkList[j].getDate().getYear()) + ";"
+                theString += String(checkList[j].getDate().getMonth()) + ";"
+                theString += String(checkList[j].getDate().getDay())
+            }
+        }
+        return theString
+    }
+    
+    //To transfrom the String of the IDs to data
     static func StringToDataForIDs(_string : String) {
         let str = _string.characters.split("|")
         for i in 0 ..< 6 {
@@ -280,6 +352,7 @@ class MyCloud {
         }
     }
     
+    //To transfrom the data of all the IDs to the form of String
     static func dataToStringForIDs() -> String {
         var theString = ""
         theString += String(DataReader.getID(0)) + "|"
@@ -292,6 +365,7 @@ class MyCloud {
         
     }
     
+    //To transfrom the String of the oppotunities to data
     static func StringToDataForOppo(_string : String){
         var oppoList = [OppoInfo]()
         let oppoString = _string.characters.split("|")
@@ -326,52 +400,7 @@ class MyCloud {
         DataReader.setOppoList(oppoList)
     }
     
-    static func dataToString(contactList : [ContactInfo]) -> String {
-        var theString = ""
-        for i in 0 ..< contactList.count {
-            let contact = contactList[i]
-            theString += "|"
-            theString += String(contact.getId()) + "`"
-            theString += String(contact.getName()) + "`"
-            theString += String(contact.getMobile()) + "`"
-            theString += String(contact.getPhone()) + "`"
-            theString += String(contact.getEmail()) + "`"
-            theString += String(contact.getClientId()) + "`"
-            theString += String(contact.getUserId()) + "`"
-        }
-        return theString
-    }
-    
-    static func dataToString(userList : [UserInfo]) -> String {
-        var theString = ""
-        for i in 0 ..< userList.count {
-            theString += "|"
-            let user = userList[i]
-            theString += String(user.getId()) + "`"
-            theString += String(user.getUserName()) + "`"
-            theString += String(user.getPassword()) + "`"
-            theString += String(user.getName()) + "`"
-            theString += String(user.getComId()) + "`"
-        }
-        return theString
-    }
-    
-    static func dataToString(comList : [CompanyInfo]) -> String {
-        var theString = ""
-        for i in 0 ..< comList.count {
-            theString += "|"
-            let com = comList[i]
-            theString += String(com.getId()) + "`"
-            theString += String(com.getCode()) + "`"
-            theString += String(com.getName()) + "`"
-            let ids = com.getUserList()
-            for i in 0 ..< ids.count {
-                theString += String(ids[i]) + ";"
-            }
-        }
-        return theString
-    }
-    
+    //To transfrom the data of all the oppotunities to the form of String
     static func dataToString(oppoList : [OppoInfo]) -> String {
         var theString = ""
         for i in 0 ..< oppoList.count {
@@ -397,31 +426,4 @@ class MyCloud {
         }
         return theString
     }
-    
-    static func dataToString(clientList : [ClientInfo]) -> String {
-        var theString = ""
-        for i in 0 ..< clientList.count {
-            theString += "|"
-            let client = clientList[i]
-            theString += String(client.getId()) + "`"
-            theString += String(client.getName()) + "`"
-            theString += String(client.getCompany()) + "`"
-            theString += String(client.getJob()) + "`"
-            theString += String(client.getMobile()) + "`"
-            theString += String(client.getPhone()) + "`"
-            theString += String(client.getEmail()) + "`"
-            theString += String(client.getUserId()) + "`"
-            theString += String(client.getComId()) + "`"
-            let checkList = client.getCheckList()
-            for j in 0 ..< checkList.count {
-                theString += "\\" + String(checkList[j].getUserId()) + ";"
-                theString += String(checkList[j].getContext()) + ";"
-                theString += String(checkList[j].getDate().getYear()) + ";"
-                theString += String(checkList[j].getDate().getMonth()) + ";"
-                theString += String(checkList[j].getDate().getDay())
-            }
-        }
-        return theString
-    }
-
 }

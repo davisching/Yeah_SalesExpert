@@ -12,7 +12,7 @@ class ProductInfo {
     
     private var name : String = ""
     private var imgNames = [String]()
-    
+    private var comId = -1
     private var id = 0
     
     init(){
@@ -42,5 +42,13 @@ class ProductInfo {
     
     func getId() -> Int{
         return id
+    }
+    
+    func setComId(_id : Int) {
+        comId = _id
+    }
+    
+    func getComId() -> Int {
+        return comId
     }
 }

@@ -91,7 +91,7 @@ class NewClientViewController: UIViewController {
         if DataReader.isCreatingAnOppotunity == true {
             bt_add.setTitle("使用此客户", forState: UIControlState.Normal)
         }
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
 

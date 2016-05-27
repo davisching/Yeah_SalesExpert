@@ -9,121 +9,13 @@
 import Foundation
 
 class DataReader {
+    
+    //  1. All the list of the datas
+    //The list of users
     private static var userList = [UserInfo]()
     
-    //The companys
+    //The list of companys
     private static var comList = [CompanyInfo]()
-    private static var currentCom = CompanyInfo.init()
-    
-    static func setCurrentCom(id : Int) {
-        currentCom = getComById(id)
-    }
-    
-    static func getComList() -> [CompanyInfo] {
-        return comList
-    }
-    
-    static func setComList(list : [CompanyInfo]) {
-        comList = list
-    }
-    
-    static func getComById(id : Int) -> CompanyInfo {
-        for i in 0 ..< comList.count {
-            if id == comList[i].getId() {
-                return comList[i]
-            }
-        }
-        return CompanyInfo.init()
-    }
-    
-    static func getComByCode(code : String) -> CompanyInfo {
-        for i in 0 ..< comList.count {
-            if code == comList[i].getCode() {
-                return comList[i]
-            }
-        }
-        return CompanyInfo.init()
-    }
-    
-    //The current user
-    private static var currentUser = UserInfo.init()
-    
-    static func setCurrentUser(_user : UserInfo) {
-        currentUser = _user
-    }
-    
-    static func getCurrentUser() -> UserInfo {
-        return currentUser
-    }
-    
-    static func setUserList(list : [UserInfo]) {
-        userList = list
-    }
-    
-    static func getUserList() -> [UserInfo] {
-        return userList
-    }
-    
-    static func getUserByUserName(userName : String) -> UserInfo {
-        for i in 0 ..< userList.count {
-            if userName == userList[i].getUserName() {
-                return userList[i]
-            }
-        }
-        return UserInfo.init()
-    }
-    
-    static func getUserById(id : Int) -> UserInfo {
-        for i in 0 ..< userList.count {
-            if id == userList[i].getId() {
-                return userList[i]
-            }
-        }
-        return UserInfo.init()
-    }
-    
-    static func appendUserList(_user : UserInfo) {
-        userList.append(_user)
-        getComById(_user.getComId()).appendUserList(_user.getId())
-        saveAllToWeb()
-    }
-    
-    static func appendComList(_com : CompanyInfo, _user : UserInfo) {
-        comList.append(_com)
-        userList.append(_user)
-        saveAllToWeb()
-    }
-    
-    static func checkPassword(userName : String, password : String) -> Bool{
-        for i in 0 ..< userList.count {
-            let user = userList[i]
-            if userName == user.getName() && password == user.getPassword() {
-                setCurrentUser(user)
-                setCurrentCom(user.getComId())
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func checkIsExist(userName : String) -> Bool {
-        for i in 0 ..< userList.count {
-            if userName == userList[i].getName() {
-                return true
-            }
-        }
-        return false
-    }
-    
-    static func isCodeExist(code : String) -> Bool{
-        for i in 0 ..< comList.count {
-            if code == comList[i].getCode() {
-                return true
-            }
-        }
-        return false
-    }
-
     
     //The list of clients
     private static var clientList = [ClientInfo]()
@@ -137,110 +29,24 @@ class DataReader {
     //The list of oppotunities
     private static var oppoList = [OppoInfo]()
     
-    //To init data after login
-    static func initDataProcess(){
-       // DataReader.initClientList()
-        DataReader.initProductList()
-        //DataReader.initContactList()
-        //DataReader.initOppoList()
+    //To set the list of all the users
+    static func setUserList(list : [UserInfo]) {
+        userList = list
     }
     
-    static func saveAllToWeb() {
-        MyCloud.saveData()
+    //To get the list of all the users
+    static func getUserList() -> [UserInfo] {
+        return userList
     }
     
-    //init list, will be cancel after using the dataBases
-//    static func initClientList(){
-//        let a = ClientInfo.init(_name: "郑新")
-//        a.setJob("总经理")
-//        a.setCompany("上海超新幼儿用品有限公司")
-//        a.setMobile("15850532311")
-//        a.setPhone("02164738291")
-//        a.setEmail("xinsuparim@gmail.com")
-//        let b = ClientInfo.init(_name: "丘小姐")
-//        b.setJob("采购总管")
-//        b.setCompany("厦门秋之城儿童商贸有限公司")
-//        b.setMobile("13810928102")
-//        b.setPhone("059234732217")
-//        b.setEmail("qiuQZC@163.com")
-//        appendClientList(a)
-//        appendClientList(b)
-//    }
-    
-    //To init the list of all the products
-    static func initProductList(){
-        let a = ProductInfo.init(_name: "杰利卡儿童绘本")
-        let b = ProductInfo.init(_name: "太空猴儿童益智积木")
-        a.appendImgNames("01_01")
-        a.appendImgNames("01_02")
-        a.appendImgNames("01_03")
-        a.appendImgNames("01_04")
-        a.appendImgNames("01_05")
-        a.appendImgNames("01_06")
-        a.appendImgNames("01_07")
-        a.appendImgNames("01_08")
-        a.appendImgNames("01_09")
-        a.appendImgNames("01_10")
-        a.appendImgNames("01_11")
-        a.appendImgNames("01_12")
-        b.appendImgNames("02_01")
-        b.appendImgNames("02_02")
-        b.appendImgNames("02_03")
-        b.appendImgNames("02_04")
-        //b.appendImgNames("02_05")
-        //b.appendImgNames("02_06")
-        b.appendImgNames("02_07")
-        b.appendImgNames("02_08")
-        b.appendImgNames("02_09")
-        b.appendImgNames("02_10")
-        //b.appendImgNames("02_11")
-        b.appendImgNames("02_12")
-        b.appendImgNames("02_13")
-        b.appendImgNames("02_14")
-        productList.append(a)
-        productList.append(b)
+    //To set the list of all the companys
+    static func setComList(list : [CompanyInfo]) {
+        comList = list
     }
     
-    //To init the list of all the contacts
-//    static func initContactList(){
-//        let a = ContactInfo.init(_name: "王杰")
-//        a.setEmail("Wangnim@qq.com")
-//        a.setPhone("02563811931")
-//        a.setMobile("15850239164")
-//        contactList.append(a)
-//    }
-//    
-//    //To init the list of all the oppotunities
-//    static func initOppoList() {
-//        let a = OppoInfo.init(_name: "太空猴益智玩具")
-//        a.setStage(3)
-//        a.setClientId(1)
-//        a.setProductId(2)
-//        a.setTargetSales(50000)
-//        a.giveId()
-//        a.appendList(Check.init(YY: 2016, MM: 4, DD: 19, _context: "我在这一天创建了这个销售机会。"))
-//        a.appendList(Check.init(YY: 2016, MM: 4, DD: 21, _context: "我在这一天第一次拜访了这个客户。"))
-//        oppoList.append(a)
-//    }
-    
-    //To return the count of the clients
-    static func getClientCount() -> Int {
-        return clientList.count
-    }
-    
-    //To return the count of the products
-    static func getProductCount() -> Int {
-        return productList.count
-    }
-    
-    //To return the count of the contacts
-    static func getContactCount() -> Int {
-        return contactList.count
-    }
-    
-    //To return the count of the oppotunities
-    static func getOppoCount() -> Int {
-        return oppoList.count
+    //To get the list of all the companys
+    static func getComList() -> [CompanyInfo] {
+        return comList
     }
     
     //To return the list of the clients
@@ -257,16 +63,198 @@ class DataReader {
         return productList
     }
     
+    //To set the list of contacts
+    static func setContactList(list : [ContactInfo]){
+        contactList = list
+    }
+    
     //To return the list of the contacts
     static func getContactList() -> [ContactInfo]{
         return contactList
+    }
+    
+    //To set the list of the oppotunities
+    static func setOppoList(list : [OppoInfo]){
+        oppoList = list
     }
     
     //To return the list of the oppotunities
     static func getOppoList() -> [OppoInfo] {
         return oppoList
     }
-
+    
+    /*
+        Client      USER / COM
+     
+        Oppotunity  USER / COM
+     
+        Contact     USER
+     
+        Product     COM
+     */
+    
+    //To get the list of clients for a user by user's id
+    static func getClientListForCurrentUser() -> [ClientInfo] {
+        var list = [ClientInfo]()
+        for _client : ClientInfo in clientList {
+            if _client.getUserId() == currentUser.getId() {
+                list.append(_client)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of clients for a company by the id of this company
+    static func getClientListForCurrentCom() -> [ClientInfo] {
+        var list = [ClientInfo]()
+        for _client : ClientInfo in clientList {
+            if _client.getComId() == currentCom.getId() {
+                list.append(_client)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of oppotunities for a user by the id of this user
+    static func getOppoListForCurrentUser() -> [OppoInfo] {
+        var list = [OppoInfo]()
+        for _oppo : OppoInfo in oppoList {
+            if _oppo.getUserId() == currentUser.getId() {
+                list.append(_oppo)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of oppotunities for a company by the id of this company
+    static func getOppoListForCurrentCom() -> [OppoInfo] {
+        var list = [OppoInfo]()
+        for _oppo : OppoInfo in oppoList {
+            if _oppo.getComId() == currentCom.getId() {
+                list.append(_oppo)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of contacts for a user by the id of this user
+    static func getContactListForCurrentUser() -> [ContactInfo] {
+        var list = [ContactInfo]()
+        for _contact : ContactInfo in contactList {
+            if _contact.getUserId() == currentUser.getId() {
+                list.append(_contact)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of products for a company by the id of this company
+    static func getProductListForCurrentCom() -> [ProductInfo] {
+        var list = [ProductInfo]()
+        for _product : ProductInfo in productList {
+            if _product.getComId() == currentProduct.getComId() {
+                list.append(_product)
+            }
+        }
+        return list
+    }
+    
+    //  2. The current datas
+    //The current user
+    private static var currentUser = UserInfo.init()
+    
+    //The current company
+    private static var currentCom = CompanyInfo.init()
+    
+    //The current client
+    private static var currentClient = ClientInfo.init()
+    
+    //The current product
+    private static var currentProduct = ProductInfo.init()
+    
+    //The current contact
+    private static var currentContact = ContactInfo.init()
+    
+    //The current oppotunity
+    private static var currentOppo = OppoInfo.init()
+    
+    //To set the current user and set the current company at the same time
+    static func setCurrentUser(_user : UserInfo) {
+        currentUser = _user
+        setCurrentCom(currentUser.getComId())
+    }
+    
+    //To get the current user
+    static func getCurrentUser() -> UserInfo {
+        return currentUser
+    }
+    
+    //To set the current company
+    static func setCurrentCom(id : Int) {
+        currentCom = getComById(id)
+    }
+    
+    //To get the current company
+    static func getCurrentCom() -> CompanyInfo {
+        return currentCom
+    }
+    
+    //To set the current client to this Data reader
+    static func setCurrentClient(_currentClient : ClientInfo){
+        currentClient = _currentClient
+    }
+    
+    //To return the current client to app
+    static func getCurrentClient() -> ClientInfo {
+        return currentClient
+    }
+    
+    //To set the current product to this Data reader
+    static func setCurrentProduct(_currentProduct : ProductInfo){
+        currentProduct = _currentProduct
+    }
+    
+    //To return the current product to app
+    static func getCurrentProduct() -> ProductInfo {
+        return currentProduct
+    }
+    
+    //To set the current contact to this Data reader
+    static func setCurrentContact(_currentContact : ContactInfo){
+        currentContact = _currentContact
+    }
+    
+    //To return the current contact to app
+    static func getCurrentContact() -> ContactInfo {
+        return currentContact
+    }
+    
+    //To set the current oppotunity to this Data readr
+    static func setCurrentOppo(_currentOppo : OppoInfo){
+        currentOppo = _currentOppo
+    }
+    
+    //To return the current oppotunity to app
+    static func getCurrentOppo() -> OppoInfo {
+        return currentOppo
+    }
+    
+    //  3. To append the lists
+    //To append the list of user
+    static func appendUserList(_user : UserInfo) {
+        userList.append(_user)
+        getComById(_user.getComId()).appendUserList(_user.getId())
+        saveAllToWeb()
+    }
+    
+    //To append the list of company
+    static func appendComList(_com : CompanyInfo, _user : UserInfo) {
+        comList.append(_com)
+        _user.setComId(_com.getId())
+        userList.append(_user)
+        saveAllToWeb()
+    }
+    
     //Append Client List
     static func appendClientList(newClient : ClientInfo){
         let today:NSDate = NSDate()
@@ -315,142 +303,42 @@ class DataReader {
         
         DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。", _userId : DataReader.getCurrentUser().getId()))
         
-       oppoList.append(newOppo)
+        oppoList.append(newOppo)
         saveAllToWeb()
     }
     
-    //The current client
-    private static var currentClient = ClientInfo.init()
-    
-    //The current product
-    private static var currentProduct = ProductInfo.init()
-    
-    //The current contact
-    private static var currentContact = ContactInfo.init()
-    
-    //The current oppotunity
-    private static var currentOppo = OppoInfo.init()
-    
-    //The row count in the client table of this client
-    private static var currentClientIndex = 0
-    
-    //The row count in the product table of this product
-    private static var currentProductIndex = 0
-    
-    //The row count in the contact table of this contact
-    private static var currentContactIndex = 0
-    
-    //The row count in the oppotunity table of this oppotunity
-    private static var currentOppoIndex = 0
-    
-    //To get the row count of this client in the client table
-    static func getCurrentClientIndex() -> Int{
-        return currentClientIndex
-    }
-    
-    //To get the index of this client in the client list with its id
-    static func getCurrentClientIndex(clientId : Int) -> Int {
-        for i in 0 ..< clientList.count {
-            if clientList[i].getId() == clientId {
-                return i
-            }
-        }
-        return -1
-    }
-    
-    //To get the index of this product in the client list with its id
-    static func getCurrentProductIndex(productId : Int) -> Int {
-        for i in 0 ..< productList.count {
-            if productList[i].getId() == productId {
-                return i
-            }
-        }
-        return -1
-    }
-
-    //To get the row count of this product in the product table
-    static func getCurrentProductIndex() -> Int{
-        return currentProductIndex
-    }
-    
-    //To get the row count of this contact in the contact table
-    static func getCurrentContactIndex() -> Int{
-        return currentContactIndex
-    }
-    
-    //To get the row count of this oppotunity in the oppotunity table
-    static func getCurrentOppoIndex() -> Int {
-        return currentOppoIndex
-    }
-    
-    //To set the current client to this Data reader
-    static func setCurrentClient(_currentClient : ClientInfo, _currentClientIndex: Int){
-        currentClient = _currentClient
-        currentClientIndex = _currentClientIndex
-    }
-    
-    //To set the current product to this Data reader
-    static func setCurrentProduct(_currentProduct : ProductInfo, _currentProductIndex: Int){
-        currentProduct = _currentProduct
-        currentProductIndex = _currentProductIndex
-    }
-    
-    //To set the current contact to this Data reader
-    static func setCurrentContact(_currentContact : ContactInfo, _currentContactIndex: Int){
-        currentContact = _currentContact
-        currentContactIndex = _currentContactIndex
-    }
-    
-    //To set the current oppotunity to this Data readr
-    static func setCurrentOppo(_currentOppo : OppoInfo, _currentOppoIndex : Int){
-        currentOppo = _currentOppo
-        currentOppoIndex = _currentOppoIndex
-    }
-    
-    //To return the current client to app
-    static func getCurrentClient() -> ClientInfo {
-        return currentClient
-    }
-
-    //To return the current product to app
-    static func getCurrentProduct() -> ProductInfo {
-        return currentProduct
-    }
-    
-    //To return the current contact to app
-    static func getCurrentContact() -> ContactInfo {
-        return currentContact
-    }
-    
-    //To return the current oppotunity to app
-    static func getCurrentOppo() -> OppoInfo {
-        return currentOppo
-    }
-    
+    // 4.   To modify the lists
     //To modify the information of a client
-    static func modifyClientInIndex(_newClient : ClientInfo, _clientIndex : Int){
-        clientList[_clientIndex] = _newClient
-        
-        if flagxx < 1 {
-            modifyContactWithAClient(_newClient)
-        } else {
-            flagxx = 0
-            saveAllToWeb()
+    static func modifyClient(_newClient : ClientInfo){
+        for i in 0 ..< clientList.count {
+            if _newClient.getId() == clientList[i].getId() {
+                clientList[i] = _newClient
+                if flagxx < 1 {
+                    modifyContactWithAClient(_newClient)
+                } else {
+                    flagxx = 0
+                    saveAllToWeb()
+                }
+            }
         }
     }
     
     //To modify the information of a contact
-    static func modifyContactInIndex(_newContact : ContactInfo, _contactIndex : Int){
-        contactList[_contactIndex] = _newContact
-        
-        if flagxx < 1 {
-            modifyClientWithAContact(_newContact)
-        } else {
-            flagxx = 0
-            saveAllToWeb()
+    static func modifyContact(_newContact : ContactInfo){
+        for i in 0 ..< contactList.count {
+            if _newContact.getId() == contactList[i].getId() {
+                contactList[i] = _newContact
+                if flagxx < 1 {
+                    modifyClientWithAContact(_newContact)
+                } else {
+                    flagxx = 0
+                    saveAllToWeb()
+                }
+            }
         }
     }
     
+    //The flag tell whether some processes have been acted or not
     static var flagxx = 0
     
     //To modify the information of a contact with a client
@@ -461,7 +349,7 @@ class DataReader {
                 contactList[i].setPhone(_newClient.getPhone())
                 contactList[i].setMobile(_newClient.getMobile())
                 flagxx += 1
-                modifyContactInIndex(contactList[i], _contactIndex: i)
+                modifyContact(contactList[i])
             }
         }
     }
@@ -474,18 +362,129 @@ class DataReader {
                 clientList[i].setPhone(_newContact.getPhone())
                 clientList[i].setEmail(_newContact.getEmail())
                 flagxx += 1
-                modifyClientInIndex(clientList[i], _clientIndex: i)
+                modifyClient(clientList[i])
             }
         }
     }
     
     //To modify the information of a oppotunity
-    static func modifyOppo(_newOppo : OppoInfo, _oppoIndex : Int) {
-        oppoList[_oppoIndex] = _newOppo
-        setCurrentOppo(_newOppo, _currentOppoIndex: _oppoIndex)
-        saveAllToWeb()
+    static func modifyOppo(_newOppo : OppoInfo) {
+        for i in 0 ..< oppoList.count {
+            if oppoList[i].getId() == _newOppo.getId() {
+                oppoList[i] = _newOppo
+                setCurrentOppo(_newOppo)
+                saveAllToWeb()
+            }
+        }
     }
     
+    // 5.   To delete a element from a list
+    //A list to reserve those clients who has been deleted
+    static var delClientList = [ClientInfo]()
+    
+    //To delete one client
+    static func delCurrentClient() {
+        delClientList.append(getCurrentClient())
+        for i in 0 ..< clientList.count {
+            if clientList[i].getId() == currentClient.getId() {
+                clientList.removeAtIndex(i)
+                saveAllToWeb()
+            }
+        }
+    }
+    
+    //To get a client from a list where the client has been deleted
+    static func getClientFromDelList(_id : Int) -> ClientInfo {
+        for i in 0 ..< delClientList.count {
+            if delClientList[i].getId() == _id {
+                return delClientList[i]
+            }
+        }
+        return ClientInfo.init()
+    }
+    
+    // 6.   To get a single element in a list
+    //To get a company by its id
+    static func getComById(id : Int) -> CompanyInfo {
+        for i in 0 ..< comList.count {
+            if id == comList[i].getId() {
+                return comList[i]
+            }
+        }
+        return CompanyInfo.init()
+    }
+    
+    //To get a company by its code
+    static func getComByCode(code : String) -> CompanyInfo {
+        for i in 0 ..< comList.count {
+            if code == comList[i].getCode() {
+                return comList[i]
+            }
+        }
+        return CompanyInfo.init()
+    }
+    
+    //To get a user by its username
+    static func getUserByUserName(userName : String) -> UserInfo {
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getUserName() {
+                return userList[i]
+            }
+        }
+        return UserInfo.init()
+    }
+    
+    //To get a user by its id
+    static func getUserById(id : Int) -> UserInfo {
+        for i in 0 ..< userList.count {
+            if id == userList[i].getId() {
+                return userList[i]
+            }
+        }
+        return UserInfo.init()
+    }
+    
+    //To get the client with its id
+    static func getClientWithId(clientId : Int) -> ClientInfo {
+        for i in 0 ..< clientList.count {
+            if clientList[i].getId() == clientId {
+                return clientList[i]
+            }
+        }
+        return ClientInfo.init()
+    }
+    
+    //To get the product with its id
+    static func getProductWithId(productId : Int) -> ProductInfo {
+        for i in 0 ..< productList.count {
+            if productList[i].getId() == productId {
+                return productList[i]
+            }
+        }
+        return ProductInfo.init()
+    }
+    
+    //To get the contact with its id
+    static func getContactWithId(contactId : Int) -> ContactInfo {
+        for i in 0 ..< contactList.count {
+            if contactList[i].getId() == contactId {
+                return contactList[i]
+            }
+        }
+        return ContactInfo.init()
+    }
+    
+    //To get the oppotunity with its id
+    static func getOppotunityWithId(oppoId : Int) -> OppoInfo {
+        for i in 0 ..< oppoList.count {
+            if oppoList[i].getId() == oppoId {
+                return oppoList[i]
+            }
+        }
+        return OppoInfo.init()
+    }
+    
+    // 7.   The process for IDs
     //The id of next client
     private static var nextClientId = 0
     
@@ -504,6 +503,7 @@ class DataReader {
     //The id of next com
     private static var nextComId = 0
     
+    //To set the nextIDs
     static func setNextId(index : Int, value : Int) {
         switch index {
         case 0 :
@@ -521,6 +521,7 @@ class DataReader {
         }
     }
     
+    //To get the nextIDs
     static func getID(index : Int) -> Int{
         switch index {
         case 0 :
@@ -538,18 +539,18 @@ class DataReader {
         }
     }
     
-    //to give the new client a id 
+    //to give the new client a id
     static func getNewClientId() -> Int{
         nextClientId += 1
         return nextClientId
     }
-
+    
     //to give the new product a id
     static func getNewProductId() -> Int{
         nextProductId += 1
         return nextProductId
     }
-
+    
     //to give the new contact a id
     static func getNewContactId() -> Int{
         nextContactId += 1
@@ -568,12 +569,13 @@ class DataReader {
         return nextUserId
     }
     
-    //To give the new company a id 
+    //To give the new company a id
     static func getNewComId() -> Int {
         nextComId += 1
         return nextComId
     }
-    
+
+    // 8.   The function when user is creating or moditying an oppotunity or a follow
     //The client which user will select or have selected
     private static var selectedClient = ClientInfo.init()
     
@@ -642,48 +644,8 @@ class DataReader {
             return (667 - 102) / 667
         } else {
             return (667 - 112) / 667
-
+            
         }
-    }
-    
-    //To get the client with its id
-    static func getClientWithId(clientId : Int) -> ClientInfo {
-        for i in 0 ..< clientList.count {
-            if clientList[i].getId() == clientId {
-                return clientList[i]
-            }
-        }
-        return ClientInfo.init()
-    }
-    
-    //To get the product with its id
-    static func getProductWithId(productId : Int) -> ProductInfo {
-        for i in 0 ..< productList.count {
-            if productList[i].getId() == productId {
-                return productList[i]
-            }
-        }
-        return ProductInfo.init()
-    }
-    
-    //To get the contact with its id
-    static func getContactWithId(contactId : Int) -> ContactInfo {
-        for i in 0 ..< contactList.count {
-            if contactList[i].getId() == contactId {
-                return contactList[i]
-            }
-        }
-        return ContactInfo.init()
-    }
-    
-    //To get the oppotunity with its id
-    static func getOppotunityWithId(oppoId : Int) -> OppoInfo {
-        for i in 0 ..< oppoList.count {
-            if oppoList[i].getId() == oppoId {
-                return oppoList[i]
-            }
-        }
-        return OppoInfo.init()
     }
     
     //The current stage
@@ -696,44 +658,87 @@ class DataReader {
     
     //To get the current stage
     static func getCurrentStage() -> Int {
-       return currentStage
+        return currentStage
     }
     
+    //To tell whether the process happend while creating a client or not
     static var isCreatingFollowFromClient = false
     
-    //A list to reserve those clients who has been deleted
-    static var delClientList = [ClientInfo]()
-    
-    //To delete one client
-    static func delCurrentClient() {
-        delClientList.append(getCurrentClient())
-        clientList.removeAtIndex(getCurrentClientIndex())
-        saveAllToWeb()
+    // 9.   The other function
+    //To save all the data to my cloud
+    static func saveAllToWeb() {
+        MyCloud.saveData()
     }
     
-    static func getClientFromDelList(_id : Int) -> ClientInfo {
-        for i in 0 ..< delClientList.count {
-            if delClientList[i].getId() == _id {
-                return delClientList[i]
+    //To check whether the password and username matchs each other or not
+    static func checkPassword(userName : String, password : String) -> Bool {
+        for i in 0 ..< userList.count {
+            let user = userList[i]
+            if userName == user.getUserName() && password == user.getPassword() {
+                setCurrentUser(user)
+                setCurrentCom(user.getComId())
+                return true
             }
         }
-        return ClientInfo.init()
+        return false
     }
     
-    static func getClientIndexWithId(id : Int) -> Int{
-        for i in 0 ..< clientList.count {
-            if clientList[i].getId() == id {
-                return i
+    //To check whether the username that the user type is existed or not
+    static func checkIsExist(userName : String) -> Bool {
+        for i in 0 ..< userList.count {
+            if userName == userList[i].getName() {
+                return true
             }
         }
-        return -1
+        return false
     }
     
-    static func setContactList(list : [ContactInfo]){
-        contactList = list
+    //To check whether the code of the company that user type is existed or not
+    static func isCodeExist(code : String) -> Bool{
+        for i in 0 ..< comList.count {
+            if code == comList[i].getCode() {
+                return true
+            }
+        }
+        return false
     }
     
-    static func setOppoList(list : [OppoInfo]){
-        oppoList = list
+    //To init data after login
+    static func initDataProcess(){
+        DataReader.initProductList()
+    }
+    
+    //To init the list of all the products
+    static func initProductList(){
+        let a = ProductInfo.init(_name: "杰利卡儿童绘本")
+        let b = ProductInfo.init(_name: "太空猴儿童益智积木")
+        a.appendImgNames("01_01")
+        a.appendImgNames("01_02")
+        a.appendImgNames("01_03")
+        a.appendImgNames("01_04")
+        a.appendImgNames("01_05")
+        a.appendImgNames("01_06")
+        a.appendImgNames("01_07")
+        a.appendImgNames("01_08")
+        a.appendImgNames("01_09")
+        a.appendImgNames("01_10")
+        a.appendImgNames("01_11")
+        a.appendImgNames("01_12")
+        b.appendImgNames("02_01")
+        b.appendImgNames("02_02")
+        b.appendImgNames("02_03")
+        b.appendImgNames("02_04")
+        //b.appendImgNames("02_05")
+        //b.appendImgNames("02_06")
+        b.appendImgNames("02_07")
+        b.appendImgNames("02_08")
+        b.appendImgNames("02_09")
+        b.appendImgNames("02_10")
+        //b.appendImgNames("02_11")
+        b.appendImgNames("02_12")
+        b.appendImgNames("02_13")
+        b.appendImgNames("02_14")
+        productList.append(a)
+        productList.append(b)
     }
 }

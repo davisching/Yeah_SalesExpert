@@ -61,7 +61,7 @@ class NewViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         //self.navigationController?.navigationBarHidden = true
         self.tabBarController?.tabBar.hidden = false
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
 
     override func didReceiveMemoryWarning() {

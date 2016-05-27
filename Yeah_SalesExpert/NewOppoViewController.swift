@@ -62,7 +62,7 @@ class NewOppoViewController: UIViewController {
                 if DataReader.isModifyingAnOppotunity == true {
                     newOppo.setName(tf_name.text!)
                     newOppo.setTargetSales(Int(tf_target.text!)!)
-                    DataReader.modifyOppo(newOppo, _oppoIndex: DataReader.getCurrentOppoIndex())
+                    DataReader.modifyOppo(newOppo)
                     
                     let alert = UIAlertView.init(title: "修改成功", message: "此销售机会已经被成功地修改！", delegate: nil, cancelButtonTitle: "我知道了!")
                     alert.show()
@@ -153,7 +153,7 @@ class NewOppoViewController: UIViewController {
         self.tabBarController?.tabBar.hidden = true
         DataReader.clearIsCreatingAnOppotunity()
         initText()
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
 
     /*

@@ -36,7 +36,6 @@ class ContactInfoViewController: UIViewController {
     }
     
     func modifyAContact(){
-        let index = DataReader.getCurrentContactIndex()
         let newContact = ContactInfo.init()
         newContact.setName(tf_name.text!)
         newContact.setMobile(tf_mobile.text!)
@@ -44,7 +43,7 @@ class ContactInfoViewController: UIViewController {
         newContact.setEmail(tf_email.text!)
         newContact.setId(contactInfo.getId())
         newContact.setClientId(contactInfo.getClientId())
-        DataReader.modifyContactInIndex(newContact, _contactIndex: index)
+        DataReader.modifyContact(newContact)
         
         let alert = UIAlertView.init(title: "修改成功", message: "联系人的信息已经被成功的更新了!", delegate: nil, cancelButtonTitle: "我知道了！")
         alert.show()
@@ -71,7 +70,7 @@ class ContactInfoViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = true
-        MyCloud.updateURLS()
+        MyCloud.getURLsFromCloud()
     }
     
 
