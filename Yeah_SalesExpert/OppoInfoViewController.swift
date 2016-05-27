@@ -53,10 +53,15 @@ class OppoInfoViewController: UIViewController {
     }
     
     @IBAction func bt_modify(sender: AnyObject) {
+         if DataReader.getCurrentOppo().getUserId() == DataReader.getCurrentUser().getId() {
         DataReader.isModifyingAnOppotunity = true
         let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
         let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("NewOppoViewController")
         self.navigationController?.pushViewController(clientaddView, animated: true)
+         } else {
+            let alert = UIAlertView.init(title: "没有权限", message: "只有创建者可以进行此项操作！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+        }
     }
     
     

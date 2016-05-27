@@ -13,8 +13,8 @@ class ContactTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var contactCount : Int = DataReader.getContactList().count
-    private var contactList = DataReader.getContactList()
+    private var contactCount = 0
+    private var contactList = [ContactInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +27,8 @@ class ContactTableViewController: UITableViewController {
     }
     
     private func updateContactData(){
-        contactCount = DataReader.getContactList().count
-        contactList = DataReader.getContactList()
+        contactList = DataReader.getContactListForCurrentUser()
+        contactCount = contactList.count
     }
 
     private func initCells() {

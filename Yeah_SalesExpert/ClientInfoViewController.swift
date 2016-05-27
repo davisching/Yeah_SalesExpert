@@ -22,8 +22,15 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func bt_del(sender: AnyObject) {
-        let alert = UIAlertView.init(title: "确认删除操作", message: "客户删除后，数据将无法恢复！", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认删除")
-        alert.show()
+        
+        if DataReader.getCurrentClient().getUserId() == DataReader.getCurrentUser().getId() {
+        
+            let alert = UIAlertView.init(title: "确认删除操作", message: "客户删除后，数据将无法恢复！", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认删除")
+            alert.show()
+        } else {
+            let alert = UIAlertView.init(title: "没有权限", message: "只有创建者可以进行此项操作！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+        }
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
@@ -53,11 +60,16 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     }
     
     @IBAction func bt_modify(sender: AnyObject) {
+         if DataReader.getCurrentClient().getUserId() == DataReader.getCurrentUser().getId() {
         if tf_name.text == "" {
             let alert = UIAlertView.init(title: "需要名称", message: "请为此客户添加一个名称！", delegate: nil, cancelButtonTitle: "返回")
             alert.show()
         } else {
             modifyAClient()
+        }
+         } else {
+            let alert = UIAlertView.init(title: "没有权限", message: "只有创建者可以进行此项操作！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
         }
     }
     

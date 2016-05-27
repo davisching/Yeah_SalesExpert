@@ -13,8 +13,8 @@ class ClientTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var clientCount = DataReader.getClientListForCurrentCom().count
     private var clientList = DataReader.getClientListForCurrentUser()
+    private var clientCount = 20
     
     @IBAction func bt_change(sender: AnyObject) {
         //Exchange the list of the clients from on to another
@@ -37,6 +37,7 @@ class ClientTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clientCount = clientList.count
        // initCells()
     }
     
@@ -78,7 +79,7 @@ class ClientTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
      
-        return clientCount + 10
+        return DataReader.getClientListForCurrentCom().count + 10
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

@@ -13,8 +13,8 @@ class SelectClientTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var clientCount : Int = DataReader.getClientList().count
-    private var clientList = DataReader.getClientList()
+    private var clientCount : Int = 20
+    private var clientList = [ClientInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class SelectClientTableViewController: UITableViewController {
     }
     
     private func updateClientData(){
-        clientCount = DataReader.getClientList().count
-        clientList = DataReader.getClientList()
+        clientList = DataReader.getClientListForCurrentUser()
+        clientCount = clientList.count
     }
     
     private func initCells() {
@@ -139,7 +139,6 @@ class SelectClientTableViewController: UITableViewController {
         updateClientData()
         initCells()
         self.title = "选择一个客户"
-        
         if DataReader.isCreatingAnOppotunity == true {
             self.navigationController?.popViewControllerAnimated(true)
             DataReader.clearIsCreatingAnOppotunity()

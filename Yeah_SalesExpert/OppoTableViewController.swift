@@ -13,8 +13,39 @@ class OppoTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var oppoCount : Int = DataReader.getOppoList().count
-    private var oppoList = DataReader.getOppoList()
+    private var oppoCount = 0
+    private var oppoList = [OppoInfo]()
+    
+    @IBAction func bt_refresh(sender: AnyObject) {
+        
+        MyCloud.getURLsFromCloud()
+        
+        if part == 0 {
+            part = 1
+        } else {
+            part = 0
+        }
+        updateOppoData()
+        initCells()
+        
+    }
+    
+    private func updateOppoData(){
+        if part == 0 {
+            oppoList = DataReader.getOppoListForCurrentUser()
+            oppoCount = oppoList.count
+            self.title = "我的机会(\(oppoCount))"
+        } else {
+            oppoList = DataReader.getOppoListForCurrentCom()
+            oppoCount = oppoList.count
+            self.title = "公司机会(\(oppoCount))"
+        }
+    }
+    
+    /*Part stands for whether the user is searching the clients by
+     0 . User itself
+     1 . His or her company */
+    private var part = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +55,6 @@ class OppoTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    private func updateContactData(){
-        oppoCount = DataReader.getOppoList().count
-        oppoList = DataReader.getOppoList()
     }
     
     private func initCells() {
@@ -117,9 +143,8 @@ class OppoTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
-        updateContactData()
+        updateOppoData()
         initCells()
-        self.title = "销售机会(\(oppoCount))"
         DataReader.clearAllSelected()
         MyCloud.getURLsFromCloud()
     }

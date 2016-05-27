@@ -1116,7 +1116,7 @@
             </objects>
             <point key="canvasLocation" x="430.5" y="629.5"/>
         </scene>
-        <!--OPPOTUNITIES (4)-->
+        <!--销售机会-->
         <scene sceneID="FUc-A6-cpd">
             <objects>
                 <tableViewController id="ckS-gx-HOl" customClass="OppoTableViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
@@ -1129,12 +1129,19 @@
                             <outlet property="delegate" destination="ckS-gx-HOl" id="H3i-k1-rjw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="OPPOTUNITIES (4)" id="8dB-qI-PQ9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="mt3-mN-AX0">
-                            <connections>
-                                <segue destination="U3f-3N-Kma" kind="push" id="QuT-65-X7d"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="销售机会" id="8dB-qI-PQ9">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="mt3-mN-AX0">
+                                <connections>
+                                    <segue destination="U3f-3N-Kma" kind="push" id="QuT-65-X7d"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="ukr-oW-Dva">
+                                <connections>
+                                    <action selector="bt_refresh:" destination="ckS-gx-HOl" id="EEE-Qe-rap"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
