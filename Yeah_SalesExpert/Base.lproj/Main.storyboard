@@ -54,7 +54,7 @@
                                         <rect key="frame" x="145" y="363" width="159" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="oaU-to-Rvc"/>
                                         </connections>
@@ -137,11 +137,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="jXV-ux-8xi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AfI-0x-AWQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="bt_tap:" destination="C7d-WB-2BZ" eventType="touchUpInside" id="2hD-TU-nza"/>
@@ -200,7 +200,7 @@
                                         <rect key="frame" x="131" y="37" width="173" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="ehg-xK-7F7"/>
                                         </connections>
@@ -209,7 +209,7 @@
                                         <rect key="frame" x="131" y="82" width="173" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="tf_password_action:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="MSV-vd-BW4"/>
                                             <action selector="tf_password_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="5Ad-fS-HiK"/>
@@ -219,26 +219,17 @@
                                         <rect key="frame" x="131" y="130" width="173" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="tf_password_action:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="kYQ-ot-IYv"/>
                                             <action selector="tf_password_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="GvB-QW-x83"/>
-                                        </connections>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PAn-iU-bvd">
-                                        <rect key="frame" x="131" y="179" width="173" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="NAL-k1-49M"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="C9g-Dl-xST">
                                         <rect key="frame" x="158" y="227" width="146" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="64W-OP-ugn"/>
                                         </connections>
@@ -262,16 +253,25 @@
                                         <rect key="frame" x="131" y="296" width="173" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="tpc-zT-wbs"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="PAn-iU-bvd">
+                                        <rect key="frame" x="131" y="179" width="173" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                                        <connections>
+                                            <action selector="tf_userName_editingBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="NAL-k1-49M"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="0.25197476052526596" green="0.298998618389966" blue="0.46468349358974359" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.32027650651794465" green="0.37796013810961426" blue="0.59857772435897438" alpha="0.0" colorSpace="calibratedRGB"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.19481169871794868" green="0.17134507883008365" blue="0.10263788890841237" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.41447669219488548" green="0.45659564337352326" blue="0.48102964743589749" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="y9A-fu-sqx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

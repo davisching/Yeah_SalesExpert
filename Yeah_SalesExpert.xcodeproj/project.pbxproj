@@ -21,6 +21,8 @@
 		3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */; };
 		3A6327051CF347EC00CCB21A /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6327041CF347EC00CCB21A /* UserInfo.swift */; };
 		3A6327071CF34FEE00CCB21A /* MyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6327061CF34FEE00CCB21A /* MyCloud.swift */; };
+		3A6561CF1CF988B700185B29 /* MyComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6561CE1CF988B700185B29 /* MyComViewController.swift */; };
+		3A6561D11CF9939A00185B29 /* MoniterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6561D01CF9939A00185B29 /* MoniterViewController.swift */; };
 		3A75058D1CE07CF600406844 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75058B1CE07CF600406844 /* Index.storyboard */; };
 		3A7C70911CE207060011284C /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70901CE207060011284C /* ClientTableViewController.swift */; };
 		3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */; };
@@ -83,6 +85,8 @@
 		3A5D93B51CECAE0200F3400B /* OppoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OppoTableViewController.swift; sourceTree = "<group>"; };
 		3A6327041CF347EC00CCB21A /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		3A6327061CF34FEE00CCB21A /* MyCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCloud.swift; sourceTree = "<group>"; };
+		3A6561CE1CF988B700185B29 /* MyComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyComViewController.swift; sourceTree = "<group>"; };
+		3A6561D01CF9939A00185B29 /* MoniterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoniterViewController.swift; sourceTree = "<group>"; };
 		3A75058C1CE07CF600406844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Index.storyboard; sourceTree = "<group>"; };
 		3A7C70901CE207060011284C /* ClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
 		3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 			children = (
 				3AC365261CEA22870080815B /* NewViewController.swift */,
 				3AC365321CEB73670080815B /* OtherViewController.swift */,
+				3A6561CE1CF988B700185B29 /* MyComViewController.swift */,
+				3A6561D01CF9939A00185B29 /* MoniterViewController.swift */,
 			);
 			name = OtherControllers;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
 				3AC365331CEB73670080815B /* OtherViewController.swift in Sources */,
+				3A6561CF1CF988B700185B29 /* MyComViewController.swift in Sources */,
 				3A6327051CF347EC00CCB21A /* UserInfo.swift in Sources */,
 				3A5A24A71CEF030A00998C56 /* OppoInfoViewController.swift in Sources */,
 				3AC365231CE9DCA00080815B /* NewClientViewController.swift in Sources */,
@@ -504,6 +511,7 @@
 				3AC3652B1CEB4AFE0080815B /* ProductInfoViewController.swift in Sources */,
 				3AFAB5131CEDAA850087EA5E /* SelectClientTableViewController.swift in Sources */,
 				3AC365291CEB1D450080815B /* ProductInfo.swift in Sources */,
+				3A6561D11CF9939A00185B29 /* MoniterViewController.swift in Sources */,
 				3A6327071CF34FEE00CCB21A /* MyCloud.swift in Sources */,
 				3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */,
 				3A5D93A81CEC7CF200F3400B /* OppoInfo.swift in Sources */,

@@ -703,6 +703,19 @@ class DataReader {
         return false
     }
     
+    //The targetSales
+    static var targetSales = 100000
+    
+    //Set the target sales
+    static func setTargetSales(_sales : Int) {
+        targetSales = _sales
+    }
+    
+    //Get the target sales
+    static func getTargetSales() -> Int {
+        return targetSales
+    }
+    
     //To init data after login
     static func initDataProcess(){
         DataReader.initProductList()

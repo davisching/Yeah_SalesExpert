@@ -40,7 +40,6 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         login()
     }
     
-    
     //Function for loginning process.
     func login() {
         let userName : String = tf_userName.text!
@@ -198,7 +197,6 @@ class LoginViewController: UIViewController , JSAnimatedImagesViewDataSource{
         super.didReceiveMemoryWarning()
     }
     
-
     /*
     // MARK: - Navigation
 
