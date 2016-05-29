@@ -378,6 +378,17 @@ class DataReader {
         }
     }
     
+    //To modify a user
+    static func modifyUser(_user : UserInfo) {
+        for i in 0 ..< userList.count {
+            if userList[i].getId() == _user.getId() {
+                userList[i] = _user
+                currentUser = _user
+                saveAllToWeb()
+            }
+        }
+    }
+    
     // 5.   To delete a element from a list
     //A list to reserve those clients who has been deleted
     static var delClientList = [ClientInfo]()
@@ -686,7 +697,7 @@ class DataReader {
     //To check whether the username that the user type is existed or not
     static func checkIsExist(userName : String) -> Bool {
         for i in 0 ..< userList.count {
-            if userName == userList[i].getName() {
+            if userName == userList[i].getUserName() {
                 return true
             }
         }
@@ -701,19 +712,6 @@ class DataReader {
             }
         }
         return false
-    }
-    
-    //The targetSales
-    static var targetSales = 100000
-    
-    //Set the target sales
-    static func setTargetSales(_sales : Int) {
-        targetSales = _sales
-    }
-    
-    //Get the target sales
-    static func getTargetSales() -> Int {
-        return targetSales
     }
     
     //To init data after login

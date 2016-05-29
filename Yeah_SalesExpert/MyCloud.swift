@@ -224,6 +224,7 @@ class MyCloud {
             user.setPassword(String(elements[2]))
             user.setName(String(elements[3]))
             user.setComId(Int(String(elements[4]))!)
+            user.setTargetSales(Int(String(elements[5]))!)
             userList.append(user)
         }
         DataReader.setUserList(userList)
@@ -240,6 +241,7 @@ class MyCloud {
             theString += String(user.getPassword()) + "`"
             theString += String(user.getName()) + "`"
             theString += String(user.getComId()) + "`"
+            theString += String(user.getTargetSales()) + "`"
         }
         return theString
     }
@@ -298,7 +300,8 @@ class MyCloud {
             client.setEmail(String(elements[6]))
             client.setUserId(Int(String(elements[7]))!)
             client.setComId(Int(String(elements[8]))!)
-            let checkStr = String(elements[9]).characters.split("\\")
+            client.setVisit(Int(String(elements[9]))!)
+            let checkStr = String(elements[10]).characters.split("\\")
             var checkList = [Check]()
             for j in 0 ..< checkStr.count {
                 let check = Check.init()
@@ -332,6 +335,7 @@ class MyCloud {
             theString += String(client.getEmail()) + "`"
             theString += String(client.getUserId()) + "`"
             theString += String(client.getComId()) + "`"
+            theString += String(client.getVisit()) + "`"
             let checkList = client.getCheckList()
             for j in 0 ..< checkList.count {
                 theString += "\\" + String(checkList[j].getUserId()) + ";"

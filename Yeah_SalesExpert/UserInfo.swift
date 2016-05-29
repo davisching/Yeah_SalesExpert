@@ -14,6 +14,7 @@ class UserInfo {
     private var password = ""
     private var name = ""
     private var comId = -1
+    private var targetSales = 0
     
     init() {
     
@@ -63,6 +64,14 @@ class UserInfo {
     
     func setComId(_id : Int) {
         comId = _id
+    }
+    
+    func getTargetSales() -> Int {
+        return targetSales
+    }
+    
+    func setTargetSales(_sales : Int) {
+        targetSales = _sales
     }
 }
 

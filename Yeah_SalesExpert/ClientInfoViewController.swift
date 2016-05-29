@@ -20,6 +20,38 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_email: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tf_visit: UITextField!
+    
+    @IBAction func bt_visit(sender: AnyObject) {
+        if DataReader.getCurrentClient().getUserId() == DataReader.getCurrentUser().getId() {
+            clientInfo.setVisit(clientInfo.getVisit() + 1)
+            
+            let today:NSDate = NSDate()
+            let dateFormatter = NSDateFormatter()
+            
+            dateFormatter.dateFormat = "YYYY"
+            let year = Int(dateFormatter.stringFromDate(today))
+            dateFormatter.dateFormat = "MM"
+            let month = Int(dateFormatter.stringFromDate(today))
+            dateFormatter.dateFormat = "dd"
+            let day = Int(dateFormatter.stringFromDate(today))
+            
+            clientInfo.appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我拜访了这个客户", _userId: DataReader.getCurrentUser().getId()))
+            
+            DataReader.modifyClient(clientInfo)
+            
+            let storyBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let refreshView = storyBoard.instantiateViewControllerWithIdentifier("RefreshViewController")
+            self.navigationController?.pushViewController(refreshView, animated: false)
+            
+            let alert = UIAlertView.init(title: "拜访成功", message: "已经成功的记录了此次拜访！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+
+        } else {
+            let alert = UIAlertView.init(title: "没有权限", message: "只有创建者可以进行此项操作！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+        }
+    }
     
     @IBAction func bt_del(sender: AnyObject) {
         
@@ -101,17 +133,8 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
         transAll()
-        clientInfo = DataReader.getCurrentClient()
-        self.title = clientInfo.getName()
-        tf_name.text = clientInfo.getName()
-        tf_company.text = clientInfo.getCompany()
-        tf_job.text = clientInfo.getJob()
-        tf_mobile.text = clientInfo.getMobile()
-        tf_phone.text = clientInfo.getPhone()
-        tf_email.text = clientInfo.getEmail()
         // Do any additional setup after loading the view.
     }
 
@@ -121,6 +144,16 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     }
     
     override func viewWillAppear(animated: Bool) {
+        clientInfo = DataReader.getCurrentClient()
+        self.title = clientInfo.getName()
+        tf_name.text = clientInfo.getName()
+        tf_company.text = clientInfo.getCompany()
+        tf_job.text = clientInfo.getJob()
+        tf_mobile.text = clientInfo.getMobile()
+        tf_phone.text = clientInfo.getPhone()
+        tf_email.text = clientInfo.getEmail()
+        tf_visit.text = String(clientInfo.getVisit())
+        createFollowViews()
         DataReader.isCreatingFollowFromClient = true
         self.tabBarController?.tabBar.hidden = true
         createFollowViews()

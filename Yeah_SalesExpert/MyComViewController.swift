@@ -21,8 +21,8 @@ class MyComViewController: UIViewController {
         tf_name.text = com.getName()
         tf_code.text = com.getCode()
         tf_count.text = String(com.getUserList().count)
-        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height + 1)
         transAll()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: UIScreen.mainScreen().bounds.size.height + 1)
         // Do any additional setup after loading the view.
     }
 

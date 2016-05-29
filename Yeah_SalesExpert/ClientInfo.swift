@@ -18,6 +18,7 @@ class ClientInfo {
     private var email = ""
     private var checkList = [Check]()
     private var id = 0
+    private var visit = 0
     
     init(){
         //do nothing
@@ -118,4 +119,13 @@ class ClientInfo {
     func setComId(_id : Int) {
         comId = _id
     }
+    
+    func setVisit(_count : Int) {
+        visit = _count
+    }
+    
+    func getVisit() -> Int {
+        return visit
+    }
+    
 }
