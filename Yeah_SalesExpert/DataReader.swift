@@ -29,6 +29,9 @@ class DataReader {
     //The list of oppotunities
     private static var oppoList = [OppoInfo]()
     
+    //The list of contracts
+    private static var contractList = [ContractInfo]()
+    
     //To set the list of all the users
     static func setUserList(list : [UserInfo]) {
         userList = list
@@ -64,8 +67,18 @@ class DataReader {
     }
     
     //To set the list of contacts
-    static func setContactList(list : [ContactInfo]){
+    static func setContactList(list : [ContactInfo]) {
         contactList = list
+    }
+    
+    //To set the list of contracts
+    static func setContractList(list : [ContractInfo]) {
+        contractList = list
+    }
+    
+    //To return the list of the contracts
+    static func getContractList() -> [ContractInfo]{
+        return contractList
     }
     
     //To return the list of the contacts
@@ -91,6 +104,8 @@ class DataReader {
         Contact     USER
      
         Product     COM
+     
+        Contract    USER / COM
      */
     
     //To get the list of clients for a user by user's id
@@ -170,6 +185,40 @@ class DataReader {
         return list
     }
     
+    //To get the list of contracts for a user by user's id
+    static func getContractListForCurrentUser() -> [ContractInfo] {
+        var list = [ContractInfo]()
+        for _contact : ContractInfo in contractList {
+            if _contact.getUserId() == currentUser.getId() {
+                list.append(_contact)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of contracts for a company by the id of this company
+    static func getContractListForCurrentCom() -> [ContractInfo] {
+        var list = [ContractInfo]()
+        for _contact : ContractInfo in contractList {
+            if _contact.getComId() == currentCom.getId() {
+                list.append(_contact)
+            }
+        }
+        return list
+    }
+    
+    //To get the list of contracts for a client by this client's id
+    static func getContractListForCurrentClient() -> [ContractInfo] {
+        var list = [ContractInfo]()
+        for _contact : ContractInfo in contractList {
+            if getOppotunityWithId(_contact.getOppoId()).getClientId() == currentClient.getId() {
+                list.append(_contact)
+            }
+        }
+        return list
+    }
+
+    
     //  2. The current datas
     //The current user
     private static var currentUser = UserInfo.init()
@@ -188,6 +237,9 @@ class DataReader {
     
     //The current oppotunity
     private static var currentOppo = OppoInfo.init()
+    
+    //The current contract
+    private static var currentContract = ContractInfo.init()
     
     //To set the current user and set the current company at the same time
     static func setCurrentUser(_user : UserInfo) {
@@ -248,6 +300,16 @@ class DataReader {
     //To return the current oppotunity to app
     static func getCurrentOppo() -> OppoInfo {
         return currentOppo
+    }
+    
+    //To set the current contract to this Data reader
+    static func setCurrentContract(_currentContract : ContractInfo){
+        currentContract = _currentContract
+    }
+    
+    //To return the current contract to app
+    static func getCurrentContract() -> ContractInfo {
+        return currentContract
     }
     
     //  3. To append the lists
@@ -315,6 +377,21 @@ class DataReader {
         DataReader.getClientWithId(newOppo.getClientId()).appendList(Check.init(YY: year!, MM: month!, DD: day!, _context: "我创建了销售机会: \(newOppo.getName())，已经与此客户绑定。", _userId : DataReader.getCurrentUser().getId()))
         
         oppoList.append(newOppo)
+        saveAllToWeb()
+    }
+    
+    //To append the list of contracts
+    static func appendContractList(newContract : ContractInfo) {
+        let today:NSDate = NSDate()
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "YYYY"
+        let year = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "MM"
+        let month = Int(dateFormatter.stringFromDate(today))
+        dateFormatter.dateFormat = "dd"
+        let day = Int(dateFormatter.stringFromDate(today))
+        newContract.setDate(year!, _month: month!, _day: day!)
+        contractList.append(newContract)
         saveAllToWeb()
     }
     
@@ -400,6 +477,17 @@ class DataReader {
         }
     }
     
+    //To modify a contract
+    static func modifyContract(_contract : ContractInfo) {
+        for i in 0 ..< contractList.count {
+            if contractList[i].getId() == _contract.getId() {
+                contractList[i] = _contract
+                currentContract = _contract
+                saveAllToWeb()
+            }
+        }
+    }
+    
     // 5.   To delete a element from a list
     //A list to reserve those clients who has been deleted
     static var delClientList = [ClientInfo]()
@@ -410,6 +498,16 @@ class DataReader {
         for i in 0 ..< clientList.count {
             if clientList[i].getId() == currentClient.getId() {
                 clientList.removeAtIndex(i)
+                saveAllToWeb()
+            }
+        }
+    }
+    
+    //To delete one contract
+    static func delCurrentContract() {
+        for i in 0 ..< contractList.count {
+            if contractList[i].getId() == currentContract.getId() {
+                contractList.removeAtIndex(i)
                 saveAllToWeb()
             }
         }
@@ -506,6 +604,16 @@ class DataReader {
         return OppoInfo.init()
     }
     
+    //To get the contract with its id
+    static func getContractWithId(id : Int) -> ContractInfo {
+        for _contract : ContractInfo in contractList {
+            if _contract.getId() == id {
+                return _contract
+            }
+        }
+        return ContractInfo.init()
+    }
+    
     // 7.   The process for IDs
     //The id of next client
     private static var nextClientId = 0
@@ -525,6 +633,9 @@ class DataReader {
     //The id of next com
     private static var nextComId = 0
     
+    //The id of next contract 
+    private static var nextContractId = 0
+    
     //To set the nextIDs
     static func setNextId(index : Int, value : Int) {
         switch index {
@@ -538,8 +649,10 @@ class DataReader {
             nextOppoId = value
         case 4 :
             nextUserId = value
-        default:
+        case 5 :
             nextComId = value
+        default:
+            nextContractId = value
         }
     }
     
@@ -556,8 +669,10 @@ class DataReader {
             return nextOppoId
         case 4 :
             return nextUserId
-        default:
+        case 5 :
             return nextComId
+        default:
+            return nextContractId
         }
     }
     
@@ -595,6 +710,12 @@ class DataReader {
     static func getNewComId() -> Int {
         nextComId += 1
         return nextComId
+    }
+    
+    //To give the new contract a id 
+    static func getNewContractId() -> Int {
+        nextContractId += 1
+        return nextContractId
     }
 
     // 8.   The function when user is creating or moditying an oppotunity or a follow
@@ -734,34 +855,28 @@ class DataReader {
     
     //To init the list of all the products
     static func initProductList(){
-        let a = ProductInfo.init(_name: "杰利卡儿童绘本")
-        let b = ProductInfo.init(_name: "太空猴儿童益智积木")
-        a.appendImgNames("01_01")
-        a.appendImgNames("01_02")
-        a.appendImgNames("01_03")
-        a.appendImgNames("01_04")
-        a.appendImgNames("01_05")
-        a.appendImgNames("01_06")
-        a.appendImgNames("01_07")
-        a.appendImgNames("01_08")
-        a.appendImgNames("01_09")
-        a.appendImgNames("01_10")
-        a.appendImgNames("01_11")
-        a.appendImgNames("01_12")
-        b.appendImgNames("02_01")
-        b.appendImgNames("02_02")
-        b.appendImgNames("02_03")
-        b.appendImgNames("02_04")
-        //b.appendImgNames("02_05")
-        //b.appendImgNames("02_06")
-        b.appendImgNames("02_07")
-        b.appendImgNames("02_08")
-        b.appendImgNames("02_09")
-        b.appendImgNames("02_10")
-        //b.appendImgNames("02_11")
-        b.appendImgNames("02_12")
-        b.appendImgNames("02_13")
-        b.appendImgNames("02_14")
+        let a = ProductInfo.init(_name: "德国Hape字母珠算架（3岁以上）")
+        let b = ProductInfo.init(_name: "美国怀乐儿童早教益智音乐健身脚踏琴")
+        a.appendImgNames("1_1")
+        a.appendImgNames("1_2")
+        a.appendImgNames("1_3")
+        a.appendImgNames("1_4")
+        a.appendImgNames("1_5")
+        a.appendImgNames("1_7")
+        a.appendImgNames("1_8")
+        a.appendImgNames("1_9")
+        a.appendImgNames("1_10")
+        b.appendImgNames("2_1")
+        b.appendImgNames("2_2")
+        b.appendImgNames("2_3")
+        b.appendImgNames("2_4")
+        b.appendImgNames("2_5")
+        b.appendImgNames("2_7")
+        b.appendImgNames("2_8")
+        b.appendImgNames("2_9")
+        b.appendImgNames("2_10")
+        b.appendImgNames("2_11")
+        b.appendImgNames("2_12")
         productList.append(a)
         productList.append(b)
     }

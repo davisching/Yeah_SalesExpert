@@ -24,7 +24,7 @@ class MyCloud {
     }
     
     //The urls
-    static var url_ClientList = "a", url_Contact = "b", url_ID = "c", url_Oppo = "d", url_user = "e", url_com = "f"
+    static var url_ClientList = "a", url_Contact = "b", url_ID = "c", url_Oppo = "d", url_user = "e", url_com = "f", url_contract = "g"
     
     //Only need when first time save the urls, otherwise, useless
     //To save the urls to cloud as an object
@@ -49,6 +49,7 @@ class MyCloud {
         urlList.setObject(url_Oppo, forKey: "url_Oppo")
         urlList.setObject(url_user, forKey: "url_user")
         urlList.setObject(url_com, forKey: "url_com")
+        urlList.setObject(url_contract, forKey: "url_contract")
         urlList.saveInBackgroundWithBlock { (flag : Bool, error : NSError!) in
             isSaveFinish = true
             readFromInternet()
@@ -66,6 +67,7 @@ class MyCloud {
             url_Oppo = urlList.objectForKey("url_Oppo") as! String
             url_user = urlList.objectForKey("url_user") as! String
             url_com = urlList.objectForKey("url_com") as! String
+            url_contract = urlList.objectForKey("url_contract") as! String
             readFromInternet()
             })
         }
@@ -103,6 +105,10 @@ class MyCloud {
         _file = AVFile.init(URL: url_com)
         str = String.init(data: _file.getData(), encoding: _encoding)
         StringToDataForComList(str!)
+        
+        _file = AVFile.init(URL: url_contract)
+        str = String.init(data: _file.getData(), encoding: _encoding)
+        StringToDataForContractList(str!)
     }
     
     //To tell whether the process of the saving is finish or not
@@ -111,12 +117,25 @@ class MyCloud {
     //To save the data to my cloud
     static func saveData() {
         isSaveFinish = false
-        let comList : String = dataToString(DataReader.getComList())
-        saveCom(comList)
+       
+        let contractList : String = dataToString(DataReader.getContractList())
+        saveContracts(contractList)
+    }
+    
+    //To save the data of the list of all the contracts
+    static func saveContracts(str : String) {
+        let contractList = AVFile.init(name: "ContractInfo", data: str.dataUsingEncoding(_encoding))
+        contractList.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
+            url_contract = contractList.url
+            
+            let comList : String = dataToString(DataReader.getComList())
+            saveCom(comList)
+        }
+
     }
     
     //To save the data of the list of all the companies
-     static func saveCom(str : String) {
+    static func saveCom(str : String) {
         let comlist = AVFile.init(name: "ComInfo", data: str.dataUsingEncoding(_encoding))
         comlist.saveInBackgroundWithBlock { (succeed : Bool, error : NSError!) in
             url_com = comlist.url
@@ -351,7 +370,7 @@ class MyCloud {
     //To transfrom the String of the IDs to data
     static func StringToDataForIDs(_string : String) {
         let str = _string.characters.split("|")
-        for i in 0 ..< 6 {
+        for i in 0 ... 6 {
             DataReader.setNextId(i, value: Int(String(str[i]))!)
         }
     }
@@ -365,8 +384,53 @@ class MyCloud {
         theString += String(DataReader.getID(3)) + "|"
         theString += String(DataReader.getID(4)) + "|"
         theString += String(DataReader.getID(5)) + "|"
+        theString += String(DataReader.getID(6)) + "|"
         return theString
         
+    }
+    
+    //To transfrom the String of the contracts to data
+    static func StringToDataForContractList(_string : String) {
+        var contractList = [ContractInfo]()
+        let contractString = _string.characters.split("|")
+        for i in 0 ..< contractString.count {
+            let contract = ContractInfo.init()
+            let elementStr = String(contractString[i])
+            let elements = elementStr.characters.split("`")
+            contract.setId(Int(String(elements[0]))!)
+            contract.setName(String(elements[1]))
+            contract.setOppoId(Int(String(elements[2]))!)
+            contract.setContractStage(Int(String(elements[3]))!)
+            contract.setPayWay(Int(String(elements[4]))!)
+            contract.setNote(String(elements[5]))
+            contract.setUserId(Int(String(elements[6]))!)
+            contract.setComId(Int(String(elements[7]))!)
+            contract.setDate(Int(String(elements[8]))!, _month: Int(String(elements[9]))!, _day: Int(String(elements[10]))!)
+            contractList.append(contract)
+        }
+        DataReader.setContractList(contractList)
+    }
+    
+    //To transfrom the String of the contracts to data
+    static func dataToString(contractList : [ContractInfo]) -> String {
+        var theString = ""
+        
+        for _contract : ContractInfo in DataReader.getContractList() {
+            theString += "|"
+            theString += String(_contract.getId()) + "`"
+            theString += String(_contract.getName()) + "`"
+            theString += String(_contract.getOppoId()) + "`"
+            theString += String(_contract.getContractStage()) + "`"
+            theString += String(_contract.getPayWay()) + "`"
+            theString += String(_contract.getNote()) + "`"
+            theString += String(_contract.getUserId()) + "`"
+            theString += String(_contract.getComId()) + "`"
+            theString += String(_contract.getDate().getYear()) + "`"
+            theString += String(_contract.getDate().getMonth()) + "`"
+            theString += String(_contract.getDate().getDay()) + "`"
+        }
+        
+        return theString
     }
     
     //To transfrom the String of the oppotunities to data

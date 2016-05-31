@@ -84,6 +84,9 @@
                                         <state key="normal" title="合同">
                                             <color key="titleColor" red="1" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Opb-EV-zJf" kind="push" id="4aK-AT-d7g"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cEx-ca-b8R">
                                         <rect key="frame" x="10" y="274" width="108" height="100"/>
@@ -666,7 +669,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NXz-ZV-UHq">
-                                        <rect key="frame" x="24" y="287" width="327" height="94"/>
+                                        <rect key="frame" x="24" y="353" width="327" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="新增客户">
@@ -677,7 +680,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWL-he-pdC">
-                                        <rect key="frame" x="24" y="159" width="327" height="97"/>
+                                        <rect key="frame" x="24" y="225" width="327" height="97"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="新增销售机会">
@@ -688,7 +691,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="So4-AJ-Jip">
-                                        <rect key="frame" x="24" y="412" width="327" height="95"/>
+                                        <rect key="frame" x="24" y="478" width="327" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.040273129813424256" green="0.045004994097299897" blue="0.063161057692307732" alpha="0.37990301724137931" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="新增联系人">
@@ -697,6 +700,14 @@
                                         <connections>
                                             <action selector="bt_newContact:" destination="VPw-li-zMM" eventType="touchUpInside" id="76g-yT-j3A"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8P5-Ze-FoI">
+                                        <rect key="frame" x="24" y="94" width="327" height="97"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.040273129810000002" green="0.045004994100000001" blue="0.063161057689999994" alpha="0.37990301720000003" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="新增合同">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                 </subviews>
                             </scrollView>
@@ -1872,6 +1883,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFk-mg-eZY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3642" y="113"/>
+        </scene>
+        <!--合同-->
+        <scene sceneID="DUg-8L-JQZ">
+            <objects>
+                <tableViewController storyboardIdentifier="ContractTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Opb-EV-zJf" customClass="ContractTableViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="snp-DL-uyW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Opb-EV-zJf" id="ddL-xi-SUG"/>
+                            <outlet property="delegate" destination="Opb-EV-zJf" id="uhx-ji-iI3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="合同" id="A3r-rj-s3L">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="TOg-MU-MZK">
+                                <connections>
+                                    <action selector="bt_add:" destination="Opb-EV-zJf" id="WWQ-0y-JPq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="MXX-my-V3y">
+                                <connections>
+                                    <action selector="bt_refresh:" destination="Opb-EV-zJf" id="LI4-GS-WOG"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RH8-Pw-nGJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1186.5" y="-93.5"/>
         </scene>
         <!--快速添加-->
         <scene sceneID="j7c-Do-MxV">

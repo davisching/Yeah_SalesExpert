@@ -29,6 +29,8 @@
 		3A75058D1CE07CF600406844 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A75058B1CE07CF600406844 /* Index.storyboard */; };
 		3A7C70911CE207060011284C /* ClientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70901CE207060011284C /* ClientTableViewController.swift */; };
 		3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */; };
+		3A8AAEE31CFD7E5800976A76 /* ContractTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */; };
+		3A8AAEE51CFD7F6B00976A76 /* ContractInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE41CFD7F6B00976A76 /* ContractInfo.swift */; };
 		3A91FB561CF07E360089DF14 /* FollowViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */; };
 		3A91FB581CF0966A0089DF14 /* NewFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */; };
 		3AC3651F1CE9C7080080815B /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3651E1CE9C7080080815B /* DataReader.swift */; };
@@ -96,6 +98,8 @@
 		3A75058C1CE07CF600406844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Index.storyboard; sourceTree = "<group>"; };
 		3A7C70901CE207060011284C /* ClientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewController.swift; sourceTree = "<group>"; };
 		3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
+		3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractTableViewController.swift; sourceTree = "<group>"; };
+		3A8AAEE41CFD7F6B00976A76 /* ContractInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractInfo.swift; sourceTree = "<group>"; };
 		3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowViewBuilder.swift; sourceTree = "<group>"; };
 		3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFollowViewController.swift; sourceTree = "<group>"; };
 		3AC3651E1CE9C7080080815B /* DataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				3A5D93B01CECAC7E00F3400B /* ClientControllers */,
 				3A5D93B31CECAD0B00F3400B /* ContactControllers */,
 				3A5D93B41CECADD100F3400B /* OppoControllers */,
+				3A8AAEE11CFD7E3500976A76 /* ContractControllers */,
 				3A5D93AD1CECAC1C00F3400B /* Data */,
 			);
 			path = Yeah_SalesExpert;
@@ -210,6 +215,7 @@
 				3A5D93A71CEC7CF200F3400B /* OppoInfo.swift */,
 				3A6327041CF347EC00CCB21A /* UserInfo.swift */,
 				3A6327061CF34FEE00CCB21A /* MyCloud.swift */,
+				3A8AAEE41CFD7F6B00976A76 /* ContractInfo.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -292,6 +298,14 @@
 				3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */,
 			);
 			name = OppoControllers;
+			sourceTree = "<group>";
+		};
+		3A8AAEE11CFD7E3500976A76 /* ContractControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */,
+			);
+			name = ContractControllers;
 			sourceTree = "<group>";
 		};
 		A1FEC30C5A5C6576C3E6E333 /* Frameworks */ = {
@@ -503,6 +517,7 @@
 				3AC365311CEB704D0080815B /* ContactTableViewController.swift in Sources */,
 				3A0F21991CD8CFD600A215C0 /* LoginViewController.swift in Sources */,
 				3A6561D91CFB0A3E00185B29 /* RefreshViewController.swift in Sources */,
+				3A8AAEE31CFD7E5800976A76 /* ContractTableViewController.swift in Sources */,
 				3AFAB5151CEE03BF0087EA5E /* SelectStageViewController.swift in Sources */,
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
@@ -522,6 +537,7 @@
 				3AC3652B1CEB4AFE0080815B /* ProductInfoViewController.swift in Sources */,
 				3AFAB5131CEDAA850087EA5E /* SelectClientTableViewController.swift in Sources */,
 				3AC365291CEB1D450080815B /* ProductInfo.swift in Sources */,
+				3A8AAEE51CFD7F6B00976A76 /* ContractInfo.swift in Sources */,
 				3A6561D11CF9939A00185B29 /* MoniterViewController.swift in Sources */,
 				3A6327071CF34FEE00CCB21A /* MyCloud.swift in Sources */,
 				3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */,
