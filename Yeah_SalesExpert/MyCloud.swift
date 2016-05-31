@@ -17,10 +17,10 @@ class MyCloud {
         AVOSCloud.setApplicationId(_appId, clientKey : _clientKey)
         
         //Do when there's no data in the cloud
-        //saveData()
+        saveData()
         
         //Do when there's data in the cloud
-        getURLsFromCloud()
+        //getURLsFromCloud()
     }
     
     //The urls

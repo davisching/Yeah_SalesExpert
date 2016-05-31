@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContractInfoViewController: UIViewController {
+class ContractInfoViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var tf_name: UITextField!
     @IBOutlet weak var tf_oppo: UITextField!
@@ -25,6 +25,29 @@ class ContractInfoViewController: UIViewController {
     
     @IBAction func bt_del(sender: AnyObject) {
         
+        if DataReader.getCurrentContract().getUserId() == DataReader.getCurrentUser().getId() {
+        
+            let alert = UIAlertView.init(title: "确认删除操作", message: "客户删除后，数据将无法恢复！", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认删除")
+            alert.show()
+            
+        } else {
+        
+            let alert = UIAlertView.init(title: "没有权限", message: "只有创建者可以进行此项操作！", delegate: nil, cancelButtonTitle: "返回")
+            alert.show()
+            
+        }
+        
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            delTheContract()
+        }
+    }
+    
+    private func delTheContract() {
+        DataReader.delCurrentContract()
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func bt_oppo(sender: AnyObject) {

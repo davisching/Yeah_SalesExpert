@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
+class ClientInfoViewController: UIViewController , UIAlertViewDelegate {
 
     var clientInfo = ClientInfo.init()
     

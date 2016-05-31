@@ -29,7 +29,12 @@ class NewContractViewController: UIViewController {
             contract.setOppoId(oppo.getId())
             contract.setContractStage(stageIndex)
             contract.setPayWay(wayIndex)
-            contract.setNote(textView.text)
+            
+            if textView.text == "" {
+                contract.setNote(" ")
+            } else {
+                contract.setNote(textView.text)
+            }
             
             let today:NSDate = NSDate()
             let dateFormatter = NSDateFormatter()
@@ -41,7 +46,7 @@ class NewContractViewController: UIViewController {
             let day = Int(dateFormatter.stringFromDate(today))
             
             contract.setDate(year!, _month: month!, _day: day!)
-            
+
             DataReader.appendContractList(contract)
             
             let alert = UIAlertView.init(title: "添加成功", message: "该合同已经被成功地添加了!", delegate: nil, cancelButtonTitle: "我知道了!")
