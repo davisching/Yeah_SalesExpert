@@ -31,6 +31,10 @@
 		3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */; };
 		3A8AAEE31CFD7E5800976A76 /* ContractTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */; };
 		3A8AAEE51CFD7F6B00976A76 /* ContractInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE41CFD7F6B00976A76 /* ContractInfo.swift */; };
+		3A8AAEE71CFDB1E800976A76 /* NewContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE61CFDB1E800976A76 /* NewContractViewController.swift */; };
+		3A8AAEE91CFDC52300976A76 /* SelectOppoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEE81CFDC52300976A76 /* SelectOppoTableViewController.swift */; };
+		3A8AAEEB1CFDC6BD00976A76 /* SelectOppoInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEEA1CFDC6BD00976A76 /* SelectOppoInfoViewController.swift */; };
+		3A8AAEED1CFDCD7300976A76 /* ContractInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AAEEC1CFDCD7300976A76 /* ContractInfoViewController.swift */; };
 		3A91FB561CF07E360089DF14 /* FollowViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */; };
 		3A91FB581CF0966A0089DF14 /* NewFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */; };
 		3AC3651F1CE9C7080080815B /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC3651E1CE9C7080080815B /* DataReader.swift */; };
@@ -100,6 +104,10 @@
 		3A7C70991CE21B9E0011284C /* ProductTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewController.swift; sourceTree = "<group>"; };
 		3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractTableViewController.swift; sourceTree = "<group>"; };
 		3A8AAEE41CFD7F6B00976A76 /* ContractInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractInfo.swift; sourceTree = "<group>"; };
+		3A8AAEE61CFDB1E800976A76 /* NewContractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewContractViewController.swift; sourceTree = "<group>"; };
+		3A8AAEE81CFDC52300976A76 /* SelectOppoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOppoTableViewController.swift; sourceTree = "<group>"; };
+		3A8AAEEA1CFDC6BD00976A76 /* SelectOppoInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOppoInfoViewController.swift; sourceTree = "<group>"; };
+		3A8AAEEC1CFDCD7300976A76 /* ContractInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContractInfoViewController.swift; sourceTree = "<group>"; };
 		3A91FB551CF07E360089DF14 /* FollowViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowViewBuilder.swift; sourceTree = "<group>"; };
 		3A91FB571CF0966A0089DF14 /* NewFollowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFollowViewController.swift; sourceTree = "<group>"; };
 		3AC3651E1CE9C7080080815B /* DataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
@@ -304,6 +312,10 @@
 			isa = PBXGroup;
 			children = (
 				3A8AAEE21CFD7E5800976A76 /* ContractTableViewController.swift */,
+				3A8AAEE61CFDB1E800976A76 /* NewContractViewController.swift */,
+				3A8AAEE81CFDC52300976A76 /* SelectOppoTableViewController.swift */,
+				3A8AAEEA1CFDC6BD00976A76 /* SelectOppoInfoViewController.swift */,
+				3A8AAEEC1CFDCD7300976A76 /* ContractInfoViewController.swift */,
 			);
 			name = ContractControllers;
 			sourceTree = "<group>";
@@ -515,11 +527,14 @@
 				3AC3651F1CE9C7080080815B /* DataReader.swift in Sources */,
 				3A0F219B1CD9CC2800A215C0 /* SignUpViewController.swift in Sources */,
 				3AC365311CEB704D0080815B /* ContactTableViewController.swift in Sources */,
+				3A8AAEE91CFDC52300976A76 /* SelectOppoTableViewController.swift in Sources */,
 				3A0F21991CD8CFD600A215C0 /* LoginViewController.swift in Sources */,
 				3A6561D91CFB0A3E00185B29 /* RefreshViewController.swift in Sources */,
 				3A8AAEE31CFD7E5800976A76 /* ContractTableViewController.swift in Sources */,
 				3AFAB5151CEE03BF0087EA5E /* SelectStageViewController.swift in Sources */,
 				3A0F21661CD8CC1900A215C0 /* AppDelegate.swift in Sources */,
+				3A8AAEE71CFDB1E800976A76 /* NewContractViewController.swift in Sources */,
+				3A8AAEEB1CFDC6BD00976A76 /* SelectOppoInfoViewController.swift in Sources */,
 				3A5D93B61CECAE0200F3400B /* OppoTableViewController.swift in Sources */,
 				3AC365331CEB73670080815B /* OtherViewController.swift in Sources */,
 				3A6561CF1CF988B700185B29 /* MyComViewController.swift in Sources */,
@@ -543,6 +558,7 @@
 				3A7C709A1CE21B9E0011284C /* ProductTableViewController.swift in Sources */,
 				3A5D93A81CEC7CF200F3400B /* OppoInfo.swift in Sources */,
 				3AFAB50F1CED9FB60087EA5E /* NewOppoViewController.swift in Sources */,
+				3A8AAEED1CFDCD7300976A76 /* ContractInfoViewController.swift in Sources */,
 				3A6561D51CF9AA0100185B29 /* SystemViewController.swift in Sources */,
 				3A5D93A61CEC76FA00F3400B /* NewContactViewController.swift in Sources */,
 				3A7C70911CE207060011284C /* ClientTableViewController.swift in Sources */,

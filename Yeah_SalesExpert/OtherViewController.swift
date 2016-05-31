@@ -24,8 +24,8 @@ class OtherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transAll()
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height + 1)
+        transAll()
         // Do any additional setup after loading the view.
     }
 

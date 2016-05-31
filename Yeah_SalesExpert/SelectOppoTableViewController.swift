@@ -1,5 +1,5 @@
 //
-//  ContractTableViewController.swift
+//  SelectOppoTableViewController.swift
 //  Yeah_SalesExpert
 //
 //  Created by DavisChing on 16/5/31.
@@ -8,75 +8,29 @@
 
 import UIKit
 
-class ContractTableViewController: UITableViewController {
+class SelectOppoTableViewController: UITableViewController {
     
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
-    private var contractCount = 0
-    private var contractList = [ContractInfo]()
-    
-    /*Part stands for whether the user is searching the clients by
-     0 . User itself
-     1 . His or her company */
-    private var part = 0
-    
-    @IBAction func bt_refresh(sender: AnyObject) {
-        
-        if DataReader.isSearchingOppoWithAClient != true {
-            
-            MyCloud.getURLsFromCloud()
-            
-            if part == 0 {
-                part = 1
-            } else {
-                part = 0
-            }
-            updateOppoData()
-            initCells()
-        }
-        
-    }
-    
-    private func updateOppoData(){
-        
-        if DataReader.isSearchingOppoWithAClient != true {
-            
-            if part == 0 {
-                contractList = DataReader.getContractListForCurrentUser()
-                contractCount = contractList.count
-                self.title = "我的合同(\(contractCount))"
-            } else {
-                contractList = DataReader.getContractListForCurrentCom()
-                contractCount = contractList.count
-                self.title = "公司合同(\(contractCount))"
-            }
-        } else {
-            
-            contractList = DataReader.getContractListForCurrentClient();
-            contractCount = contractList.count
-            self.title = "\(DataReader.getCurrentClient().getName())的合同(\(contractCount))"
-        }
-    }
-    
-    @IBAction func bt_add(sender: AnyObject) {
-        
-    }
+    private var oppoCount = 0
+    private var oppoList = [OppoInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        oppoList = DataReader.getOppoListForCurrentUser()
+        oppoCount = oppoList.count
+        self.title = "关联销售机会"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    
     private func initCells() {
         let dataTabelW : CGFloat = screenObject.width
-        let dataTabelH : CGFloat = 75 * (CGFloat(contractCount) + 10)
+        let dataTabelH : CGFloat = 75 * (CGFloat(oppoCount) + 10)
         let dataTabelX : CGFloat = 0
         let dataTabelY : CGFloat = 0
         dataTable = UITableView.init(frame: CGRect.init(x: dataTabelX, y: dataTabelY, width: dataTabelW, height: dataTabelH))
@@ -99,7 +53,7 @@ class ContractTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return contractCount + 10
+        return oppoCount + 10
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -112,7 +66,7 @@ class ContractTableViewController: UITableViewController {
         
         let index = indexPath.row
         
-        if index < contractCount {
+        if index < oppoCount {
             if cell == nil {
                 cell = UITableViewCell.init(style: UITableViewCellStyle.Value1, reuseIdentifier: id)
             }
@@ -123,7 +77,7 @@ class ContractTableViewController: UITableViewController {
                 cell?.contentView.subviews.last?.removeFromSuperview()
             }
             
-            cell?.textLabel?.text = "\(index + 1)) " + contractList[index].getName()
+            cell?.textLabel?.text = "\(index + 1)) " + oppoList[index].getName()
             
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         } else {
@@ -145,33 +99,26 @@ class ContractTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row < contractCount {
+        if indexPath.row < oppoCount {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            DataReader.setCurrentContract(contractList[indexPath.row])
+            DataReader.setCurrentOppo(oppoList[indexPath.row])
             
-            let storyBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let newView = storyBoard.instantiateViewControllerWithIdentifier("ContractInfoViewController")
-            self.navigationController?.pushViewController(newView, animated: true)
-        } else {
-            let storyBoard = UIStoryboard.init(name: "Index", bundle: nil)
-            let newView = storyBoard.instantiateViewControllerWithIdentifier("NewContractViewController")
-            self.navigationController?.pushViewController(newView, animated: true)
+            let contactInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let contactInfoView = contactInfoStoryBoard.instantiateViewControllerWithIdentifier("SelectOppoInfoViewController")
+            self.navigationController?.pushViewController(contactInfoView, animated: true)
         }
     }
     
     override func viewWillAppear(animated: Bool) {
+        if DataReader.haveSelectedOppo == true {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        
         self.tabBarController?.tabBar.hidden = true
-        self.navigationController?.navigationBarHidden = false
-        updateOppoData()
         initCells()
-        DataReader.clearAllSelected()
         MyCloud.getURLsFromCloud()
     }
-    
-    override func viewDidDisappear(animated: Bool) {
-        self.title = "合同"
-    }
-    
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

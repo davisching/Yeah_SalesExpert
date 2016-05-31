@@ -728,6 +728,9 @@ class DataReader {
     //The product which user will select or have selected
     private static var selectedProduct = ProductInfo.init()
     
+    //the selected oppotunity
+    private static var selectedOppo = OppoInfo.init()
+    
     //To set the selected client
     static func setSelectedClient(_client : ClientInfo) {
         selectedClient = _client
@@ -757,6 +760,18 @@ class DataReader {
     static func getSelectedProduct() -> ProductInfo{
         return selectedProduct
     }
+    
+    //To set the selected oppotunity
+    static func setSelectedOppo(_oppo : OppoInfo) {
+        selectedOppo = _oppo
+    }
+    
+    //To get the selected oppotunity
+    static func getSelectedOppo() -> OppoInfo {
+        return selectedOppo
+    }
+    
+    static var haveSelectedOppo = false
     
     //Clear all selected
     static func clearAllSelected() {

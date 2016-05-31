@@ -136,7 +136,7 @@ class OppoInfoViewController: UIViewController , UIAlertViewDelegate {
         
         tf_client.text = client.getName()
         if client.getName() == "" {
-            tf_client.text = "客户不存在"
+            tf_client.text = "该客户已被删除"
         }
         product = DataReader.getProductWithId(oppo.getProductId())
         tf_name.text = oppo.getName()

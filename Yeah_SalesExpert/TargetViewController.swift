@@ -38,8 +38,8 @@ class TargetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
         transAll()
-        scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height + 1)
         // Do any additional setup after loading the view.
     }
 
@@ -66,6 +66,8 @@ class TargetViewController: UIViewController {
         var targetSales = Double(DataReader.getCurrentUser().getTargetSales())
         let winSales = Double(mount)
         
+        tf_target.text = String(Int(targetSales))
+        
         if targetSales == 0 {
             targetSales = 1
         }
@@ -85,7 +87,7 @@ class TargetViewController: UIViewController {
         let _y = 119 * (1 - p)
         lb_box.frame = CGRect.init(x: 46.5 * Double(transX), y: (198 + _y) * Double(transY), width: 123 * Double(transX), height: _height * Double(transY))
         
-        tf_target.text = String(Int(targetSales))
+        
     }
     
     /*
