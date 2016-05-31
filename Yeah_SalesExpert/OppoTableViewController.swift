@@ -13,32 +13,45 @@ class OppoTableViewController: UITableViewController {
     var dataTable : UITableView!
     let screenObject = UIScreen.mainScreen().bounds
     
+    @IBOutlet weak var bt_refresh: UIBarButtonItem!
     private var oppoCount = 0
     private var oppoList = [OppoInfo]()
     
     @IBAction func bt_refresh(sender: AnyObject) {
         
-        MyCloud.getURLsFromCloud()
-        
-        if part == 0 {
-            part = 1
-        } else {
-            part = 0
+        if DataReader.isSearchingOppoWithAClient != true {
+            
+            MyCloud.getURLsFromCloud()
+    
+            if part == 0 {
+                part = 1
+            } else {
+                part = 0
+            }
+            updateOppoData()
+            initCells()
         }
-        updateOppoData()
-        initCells()
         
     }
     
     private func updateOppoData(){
-        if part == 0 {
-            oppoList = DataReader.getOppoListForCurrentUser()
-            oppoCount = oppoList.count
-            self.title = "我的机会(\(oppoCount))"
+        
+        if DataReader.isSearchingOppoWithAClient != true {
+        
+            if part == 0 {
+                oppoList = DataReader.getOppoListForCurrentUser()
+                oppoCount = oppoList.count
+                self.title = "我的机会(\(oppoCount))"
+            } else {
+                oppoList = DataReader.getOppoListForCurrentCom()
+                oppoCount = oppoList.count
+                self.title = "公司机会(\(oppoCount))"
+            }
         } else {
-            oppoList = DataReader.getOppoListForCurrentCom()
+            
+            oppoList = DataReader.getOppoListForCurrentClient();
             oppoCount = oppoList.count
-            self.title = "公司机会(\(oppoCount))"
+            self.title = "\(DataReader.getCurrentClient().getName())的机会(\(oppoCount))"
         }
     }
     
@@ -147,6 +160,10 @@ class OppoTableViewController: UITableViewController {
         initCells()
         DataReader.clearAllSelected()
         MyCloud.getURLsFromCloud()
+        
+        if DataReader.isSearchingOppoWithAClient == true {
+            self.tabBarController?.tabBar.hidden = true
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OppoInfoViewController: UIViewController {
+class OppoInfoViewController: UIViewController , UIAlertViewDelegate {
 
     @IBOutlet weak var tf_name: UITextField!
     @IBOutlet weak var tf_client: UITextField!
@@ -16,6 +16,33 @@ class OppoInfoViewController: UIViewController {
     @IBOutlet weak var tf_target: UITextField!
     @IBOutlet weak var tf_product: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBAction func bt_newContract(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func bt_lose(sender: AnyObject) {
+        
+        if oppo.getStage() != 5 {
+            let alert = UIAlertView.init(title: "确认输单", message: "确认是否要进行输单操作！", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "确认")
+            alert.show()
+        }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            loseTheOppo()
+        }
+    }
+    
+    func loseTheOppo() {
+        DataReader.getCurrentOppo().setStage(5)
+        DataReader.modifyOppo(DataReader.getCurrentOppo())
+        let storyBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let refreshView = storyBoard.instantiateViewControllerWithIdentifier("RefreshViewController")
+        self.navigationController?.pushViewController(refreshView, animated: false)
+    }
+    
     
     @IBAction func bt_newFollow(sender: AnyObject) {
       
@@ -37,10 +64,13 @@ class OppoInfoViewController: UIViewController {
     }
     
     @IBAction func bt_stage(sender: AnyObject) {
-        DataReader.setCurrentStage(oppo.getStage())
-        let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
-        let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("SelectStageViewController")
-        self.navigationController?.pushViewController(clientaddView, animated: true)
+        
+        if oppo.getStage() != 5 {
+            DataReader.setCurrentStage(oppo.getStage())
+            let clientInfoStoryBoard = UIStoryboard.init(name: "Index", bundle: nil)
+            let clientaddView = clientInfoStoryBoard.instantiateViewControllerWithIdentifier("SelectStageViewController")
+            self.navigationController?.pushViewController(clientaddView, animated: true)
+        }
     }
     
     @IBAction func bt_product(sender: AnyObject) {

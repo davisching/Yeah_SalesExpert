@@ -22,6 +22,13 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tf_visit: UITextField!
     
+    @IBAction func bt_goToOppo(sender: AnyObject) {
+        DataReader.isSearchingOppoWithAClient = true
+        let storyBoard = UIStoryboard.init(name: "Index", bundle: nil)
+        let newView = storyBoard.instantiateViewControllerWithIdentifier("OppoTableViewController")
+        self.navigationController?.pushViewController(newView, animated: true)
+    }
+    
     @IBAction func bt_visit(sender: AnyObject) {
         if DataReader.getCurrentClient().getUserId() == DataReader.getCurrentUser().getId() {
             clientInfo.setVisit(clientInfo.getVisit() + 1)
@@ -153,12 +160,12 @@ class ClientInfoViewController: UIViewController , UIAlertViewDelegate{
         tf_phone.text = clientInfo.getPhone()
         tf_email.text = clientInfo.getEmail()
         tf_visit.text = String(clientInfo.getVisit())
-        createFollowViews()
         DataReader.isCreatingFollowFromClient = true
         self.tabBarController?.tabBar.hidden = true
         createFollowViews()
         scrollView.contentSize = CGSize.init(width: _w, height: FollowViewBuilder.currentY + 70)
         MyCloud.getURLsFromCloud()
+        DataReader.isSearchingOppoWithAClient = false
     }
     
     override func viewWillDisappear(animated: Bool) {

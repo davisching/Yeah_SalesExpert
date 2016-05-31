@@ -17,6 +17,9 @@ class TargetViewController: UIViewController {
     @IBOutlet weak var tf_target: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBAction func bt_tap(sender: AnyObject) {
+        tf_target.resignFirstResponder()
+    }
     @IBAction func bt_change(sender: AnyObject) {
         if tf_target.text != "" {
             DataReader.getCurrentUser().setTargetSales(Int(tf_target.text!)!)

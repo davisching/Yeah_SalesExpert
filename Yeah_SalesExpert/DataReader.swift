@@ -159,6 +159,17 @@ class DataReader {
         return list
     }
     
+    //To get the list of oppotunities for a client by this client's id
+    static func getOppoListForCurrentClient() -> [OppoInfo] {
+        var list = [OppoInfo]()
+        for _oppo : OppoInfo in oppoList {
+            if _oppo.getClientId() == currentClient.getId() {
+                list.append(_oppo)
+            }
+        }
+        return list
+    }
+    
     //  2. The current datas
     //The current user
     private static var currentUser = UserInfo.init()
@@ -638,6 +649,8 @@ class DataReader {
     
     //To tell whether the process is act during modifing an oppotunity
     static var isModifyingAnOppotunity = false
+    
+    static var isSearchingOppoWithAClient = false
     
     //To return this value to its initialize value
     static func clearIsCreatingAnOppotunity() {
