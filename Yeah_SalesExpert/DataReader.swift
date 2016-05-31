@@ -499,6 +499,7 @@ class DataReader {
             if clientList[i].getId() == currentClient.getId() {
                 clientList.removeAtIndex(i)
                 saveAllToWeb()
+                break
             }
         }
     }
@@ -509,6 +510,7 @@ class DataReader {
             if contractList[i].getId() == currentContract.getId() {
                 contractList.removeAtIndex(i)
                 saveAllToWeb()
+                break
             }
         }
     }

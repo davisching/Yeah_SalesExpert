@@ -1907,7 +1907,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="Jhg-yE-UbN">
-                                        <rect key="frame" x="116" y="84" width="246" height="30"/>
+                                        <rect key="frame" x="115" y="51" width="246" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1915,43 +1915,36 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="g8a-ze-WCk">
-                                        <rect key="frame" x="116" y="184" width="246" height="30"/>
+                                        <rect key="frame" x="115" y="151" width="246" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Exr-UI-bOf">
-                                        <rect key="frame" x="25" y="397" width="78" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关商机 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qry-AF-XQC">
-                                        <rect key="frame" x="25" y="138" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="105" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关客户 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wds-Qy-s2j">
-                                        <rect key="frame" x="25" y="345" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="312" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易方式 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AMF-4A-6YT">
-                                        <rect key="frame" x="25" y="238" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="205" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="chG-10-3Ch">
-                                        <rect key="frame" x="116" y="134" width="246" height="30"/>
+                                        <rect key="frame" x="115" y="101" width="246" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1959,14 +1952,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同名称 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vbZ-um-ga4">
-                                        <rect key="frame" x="25" y="88" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="55" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="kM9-h7-U2O">
-                                        <rect key="frame" x="116" y="235" width="246" height="30"/>
+                                        <rect key="frame" x="115" y="202" width="246" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1974,22 +1967,14 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同阶段 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JKn-mk-Mwc">
-                                        <rect key="frame" x="25" y="188" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="155" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" id="P6r-Ib-6Jc">
-                                        <rect key="frame" x="84" y="397" width="273" height="138"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.3053609914" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MqH-sK-4OL">
-                                        <rect key="frame" x="123" y="134" width="233" height="30"/>
+                                        <rect key="frame" x="122" y="101" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal">
@@ -2000,7 +1985,22 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="fua-gn-jPn">
-                                        <rect key="frame" x="116" y="341" width="246" height="30"/>
+                                        <rect key="frame" x="115" y="308" width="246" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生成时间 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zlL-gt-jlR">
+                                        <rect key="frame" x="24" y="363" width="78" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="ZFh-ob-n2z">
+                                        <rect key="frame" x="115" y="359" width="246" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2008,14 +2008,14 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合同金额 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VeT-Fz-Uob">
-                                        <rect key="frame" x="25" y="291" width="78" height="21"/>
+                                        <rect key="frame" x="24" y="258" width="78" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="EGX-fs-NF9">
-                                        <rect key="frame" x="116" y="288" width="209" height="30"/>
+                                        <rect key="frame" x="115" y="255" width="209" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2023,14 +2023,14 @@
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BC9-IK-PAh">
-                                        <rect key="frame" x="333" y="292" width="17" height="21"/>
+                                        <rect key="frame" x="332" y="259" width="17" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Dg-FL-arI">
-                                        <rect key="frame" x="123" y="341" width="233" height="30"/>
+                                        <rect key="frame" x="122" y="308" width="233" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
                                         <state key="normal">
@@ -2040,6 +2040,21 @@
                                             <action selector="bt_client:" destination="fuJ-hE-Zeb" eventType="touchUpInside" id="Lj5-jk-IdP"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Exr-UI-bOf">
+                                        <rect key="frame" x="24" y="413" width="78" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" id="P6r-Ib-6Jc">
+                                        <rect key="frame" x="83" y="413" width="273" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.3053609914" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.12691530030000001" green="0.1148434892" blue="0.22688301280000001" alpha="0.0" colorSpace="calibratedRGB"/>
                             </scrollView>
@@ -2056,6 +2071,7 @@
                             <barButtonItem systemItem="compose" id="Xbj-Vq-zF6">
                                 <connections>
                                     <action selector="bt_modify:" destination="fuJ-hE-Zeb" id="jTh-Gg-aQJ"/>
+                                    <segue destination="vYV-sn-SgV" kind="push" id="9hQ-MM-But"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -2069,6 +2085,7 @@
                         <outlet property="tf_name" destination="Jhg-yE-UbN" id="nEQ-jV-EeM"/>
                         <outlet property="tf_oppo" destination="chG-10-3Ch" id="MuZ-bf-csY"/>
                         <outlet property="tf_stage" destination="g8a-ze-WCk" id="aN0-uT-oMW"/>
+                        <outlet property="tf_time" destination="ZFh-ob-n2z" id="krK-27-m2O"/>
                         <outlet property="tf_way" destination="kM9-h7-U2O" id="ucW-CT-JsE"/>
                     </connections>
                 </viewController>
@@ -2840,6 +2857,192 @@
             </objects>
             <point key="canvasLocation" x="-1052" y="580"/>
         </scene>
+        <!--Modify Contract View Controller-->
+        <scene sceneID="wbB-2I-d15">
+            <objects>
+                <viewController storyboardIdentifier="ModifyContractViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vYV-sn-SgV" customClass="ModifyContractViewController" customModule="Yeah_SalesExpert" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J8b-t1-hw3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="XqP-26-PEu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Px3-y1-RPG">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <connections>
+                                            <action selector="bt_tap:" destination="JIV-KF-Zsw" eventType="touchUpInside" id="aZw-ef-Lfi"/>
+                                            <action selector="bt_tap:" destination="vYV-sn-SgV" eventType="touchUpInside" id="hbz-oC-wjO"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="k0Z-OR-bzf">
+                                        <rect key="frame" x="116" y="84" width="246" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="Djf-Ue-Kd9">
+                                        <rect key="frame" x="116" y="184" width="246" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KB8-Hx-MeF">
+                                        <rect key="frame" x="25" y="290" width="78" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 相关商机 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kfF-dv-y1n">
+                                        <rect key="frame" x="13" y="138" width="90" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 交易方式 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Avt-7C-KvR">
+                                        <rect key="frame" x="13" y="238" width="90" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="7Hx-zg-uX6">
+                                        <rect key="frame" x="116" y="134" width="246" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 合同名称 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="edh-y6-pHr">
+                                        <rect key="frame" x="13" y="88" width="90" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="g5I-n5-DRh">
+                                        <rect key="frame" x="116" y="235" width="246" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.33485991380000002" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 合同阶段 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1km-fD-Agt">
+                                        <rect key="frame" x="13" y="188" width="90" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="Qmm-Tj-mIA">
+                                        <rect key="frame" x="89" y="290" width="273" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.3053609914" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bCG-en-ZFu">
+                                        <rect key="frame" x="123" y="134" width="233" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.0" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="zsh-18-ZbC" kind="push" id="7Rs-Vo-WLk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GaN-Vg-xiQ">
+                                        <rect key="frame" x="336" y="235" width="26" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.1038558832" green="0.10703124999999999" blue="0.1027047681" alpha="0.76002155169999996" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_changeWayRight:" destination="vYV-sn-SgV" eventType="touchUpInside" id="HF3-tq-hGN"/>
+                                            <action selector="bt_changeWayRight:" destination="JIV-KF-Zsw" eventType="touchUpInside" id="vJv-Gl-TlX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M1l-ON-rGn">
+                                        <rect key="frame" x="28" y="457" width="319" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.39912287390000001" green="0.40981570509999998" blue="0.390709576" alpha="0.5689385776" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="修改合同">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_add:" destination="vYV-sn-SgV" eventType="touchUpInside" id="ddv-l0-9Yn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5px-y5-Sae">
+                                        <rect key="frame" x="336" y="184" width="26" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.1038558832" green="0.10703124999999999" blue="0.1027047681" alpha="0.76002155169999996" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="&gt;">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_changeStageRight:" destination="JIV-KF-Zsw" eventType="touchUpInside" id="jE7-xa-8o6"/>
+                                            <action selector="bt_changeStageRight:" destination="vYV-sn-SgV" eventType="touchUpInside" id="zgo-21-OLM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FRU-JS-1Fg">
+                                        <rect key="frame" x="114" y="234" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.1038558832" green="0.10703124999999999" blue="0.1027047681" alpha="0.76002155169999996" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_changeWayLeft:" destination="JIV-KF-Zsw" eventType="touchUpInside" id="93Y-0P-zRg"/>
+                                            <action selector="bt_changeWayLeft:" destination="vYV-sn-SgV" eventType="touchUpInside" id="kNV-Mq-e7C"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eyS-Rc-Ed6">
+                                        <rect key="frame" x="114" y="184" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.1038558832" green="0.10703124999999999" blue="0.1027047681" alpha="0.76002155169999996" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleColor" red="0.94693169720000003" green="0.94685086090000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="bt_changeStageLeft:" destination="JIV-KF-Zsw" eventType="touchUpInside" id="UeM-gP-csz"/>
+                                            <action selector="bt_changeStageLeft:" destination="vYV-sn-SgV" eventType="touchUpInside" id="Xod-qQ-uID"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12691530030000001" green="0.1148434892" blue="0.22688301280000001" alpha="0.0" colorSpace="calibratedRGB"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.22842548076923075" green="0.22842548076923075" blue="0.22842548076923075" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rxs-OL-JhV"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scrollView" destination="XqP-26-PEu" id="ze0-qm-X5p"/>
+                        <outlet property="textView" destination="Qmm-Tj-mIA" id="Pni-Et-fF0"/>
+                        <outlet property="tf_name" destination="k0Z-OR-bzf" id="pKg-sK-qqg"/>
+                        <outlet property="tf_oppo" destination="7Hx-zg-uX6" id="MKL-4k-O1M"/>
+                        <outlet property="tf_stage" destination="Djf-Ue-Kd9" id="Dud-ZV-Ix6"/>
+                        <outlet property="tf_way" destination="g5I-n5-DRh" id="xjG-XJ-bLT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rrQ-ni-S11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490.5" y="-93.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4Ar-7n-YTA">
             <objects>
@@ -2857,7 +3060,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdR-Ki-wea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145" y="-108"/>
+            <point key="canvasLocation" x="-143" y="-143"/>
         </scene>
     </scenes>
     <resources>
@@ -2868,5 +3071,6 @@
         <segue reference="KMO-TU-srX"/>
         <segue reference="kHG-FG-QIf"/>
         <segue reference="L7g-Ra-Omr"/>
+        <segue reference="7Rs-Vo-WLk"/>
     </inferredMetricsTieBreakers>
 </document>

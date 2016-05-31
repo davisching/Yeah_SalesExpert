@@ -22,7 +22,7 @@ class ContractInfo {
     
     init(_name : String) {
         name = _name
-        
+        id = DataReader.getNewContractId()
     }
     
     init() {

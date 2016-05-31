@@ -18,6 +18,7 @@ class ContractInfoViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var tf_client: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var tf_time: UITextField!
     
     @IBAction func bt_modify(sender: AnyObject) {
         
@@ -82,6 +83,7 @@ class ContractInfoViewController: UIViewController, UIAlertViewDelegate {
         tf_way.text = String(PayWay.getPayWayString(contract.getPayWay()))
         tf_money.text = String(oppo.getTargetSales())
         client = DataReader.getClientWithId(oppo.getClientId())
+        tf_time.text = "\(contract.getDate().getYear())年 \(contract.getDate().getMonth())月 \(contract.getDate().getDay())日"
         
         if client.getName() == "" {
             tf_client.text = "该客户已被删除"
@@ -97,12 +99,15 @@ class ContractInfoViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refresh()
         scrollView.contentSize = CGSize.init(width: UIScreen.mainScreen().bounds.size.width, height: scrollView.frame.height * DataReader.getAwayNaviBarDIVIDEscreen(UIScreen.mainScreen().bounds.size.width))
         transAll()
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        refresh()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
